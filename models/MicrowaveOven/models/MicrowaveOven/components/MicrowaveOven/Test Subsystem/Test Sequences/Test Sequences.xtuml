@@ -1,0 +1,16 @@
+// BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Test Subsystem' is
+
+  //! Two sample test scenarios encapsulated within a class.
+  @key_letters("MO_TS");
+  @class_num(100);
+  class 'Test Sequences' is
+
+    unique TestSeqID: integer;
+
+    preferred identifier is (TestSeqID);
+
+  end class;
+
+end;

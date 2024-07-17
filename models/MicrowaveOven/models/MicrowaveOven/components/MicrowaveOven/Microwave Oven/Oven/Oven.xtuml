@@ -1,0 +1,44 @@
+// BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Microwave Oven' is
+
+  //! The entire microwave oven assembly (with the exception of the Control Panel), comprising :
+  //! 
+  //! * a door
+  //! * an internal light
+  //! * a turntable
+  //! * a magnetron tube
+  //! * a beeper
+  @key_letters("MO_O");
+  @class_num(1);
+  class Oven is
+
+    //! A uniquely assigned Oven identifier
+    unique OvenID: integer;
+
+    @ref_mode("referred_to");
+    TubeID: referential (R1.'Magnetron Tube'.TubeID) integer;
+
+    @ref_mode("referred_to");
+    LightID: referential (R2.'Internal Light'.LightID) integer;
+
+    @ref_mode("referred_to");
+    BeeperID: referential (R3.Beeper.BeeperID) integer;
+
+    @ref_mode("referred_to");
+    DoorID: referential (R4.Door.DoorID) integer;
+
+    @ref_mode("referred_to");
+    TurntableID: referential (R5.Turntable.TurntableID) integer;
+
+    //! A local oven countdown timer, set and reset by the user via the Control Panel
+    oven_timer: timer;
+
+    //! Records any remaining cooking period when cooking is suspended as a consequence of the oven door being opened or the 'cancel' key being pressed by the oven user.
+    remaining_cooking_time: integer;
+
+    preferred identifier is (OvenID);
+
+  end class;
+
+end;

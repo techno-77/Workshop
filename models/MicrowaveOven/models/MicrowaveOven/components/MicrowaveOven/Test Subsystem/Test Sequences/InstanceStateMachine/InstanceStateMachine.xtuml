@@ -1,0 +1,166 @@
+// BP 7.1.6 content: InstanceStateMachine syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Test Subsystem'::'Test Sequences' is
+
+  @state_num(1);
+  @dialect("oal");
+  state 'Awaiting Test Sequence Initiation';
+
+  @state_num(2);
+  @dialect("oal");
+  state 'Performing Test Sequence 1';
+
+  @state_num(3);
+  @dialect("oal");
+  state 'Performing Test Sequence 2';
+
+  @state_num(4);
+  @dialect("oal");
+  state 'Cooking Complete';
+
+  @event_num(1);
+  event initialize;
+
+  @event_num(2);
+  event perform_test_seq_1;
+
+  @event_num(3);
+  event perform_test_seq_2;
+
+  @event_num(4);
+  event test_seq_complete;
+
+  state model is
+
+    |                                     | initialize                          | perform_test_seq_1                  | perform_test_seq_2                  | test_seq_complete                   |
+    | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+    | 'Awaiting Test Sequence Initiation' | 'Awaiting Test Sequence Initiation' | 'Performing Test Sequence 1'        | 'Performing Test Sequence 2'        | ignore                              |
+    | 'Performing Test Sequence 1'        | ignore                              | ignore                              | ignore                              | 'Cooking Complete'                  |
+    | 'Performing Test Sequence 2'        | ignore                              | ignore                              | ignore                              | 'Cooking Complete'                  |
+    | 'Cooking Complete'                  | ignore                              | ignore                              | ignore                              | ignore                              |
+
+  end state model;
+
+  state 'Awaiting Test Sequence Initiation' is
+    @noparse
+    //Automatically initiate test sequence 1.
+    generate MO_TS2:'perform_test_seq_1' to self;
+    @endnoparse
+  end state;
+
+  state 'Performing Test Sequence 1' is
+    @noparse
+    // Step 1. At T+2000000us, open the oven door to insert dish
+    select any door from instances of MO_D;
+    if (not_empty door)
+       create event instance release_door of MO_D1:'release' to door;
+       step1_timer=TIM::timer_start(microseconds:2000000,event_inst:release_door);
+    end if;
+    
+    // Step 2. At T+3000000us, lower the output power setting to Med_High
+    select any tube from instances of MO_MT;
+    if (not_empty tube)
+       create event instance lower_power of MO_MT2:'decrease_power' to tube;
+       step2_timer =TIM::timer_start(microseconds:3000000,event_inst:lower_power);
+    end if;
+    
+    // Step 3. At T+4000000us, close oven door
+    select any door from instances of MO_D;
+    if (not_empty door)
+       create event instance close_door of MO_D2:'close' to door;
+       step3_timer =TIM::timer_start(microseconds:4000000,event_inst:close_door);
+    end if;
+    
+    // Step 4. At T+5000000us, assign cooking period of 10 seconds and start cooking
+    select any oven from instances of MO_O;
+    if (not_empty oven)
+       create event instance cooking_time of MO_O8:'cooking_period'(period:10000000) to oven;
+       step4a_timer =TIM::timer_start(microseconds:5000000,event_inst:cooking_time);
+       create event instance start of MO_O3:'start_cooking' to oven;
+       step4b_timer =TIM::timer_start(microseconds:5000001,event_inst:start);
+    end if;
+    
+    // Step 5. At T+15secs, open the oven door to remove cooked dish
+    select any door from instances of MO_D;
+    if (not_empty door)
+       create event instance release_door of MO_D1:'release' to door;
+       step5_timer =TIM::timer_start(microseconds:15000000,event_inst:release_door);
+    end if;
+    
+    // For codegen: Testing complete.  After 30 seconds, terminate the system
+    // otherwise, executable will not terminate.
+    create event instance finished of MO_TS4:'test_seq_complete' to self;
+    terminate_timer=TIM::timer_start(microseconds:30000000,event_inst:finished);
+    @endnoparse
+  end state;
+
+  state 'Performing Test Sequence 2' is
+    @noparse
+    // Step 1. At T+2000000us, open the oven door to insert dish
+    select any door from instances of MO_D;
+    if (not_empty door)
+       create event instance release_door of MO_D1:'release' to door;
+       step1_timer =TIM::timer_start(microseconds:2000000,event_inst:release_door);
+    end if;
+    
+    // Step 2. At T+4000000us, close oven door
+    select any door from instances of MO_D;
+    if (not_empty door)
+       create event instance close_door of MO_D2:'close' to door;
+       step2_timer =TIM::timer_start(microseconds:4000000,event_inst:close_door);
+    end if;
+    
+    // Step 3. At T+5000000us, assign cooking period of 15seconds and start cooking
+    select any oven from instances of MO_O;
+    if (not_empty oven)
+       create event instance cooking_time of MO_O8:'cooking_period'(period:15000000) to oven;
+       step3a_timer =TIM::timer_start(microseconds:5000000,event_inst:cooking_time);
+       create event instance start of MO_O3:'start_cooking' to oven;
+       step3b_timer =TIM::timer_start(microseconds:5000001,event_inst:start);
+    end if;
+    
+    // Step 4. At T+6000000us, open the oven door to inspect dish
+    select any door from instances of MO_D;
+    if (not_empty door)
+       create event instance release_door of MO_D1:'release' to door;
+       step4_timer =TIM::timer_start(microseconds:6000000,event_inst:release_door);
+    end if;
+    
+    // Step 5. At T+7000000us, lower the output power setting to Medium
+    select any tube from instances of MO_MT;
+    if (not_empty tube)
+       create event instance lower_power of MO_MT2:'decrease_power' to tube;
+       step5a_timer =TIM::timer_start(microseconds:3000000,event_inst:lower_power);
+       step5b_timer = TIM::timer_start(microseconds:3000001,event_inst:lower_power);
+    end if;
+    
+    // Step 6. At T+9000000us, close oven door
+    select any door from instances of MO_D;
+    if (not_empty door)
+       create event instance close_door of MO_D2:'close' to door;
+       step6_timer =TIM::timer_start(microseconds:9000000,event_inst:close_door);
+    end if;
+    
+    // Step 7. At T+10000000us, resume cooking
+    select any oven from instances of MO_O;
+    if (not_empty oven)
+       create event instance restart of MO_O3:'start_cooking' to oven;
+       step7_timer =TIM::timer_start(microseconds:10000000,event_inst:restart);
+    end if;
+    
+    
+    // For codegen: Testing complete.  After 30 seconds, terminate the system
+    // otherwise, executable will not terminate.
+    create event instance finished of MO_TS4:'test_seq_complete' to self;
+    terminate_timer=TIM::timer_start(microseconds:30000000,event_inst:finished);
+    @endnoparse
+  end state;
+
+  state 'Cooking Complete' is
+    @noparse
+    //For code generation: terminate system once complete
+    Bridge ARCH::shutdown();
+    @endnoparse
+  end state;
+
+end;

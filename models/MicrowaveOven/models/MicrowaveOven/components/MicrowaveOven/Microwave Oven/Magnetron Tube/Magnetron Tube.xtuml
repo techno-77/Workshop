@@ -1,0 +1,28 @@
+// BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Microwave Oven' is
+
+  //! The magnetron tube is the core element of the microwave oven, generating microwave energy following AC/DC Voltage conversion. The tube operates from a 240V, 50Hz supply.
+  //! 
+  //! The tube has variable power output, ranging from 600W to 1000W in discrete 100W steps.
+  //! 
+  //! The relevant behaviour of the tube is confined to :
+  //! 
+  //! * power on
+  //! * power off
+  //! * raising & lowering output power level
+  @key_letters("MO_MT");
+  @class_num(2);
+  class 'Magnetron Tube' is
+
+    //! The uniquely-specified tube identifier.
+    unique TubeID: integer;
+
+    //! Refer to the user-defined data type "tube_wattage" for a full description.
+    current_power_output: tube_wattage;
+
+    preferred identifier is (TubeID);
+
+  end class;
+
+end;

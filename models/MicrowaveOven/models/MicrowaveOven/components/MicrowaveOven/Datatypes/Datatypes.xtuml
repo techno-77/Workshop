@@ -1,0 +1,21 @@
+// BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven is
+
+  package Datatypes is
+    type tube_wattage is enum (
+      //! 1000w
+      high, 
+      //! 600w
+      low, 
+      //! 900w
+      med_high, 
+      //! 700w
+      med_low, 
+      //! 800w
+      medium
+    );
+
+  end package;
+
+end;

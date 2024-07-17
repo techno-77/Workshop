@@ -1,0 +1,36 @@
+// BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven is
+
+  //! The microwave oven subsystem models the microwave oven application
+  @start_numbering(1);
+  package 'Microwave Oven' is
+    class Beeper;
+    class Door;
+    class 'Internal Light';
+    class 'Magnetron Tube';
+    class Oven;
+    class Turntable;
+    //! A single magnetron tube is the core component of the oven assembly. Being related to the oven, it can be direclty powered on & off.
+    relationship R1 is 'Magnetron Tube' unconditionally 'is housed in' one Oven,
+                       Oven unconditionally houses one 'Magnetron Tube';
+
+    //! A single, low wattage light illuminates the interior of the oven to aid viewing of the cooking process. Being related to the oven enables the light to be controlled on & off as necessary.
+    relationship R2 is 'Internal Light' unconditionally illuminates one Oven,
+                       Oven unconditionally 'is illuminated by' one 'Internal Light';
+
+    //! A single, audible, repeating beeper is a useful cosmetic component related to, and controlled by, the oven when cooking is over.
+    relationship R3 is Beeper unconditionally 'is located in' one Oven,
+                       Oven unconditionally features one Beeper;
+
+    //! The oven door is a composite part of the microwave assembly, reflected by a mandatory 1:1 relationship.
+    relationship R4 is Door unconditionally 'provides access to' one Oven,
+                       Oven unconditionally 'is accessed via' one Door;
+
+    //! A single turntable is an integral component of any modern microwave oven. Being related to the oven, it can be controlled directly by the oven during cooking.
+    relationship R5 is Oven unconditionally has one Turntable,
+                       Turntable unconditionally occupies one Oven;
+
+  end package;
+
+end;

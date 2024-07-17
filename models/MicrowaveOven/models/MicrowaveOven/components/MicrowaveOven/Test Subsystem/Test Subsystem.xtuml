@@ -1,0 +1,10 @@
+// BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven is
+
+  @start_numbering(100);
+  package 'Test Subsystem' is
+    class 'Test Sequences';
+  end package;
+
+end;

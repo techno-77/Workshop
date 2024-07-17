@@ -1,0 +1,16 @@
+// BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Microwave Oven' is
+
+  //! A flat circular platter positioned in the middle of the oven floor, where food is placed for cooking. The platter takes the form of a turntable, rotating at a constant speed during cooking to uniformly distribute microwave radiation through the food.
+  @key_letters("MO_TRN");
+  @class_num(6);
+  class Turntable is
+
+    unique TurntableID: integer;
+
+    preferred identifier is (TurntableID);
+
+  end class;
+
+end;

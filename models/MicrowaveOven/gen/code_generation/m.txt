@@ -1,0 +1,5 @@
+.invoke MarkInitializationFunction( "*", "DefineOven" )
+.invoke MarkInitializationFunction( "*", "TestSequence1" )
+.invoke MarkStateTransitionTracingOn( "*" )
+.invoke MarkActionStatementTracingOn( "*" )
+.invoke MarkEmptyHandleDetectionOn( "*" )

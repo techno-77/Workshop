@@ -1,0 +1,72 @@
+// BP 7.1.6 content: InstanceStateMachine syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Microwave Oven'::'Magnetron Tube' is
+
+  @state_num(1);
+  @dialect("oal");
+  state 'Output Power Stable and OFF';
+
+  @state_num(2);
+  @dialect("oal");
+  state 'Reducing Output Power';
+
+  @state_num(3);
+  @dialect("oal");
+  state 'Raising Output Power';
+
+  @state_num(4);
+  @dialect("oal");
+  state 'Output Power Stable and ON';
+
+  @event_num(1);
+  event increase_power;
+
+  @event_num(2);
+  event decrease_power;
+
+  @event_num(3);
+  event power_on;
+
+  @event_num(4);
+  event power_off;
+
+  state model is
+
+    |                               | increase_power                | decrease_power                | power_on                      | power_off                     |
+    | ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+    | 'Output Power Stable and OFF' | 'Raising Output Power'        | 'Reducing Output Power'       | 'Output Power Stable and ON'  | ignore                        |
+    | 'Reducing Output Power'       | 'Raising Output Power'        | 'Reducing Output Power'       | 'Output Power Stable and ON'  | 'Output Power Stable and OFF' |
+    | 'Raising Output Power'        | 'Raising Output Power'        | 'Reducing Output Power'       | 'Output Power Stable and ON'  | 'Output Power Stable and OFF' |
+    | 'Output Power Stable and ON'  | 'Raising Output Power'        | 'Reducing Output Power'       | ignore                        | 'Output Power Stable and OFF' |
+
+  end state model;
+
+  state 'Reducing Output Power' is
+    @noparse
+    if (self.current_power_output == tube_wattage::med_low)
+       self.current_power_output = tube_wattage::low;
+    elif (self.current_power_output == tube_wattage::medium)
+       self.current_power_output = tube_wattage::med_low;
+    elif (self.current_power_output == tube_wattage::med_high)
+       self.current_power_output = tube_wattage::medium;
+    elif (self.current_power_output == tube_wattage::high)
+       self.current_power_output = tube_wattage::med_high;
+    end if;
+    @endnoparse
+  end state;
+
+  state 'Raising Output Power' is
+    @noparse
+    if (self.current_power_output == tube_wattage::low)
+       self.current_power_output = tube_wattage::med_low;
+    elif (self.current_power_output == tube_wattage::med_low)
+       self.current_power_output = tube_wattage::medium;
+    elif (self.current_power_output == tube_wattage::medium)
+       self.current_power_output = tube_wattage::med_high;
+    elif (self.current_power_output == tube_wattage::med_high)
+       self.current_power_output = tube_wattage::high;
+    end if;
+    @endnoparse
+  end state;
+
+end;

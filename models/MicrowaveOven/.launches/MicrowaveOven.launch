@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.xtuml.bp.debug.ui.BPApplication">
+    <booleanAttribute key="org.eclipse.debug.core.ATTR_FORCE_SYSTEM_CONSOLE_ENCODING" value="false"/>
+    <booleanAttribute key="org.xtuml.bp.debug.ui.BPApplication.activity" value="true"/>
+    <booleanAttribute key="org.xtuml.bp.debug.ui.BPApplication.deterministic" value="false"/>
+    <mapAttribute key="org.xtuml.bp.debug.ui.BPApplication.models">
+        <mapEntry key="MicrowaveOven" value="4671fe37-a6f1-4e67-bd5e-1c137ba785a6_INTERNALTOKEN_1_INTERNALTOKEN_None_INTERNALTOKEN_enabled_TOKEN_"/>
+    </mapAttribute>
+    <booleanAttribute key="org.xtuml.bp.debug.ui.BPApplication.simtime" value="false"/>
+    <intAttribute key="org.xtuml.bp.debug.ui.BPApplication.timeout" value="0"/>
+</launchConfiguration>

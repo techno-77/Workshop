@@ -1,0 +1,28 @@
+// BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Microwave Oven' is
+
+  //! An audible signal generator.
+  //! 
+  //! The beeper repeats four times on completion of the cooking period, signalling to the user that the oven door can be opened to inspect the readiness of the food inside.
+  @key_letters("MO_B");
+  @class_num(4);
+  class Beeper is
+
+    //! The uniquely-specified beeper identifier.
+    unique BeeperID: integer;
+
+    //! A local timer, used to generate delays of 1 second between the sounding of each beep.
+    beeper_timer: timer;
+
+    //! A counter, incrementally increasing from zero as the beeper sounds.
+    beep_count: integer;
+
+    //! The delayed event supplied to the beeper's local timer, which fires to signify the completion of the 1 second beeper delay.
+    beeper_delay_over: 'inst<Event>';
+
+    preferred identifier is (BeeperID);
+
+  end class;
+
+end;

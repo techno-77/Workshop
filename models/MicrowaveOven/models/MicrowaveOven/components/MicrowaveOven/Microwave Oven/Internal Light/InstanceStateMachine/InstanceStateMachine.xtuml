@@ -1,0 +1,40 @@
+// BP 7.1.6 content: InstanceStateMachine syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Microwave Oven'::'Internal Light' is
+
+  @state_num(1);
+  @dialect("oal");
+  state Off;
+
+  @state_num(2);
+  @dialect("oal");
+  state On;
+
+  @event_num(1);
+  event switch_on;
+
+  @event_num(2);
+  event switch_off;
+
+  state model is
+
+    |            | switch_on  | switch_off |
+    | ---------- | ---------- | ---------- |
+    | Off        | On         | ignore     |
+    | On         | ignore     | Off        |
+
+  end state model;
+
+  state Off is
+    @noparse
+    // Light off
+    @endnoparse
+  end state;
+
+  state On is
+    @noparse
+    // Light on
+    @endnoparse
+  end state;
+
+end;

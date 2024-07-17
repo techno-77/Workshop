@@ -1,0 +1,17368 @@
+-- root-types-contained: SystemModel_c,PackageableElement_c,DataType_c,CoreDataType_c,UserDataType_c
+-- BP 7.1 content: StreamData syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO S_SYS
+	VALUES (1,
+	'MicrowaveOven',
+	1);
+INSERT INTO EP_PKG
+	VALUES (2,
+	1,
+	1,
+	'components',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES (3,
+	1,
+	2,
+	0,
+	2);
+INSERT INTO PE_PE
+	VALUES (4,
+	1,
+	2,
+	0,
+	2);
+INSERT INTO C_C
+	VALUES (4,
+	0,
+	0,
+	'MicrowaveOven',
+	'
+
+Domain Mission: Microwave Application Domain
+
+To capture the retained data and event sequencing associated with the use of a domestic microwave oven comprising :
+
+* a magnetron tube (with variable power output settings)
+* a turntable
+* an internal light
+* a beeper to signal when cooking is complete
+* an oven door
+
+Bridges to other Domains:
+
+* To Control Panel (Application User Interface Domain)
+* To PIO domain (not shown)
+* To Timer domain',
+	0,
+	0,
+	0,
+	'',
+	'');
+INSERT INTO PE_PE
+	VALUES (5,
+	1,
+	0,
+	4,
+	7);
+INSERT INTO EP_PKG
+	VALUES (5,
+	0,
+	1,
+	'Functions',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES (6,
+	1,
+	5,
+	0,
+	1);
+INSERT INTO S_SYNC
+	VALUES (6,
+	0,
+	'CancelCooking',
+	'',
+	'select any oven from instances of MO_O;
+generate MO_O4:''cancel_cooking''  to oven;',
+	7,
+	1,
+	'',
+	0,
+	0);
+INSERT INTO ACT_FNB
+	VALUES (8,
+	6);
+INSERT INTO ACT_ACT
+	VALUES (8,
+	'function',
+	0,
+	9,
+	0,
+	0,
+	'CancelCooking',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (9,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	2,
+	1,
+	1,
+	35,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	8,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (10,
+	9,
+	11,
+	1,
+	1,
+	'CancelCooking line: 1');
+INSERT INTO ACT_FIO
+	VALUES (10,
+	12,
+	1,
+	'any',
+	13,
+	1,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (11,
+	9,
+	0,
+	2,
+	1,
+	'CancelCooking line: 2');
+INSERT INTO E_ESS
+	VALUES (11,
+	1,
+	0,
+	2,
+	10,
+	2,
+	16,
+	1,
+	35,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (11);
+INSERT INTO E_GSME
+	VALUES (11,
+	14);
+INSERT INTO E_GEN
+	VALUES (11,
+	12);
+INSERT INTO V_VAR
+	VALUES (12,
+	9,
+	'oven',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (12,
+	0,
+	13);
+INSERT INTO PE_PE
+	VALUES (16,
+	1,
+	5,
+	0,
+	1);
+INSERT INTO S_SYNC
+	VALUES (16,
+	0,
+	'CloseDoor',
+	'',
+	'select any door from instances of MO_D;
+generate MO_D2:''close''  to door;',
+	7,
+	1,
+	'',
+	0,
+	0);
+INSERT INTO ACT_FNB
+	VALUES (17,
+	16);
+INSERT INTO ACT_ACT
+	VALUES (17,
+	'function',
+	0,
+	18,
+	0,
+	0,
+	'CloseDoor',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (18,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	2,
+	1,
+	1,
+	35,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	17,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (19,
+	18,
+	20,
+	1,
+	1,
+	'CloseDoor line: 1');
+INSERT INTO ACT_FIO
+	VALUES (19,
+	21,
+	1,
+	'any',
+	22,
+	1,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (20,
+	18,
+	0,
+	2,
+	1,
+	'CloseDoor line: 2');
+INSERT INTO E_ESS
+	VALUES (20,
+	1,
+	0,
+	2,
+	10,
+	2,
+	16,
+	1,
+	35,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (20);
+INSERT INTO E_GSME
+	VALUES (20,
+	23);
+INSERT INTO E_GEN
+	VALUES (20,
+	21);
+INSERT INTO V_VAR
+	VALUES (21,
+	18,
+	'door',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (21,
+	0,
+	22);
+INSERT INTO PE_PE
+	VALUES (24,
+	1,
+	5,
+	0,
+	1);
+INSERT INTO S_SYNC
+	VALUES (24,
+	0,
+	'DecreasePower',
+	'',
+	'select any tube from instances of MO_MT;
+generate MO_MT2:''decrease_power'' to tube;',
+	7,
+	1,
+	'',
+	0,
+	0);
+INSERT INTO ACT_FNB
+	VALUES (25,
+	24);
+INSERT INTO ACT_ACT
+	VALUES (25,
+	'function',
+	0,
+	26,
+	0,
+	0,
+	'DecreasePower',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (26,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	2,
+	1,
+	1,
+	35,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	25,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (27,
+	26,
+	28,
+	1,
+	1,
+	'DecreasePower line: 1');
+INSERT INTO ACT_FIO
+	VALUES (27,
+	29,
+	1,
+	'any',
+	30,
+	1,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (28,
+	26,
+	0,
+	2,
+	1,
+	'DecreasePower line: 2');
+INSERT INTO E_ESS
+	VALUES (28,
+	1,
+	0,
+	2,
+	10,
+	2,
+	17,
+	1,
+	35,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (28);
+INSERT INTO E_GSME
+	VALUES (28,
+	31);
+INSERT INTO E_GEN
+	VALUES (28,
+	29);
+INSERT INTO V_VAR
+	VALUES (29,
+	26,
+	'tube',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (29,
+	0,
+	30);
+INSERT INTO PE_PE
+	VALUES (32,
+	1,
+	5,
+	0,
+	1);
+INSERT INTO S_SYNC
+	VALUES (32,
+	0,
+	'DefineOven',
+	'',
+	'// Create the instances in the system.
+create object instance mo of MO_O;
+
+assign mo.remaining_cooking_time = 0;
+
+create object instance tube of MO_MT;
+relate mo to tube across R1;
+assign tube.current_power_output = tube_wattage::high;
+
+create object instance light of MO_IL;
+relate mo to light across R2;
+
+create object instance beeper of MO_B;
+relate mo to beeper across R3;
+
+create object instance door of MO_D;
+relate mo to door across R4;
+assign door.is_secure = false;
+
+create object instance turntable of MO_TRN;
+relate mo to turntable across R5;',
+	7,
+	1,
+	'',
+	0,
+	0);
+INSERT INTO ACT_FNB
+	VALUES (33,
+	32);
+INSERT INTO ACT_ACT
+	VALUES (33,
+	'function',
+	0,
+	34,
+	0,
+	0,
+	'DefineOven',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (34,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	21,
+	1,
+	20,
+	37,
+	0,
+	0,
+	21,
+	31,
+	0,
+	0,
+	8,
+	36,
+	0,
+	33,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (35,
+	34,
+	36,
+	2,
+	1,
+	'DefineOven line: 2');
+INSERT INTO ACT_CR
+	VALUES (35,
+	37,
+	1,
+	13,
+	2,
+	30);
+INSERT INTO ACT_SMT
+	VALUES (36,
+	34,
+	38,
+	4,
+	1,
+	'DefineOven line: 4');
+INSERT INTO ACT_AI
+	VALUES (36,
+	39,
+	40,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (38,
+	34,
+	41,
+	6,
+	1,
+	'DefineOven line: 6');
+INSERT INTO ACT_CR
+	VALUES (38,
+	42,
+	1,
+	30,
+	6,
+	32);
+INSERT INTO ACT_SMT
+	VALUES (41,
+	34,
+	43,
+	7,
+	1,
+	'DefineOven line: 7');
+INSERT INTO ACT_REL
+	VALUES (41,
+	37,
+	42,
+	'',
+	44,
+	7,
+	26,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (43,
+	34,
+	45,
+	8,
+	1,
+	'DefineOven line: 8');
+INSERT INTO ACT_AI
+	VALUES (43,
+	46,
+	47,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (45,
+	34,
+	48,
+	10,
+	1,
+	'DefineOven line: 10');
+INSERT INTO ACT_CR
+	VALUES (45,
+	49,
+	1,
+	50,
+	10,
+	33);
+INSERT INTO ACT_SMT
+	VALUES (48,
+	34,
+	51,
+	11,
+	1,
+	'DefineOven line: 11');
+INSERT INTO ACT_REL
+	VALUES (48,
+	37,
+	49,
+	'',
+	52,
+	11,
+	27,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (51,
+	34,
+	53,
+	13,
+	1,
+	'DefineOven line: 13');
+INSERT INTO ACT_CR
+	VALUES (51,
+	54,
+	1,
+	55,
+	13,
+	34);
+INSERT INTO ACT_SMT
+	VALUES (53,
+	34,
+	56,
+	14,
+	1,
+	'DefineOven line: 14');
+INSERT INTO ACT_REL
+	VALUES (53,
+	37,
+	54,
+	'',
+	57,
+	14,
+	28,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (56,
+	34,
+	58,
+	16,
+	1,
+	'DefineOven line: 16');
+INSERT INTO ACT_CR
+	VALUES (56,
+	59,
+	1,
+	22,
+	16,
+	32);
+INSERT INTO ACT_SMT
+	VALUES (58,
+	34,
+	60,
+	17,
+	1,
+	'DefineOven line: 17');
+INSERT INTO ACT_REL
+	VALUES (58,
+	37,
+	59,
+	'',
+	61,
+	17,
+	26,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (60,
+	34,
+	62,
+	18,
+	1,
+	'DefineOven line: 18');
+INSERT INTO ACT_AI
+	VALUES (60,
+	63,
+	64,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (62,
+	34,
+	65,
+	20,
+	1,
+	'DefineOven line: 20');
+INSERT INTO ACT_CR
+	VALUES (62,
+	66,
+	1,
+	67,
+	20,
+	37);
+INSERT INTO ACT_SMT
+	VALUES (65,
+	34,
+	0,
+	21,
+	1,
+	'DefineOven line: 21');
+INSERT INTO ACT_REL
+	VALUES (65,
+	37,
+	66,
+	'',
+	68,
+	21,
+	31,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (69,
+	1,
+	0,
+	4,
+	8,
+	9,
+	0,
+	0,
+	0,
+	0,
+	15,
+	34);
+INSERT INTO V_IRF
+	VALUES (69,
+	37);
+INSERT INTO V_VAL
+	VALUES (40,
+	1,
+	0,
+	4,
+	11,
+	32,
+	0,
+	0,
+	0,
+	0,
+	70,
+	34);
+INSERT INTO V_AVL
+	VALUES (40,
+	69,
+	13,
+	71);
+INSERT INTO V_VAL
+	VALUES (39,
+	0,
+	0,
+	4,
+	36,
+	36,
+	0,
+	0,
+	0,
+	0,
+	70,
+	34);
+INSERT INTO V_LIN
+	VALUES (39,
+	'0');
+INSERT INTO V_VAL
+	VALUES (72,
+	1,
+	0,
+	8,
+	8,
+	11,
+	0,
+	0,
+	0,
+	0,
+	15,
+	34);
+INSERT INTO V_IRF
+	VALUES (72,
+	42);
+INSERT INTO V_VAL
+	VALUES (47,
+	1,
+	0,
+	8,
+	13,
+	32,
+	0,
+	0,
+	0,
+	0,
+	73,
+	34);
+INSERT INTO V_AVL
+	VALUES (47,
+	72,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (46,
+	0,
+	0,
+	8,
+	50,
+	53,
+	0,
+	0,
+	0,
+	0,
+	73,
+	34);
+INSERT INTO V_LEN
+	VALUES (46,
+	75,
+	8,
+	36);
+INSERT INTO V_VAL
+	VALUES (76,
+	1,
+	0,
+	18,
+	8,
+	11,
+	0,
+	0,
+	0,
+	0,
+	15,
+	34);
+INSERT INTO V_IRF
+	VALUES (76,
+	59);
+INSERT INTO V_VAL
+	VALUES (64,
+	1,
+	0,
+	18,
+	13,
+	21,
+	0,
+	0,
+	0,
+	0,
+	77,
+	34);
+INSERT INTO V_AVL
+	VALUES (64,
+	76,
+	22,
+	78);
+INSERT INTO V_VAL
+	VALUES (63,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	34);
+INSERT INTO V_LBO
+	VALUES (63,
+	'FALSE');
+INSERT INTO V_VAR
+	VALUES (37,
+	34,
+	'mo',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (37,
+	0,
+	13);
+INSERT INTO V_VAR
+	VALUES (42,
+	34,
+	'tube',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (42,
+	0,
+	30);
+INSERT INTO V_VAR
+	VALUES (49,
+	34,
+	'light',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (49,
+	0,
+	50);
+INSERT INTO V_VAR
+	VALUES (54,
+	34,
+	'beeper',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (54,
+	0,
+	55);
+INSERT INTO V_VAR
+	VALUES (59,
+	34,
+	'door',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (59,
+	0,
+	22);
+INSERT INTO V_VAR
+	VALUES (66,
+	34,
+	'turntable',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (66,
+	0,
+	67);
+INSERT INTO PE_PE
+	VALUES (79,
+	1,
+	5,
+	0,
+	1);
+INSERT INTO S_SYNC
+	VALUES (79,
+	0,
+	'IncreasePower',
+	'',
+	'select any tube from instances of MO_MT;
+generate MO_MT1:''increase_power''  to tube;',
+	7,
+	1,
+	'',
+	0,
+	0);
+INSERT INTO ACT_FNB
+	VALUES (80,
+	79);
+INSERT INTO ACT_ACT
+	VALUES (80,
+	'function',
+	0,
+	81,
+	0,
+	0,
+	'IncreasePower',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (81,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	2,
+	1,
+	1,
+	35,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	80,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (82,
+	81,
+	83,
+	1,
+	1,
+	'IncreasePower line: 1');
+INSERT INTO ACT_FIO
+	VALUES (82,
+	84,
+	1,
+	'any',
+	30,
+	1,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (83,
+	81,
+	0,
+	2,
+	1,
+	'IncreasePower line: 2');
+INSERT INTO E_ESS
+	VALUES (83,
+	1,
+	0,
+	2,
+	10,
+	2,
+	17,
+	1,
+	35,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (83);
+INSERT INTO E_GSME
+	VALUES (83,
+	85);
+INSERT INTO E_GEN
+	VALUES (83,
+	84);
+INSERT INTO V_VAR
+	VALUES (84,
+	81,
+	'tube',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (84,
+	0,
+	30);
+INSERT INTO PE_PE
+	VALUES (86,
+	1,
+	5,
+	0,
+	1);
+INSERT INTO S_SYNC
+	VALUES (86,
+	0,
+	'OpenDoor',
+	'',
+	'select any door from instances of MO_D;
+generate MO_D1:''release''  to door;',
+	7,
+	1,
+	'',
+	0,
+	0);
+INSERT INTO ACT_FNB
+	VALUES (87,
+	86);
+INSERT INTO ACT_ACT
+	VALUES (87,
+	'function',
+	0,
+	88,
+	0,
+	0,
+	'OpenDoor',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (88,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	2,
+	1,
+	1,
+	35,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	87,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (89,
+	88,
+	90,
+	1,
+	1,
+	'OpenDoor line: 1');
+INSERT INTO ACT_FIO
+	VALUES (89,
+	91,
+	1,
+	'any',
+	22,
+	1,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (90,
+	88,
+	0,
+	2,
+	1,
+	'OpenDoor line: 2');
+INSERT INTO E_ESS
+	VALUES (90,
+	1,
+	0,
+	2,
+	10,
+	2,
+	16,
+	1,
+	35,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (90);
+INSERT INTO E_GSME
+	VALUES (90,
+	92);
+INSERT INTO E_GEN
+	VALUES (90,
+	91);
+INSERT INTO V_VAR
+	VALUES (91,
+	88,
+	'door',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (91,
+	0,
+	22);
+INSERT INTO PE_PE
+	VALUES (93,
+	1,
+	5,
+	0,
+	1);
+INSERT INTO S_SYNC
+	VALUES (93,
+	0,
+	'SpecifyCookingPeriod',
+	'',
+	'// cooking period is to be specified in seconds and must be converted to usec in order
+// to be compatible with BP''s view of time
+
+timePeriod = 1000000 * param.cookingPeriod;
+select any oven from instances of MO_O;
+generate MO_O8:''cooking_period'' (period:timePeriod) to oven;',
+	7,
+	1,
+	'',
+	0,
+	0);
+INSERT INTO S_SPARM
+	VALUES (94,
+	93,
+	'cookingPeriod',
+	70,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO ACT_FNB
+	VALUES (95,
+	93);
+INSERT INTO ACT_ACT
+	VALUES (95,
+	'function',
+	0,
+	96,
+	0,
+	0,
+	'SpecifyCookingPeriod',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (96,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'period',
+	'period',
+	6,
+	1,
+	5,
+	35,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	95,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (97,
+	96,
+	98,
+	4,
+	1,
+	'SpecifyCookingPeriod line: 4');
+INSERT INTO ACT_AI
+	VALUES (97,
+	99,
+	100,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (98,
+	96,
+	101,
+	5,
+	1,
+	'SpecifyCookingPeriod line: 5');
+INSERT INTO ACT_FIO
+	VALUES (98,
+	102,
+	1,
+	'any',
+	13,
+	5,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (101,
+	96,
+	0,
+	6,
+	1,
+	'SpecifyCookingPeriod line: 6');
+INSERT INTO E_ESS
+	VALUES (101,
+	1,
+	0,
+	6,
+	10,
+	6,
+	16,
+	5,
+	35,
+	6,
+	34,
+	0,
+	0);
+INSERT INTO V_PAR
+	VALUES (103,
+	101,
+	0,
+	'period',
+	0,
+	6,
+	34);
+INSERT INTO E_GES
+	VALUES (101);
+INSERT INTO E_GSME
+	VALUES (101,
+	104);
+INSERT INTO E_GEN
+	VALUES (101,
+	102);
+INSERT INTO V_VAL
+	VALUES (100,
+	1,
+	1,
+	4,
+	1,
+	10,
+	0,
+	0,
+	0,
+	0,
+	70,
+	96);
+INSERT INTO V_TVL
+	VALUES (100,
+	105);
+INSERT INTO V_VAL
+	VALUES (106,
+	0,
+	0,
+	4,
+	14,
+	20,
+	0,
+	0,
+	0,
+	0,
+	70,
+	96);
+INSERT INTO V_LIN
+	VALUES (106,
+	'1000000');
+INSERT INTO V_VAL
+	VALUES (99,
+	0,
+	0,
+	4,
+	14,
+	42,
+	0,
+	0,
+	0,
+	0,
+	70,
+	96);
+INSERT INTO V_BIN
+	VALUES (99,
+	107,
+	106,
+	'*');
+INSERT INTO V_VAL
+	VALUES (107,
+	0,
+	0,
+	4,
+	30,
+	42,
+	0,
+	0,
+	0,
+	0,
+	70,
+	96);
+INSERT INTO V_PVL
+	VALUES (107,
+	0,
+	94,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (103,
+	0,
+	0,
+	6,
+	41,
+	50,
+	0,
+	0,
+	0,
+	0,
+	70,
+	96);
+INSERT INTO V_TVL
+	VALUES (103,
+	105);
+INSERT INTO V_VAR
+	VALUES (105,
+	96,
+	'timePeriod',
+	1,
+	70);
+INSERT INTO V_TRN
+	VALUES (105,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (102,
+	96,
+	'oven',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (102,
+	0,
+	13);
+INSERT INTO PE_PE
+	VALUES (108,
+	1,
+	5,
+	0,
+	1);
+INSERT INTO S_SYNC
+	VALUES (108,
+	0,
+	'StartCooking',
+	'',
+	'select any oven from instances of MO_O;
+generate MO_O3:''start_cooking''  to oven;',
+	7,
+	1,
+	'',
+	0,
+	0);
+INSERT INTO ACT_FNB
+	VALUES (109,
+	108);
+INSERT INTO ACT_ACT
+	VALUES (109,
+	'function',
+	0,
+	110,
+	0,
+	0,
+	'StartCooking',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (110,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	2,
+	1,
+	1,
+	35,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	109,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (111,
+	110,
+	112,
+	1,
+	1,
+	'StartCooking line: 1');
+INSERT INTO ACT_FIO
+	VALUES (111,
+	113,
+	1,
+	'any',
+	13,
+	1,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (112,
+	110,
+	0,
+	2,
+	1,
+	'StartCooking line: 2');
+INSERT INTO E_ESS
+	VALUES (112,
+	1,
+	0,
+	2,
+	10,
+	2,
+	16,
+	1,
+	35,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (112);
+INSERT INTO E_GSME
+	VALUES (112,
+	114);
+INSERT INTO E_GEN
+	VALUES (112,
+	113);
+INSERT INTO V_VAR
+	VALUES (113,
+	110,
+	'oven',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (113,
+	0,
+	13);
+INSERT INTO PE_PE
+	VALUES (115,
+	1,
+	5,
+	0,
+	1);
+INSERT INTO S_SYNC
+	VALUES (115,
+	0,
+	'TestSequence1',
+	'',
+	'create object instance testSequence of MO_TS;
+generate MO_TS2 to testSequence;',
+	7,
+	1,
+	'',
+	0,
+	0);
+INSERT INTO ACT_FNB
+	VALUES (116,
+	115);
+INSERT INTO ACT_ACT
+	VALUES (116,
+	'function',
+	0,
+	117,
+	0,
+	0,
+	'TestSequence1',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (117,
+	0,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	2,
+	1,
+	1,
+	40,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	116,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (118,
+	117,
+	119,
+	1,
+	1,
+	'TestSequence1 line: 1');
+INSERT INTO ACT_CR
+	VALUES (118,
+	120,
+	1,
+	121,
+	1,
+	40);
+INSERT INTO ACT_SMT
+	VALUES (119,
+	117,
+	0,
+	2,
+	1,
+	'TestSequence1 line: 2');
+INSERT INTO E_ESS
+	VALUES (119,
+	1,
+	0,
+	2,
+	10,
+	0,
+	0,
+	1,
+	40,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (119);
+INSERT INTO E_GSME
+	VALUES (119,
+	122);
+INSERT INTO E_GEN
+	VALUES (119,
+	120);
+INSERT INTO V_VAR
+	VALUES (120,
+	117,
+	'testSequence',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (120,
+	0,
+	121);
+INSERT INTO PE_PE
+	VALUES (123,
+	1,
+	0,
+	4,
+	7);
+INSERT INTO EP_PKG
+	VALUES (123,
+	0,
+	1,
+	'Test Subsystem',
+	'',
+	100);
+INSERT INTO PE_PE
+	VALUES (124,
+	1,
+	123,
+	0,
+	4);
+INSERT INTO PE_PE
+	VALUES (121,
+	1,
+	123,
+	0,
+	4);
+INSERT INTO O_OBJ
+	VALUES (121,
+	'Test Sequences',
+	100,
+	'MO_TS',
+	'Two sample test scenarios encapsulated within a class.',
+	0);
+INSERT INTO O_NBATTR
+	VALUES (125,
+	121);
+INSERT INTO O_BATTR
+	VALUES (125,
+	121);
+INSERT INTO O_ATTR
+	VALUES (125,
+	121,
+	0,
+	'TestSeqID',
+	'',
+	'',
+	'TestSeqID',
+	0,
+	126,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (127,
+	121);
+INSERT INTO O_BATTR
+	VALUES (127,
+	121);
+INSERT INTO O_ATTR
+	VALUES (127,
+	121,
+	125,
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	128,
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	121);
+INSERT INTO O_OIDA
+	VALUES (125,
+	121,
+	0,
+	'TestSeqID');
+INSERT INTO O_ID
+	VALUES (1,
+	121);
+INSERT INTO O_ID
+	VALUES (2,
+	121);
+INSERT INTO SM_ISM
+	VALUES (129,
+	121);
+INSERT INTO SM_SM
+	VALUES (129,
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES (129);
+INSERT INTO SM_LEVT
+	VALUES (130,
+	129,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (130,
+	129,
+	0);
+INSERT INTO SM_EVT
+	VALUES (130,
+	129,
+	0,
+	1,
+	'initialize',
+	0,
+	'',
+	'MO_TS1',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (122,
+	129,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (122,
+	129,
+	0);
+INSERT INTO SM_EVT
+	VALUES (122,
+	129,
+	0,
+	2,
+	'perform_test_seq_1',
+	0,
+	'',
+	'MO_TS2',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (131,
+	129,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (131,
+	129,
+	0);
+INSERT INTO SM_EVT
+	VALUES (131,
+	129,
+	0,
+	3,
+	'perform_test_seq_2',
+	0,
+	'',
+	'MO_TS3',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (132,
+	129,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (132,
+	129,
+	0);
+INSERT INTO SM_EVT
+	VALUES (132,
+	129,
+	0,
+	4,
+	'test_seq_complete',
+	0,
+	'',
+	'MO_TS4',
+	'');
+INSERT INTO SM_STATE
+	VALUES (133,
+	129,
+	0,
+	'Awaiting Test Sequence Initiation',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES (133,
+	130,
+	129,
+	0);
+INSERT INTO SM_SEME
+	VALUES (133,
+	122,
+	129,
+	0);
+INSERT INTO SM_SEME
+	VALUES (133,
+	131,
+	129,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (133,
+	132,
+	129,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (133,
+	132,
+	129,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (134,
+	129,
+	133);
+INSERT INTO SM_AH
+	VALUES (134,
+	129);
+INSERT INTO SM_ACT
+	VALUES (134,
+	129,
+	1,
+	'//Automatically initiate test sequence 1.
+generate MO_TS2:''perform_test_seq_1'' to self;',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (135,
+	129,
+	134);
+INSERT INTO ACT_ACT
+	VALUES (135,
+	'state',
+	0,
+	136,
+	0,
+	0,
+	'Test Sequences::Awaiting Test Sequence Initiation',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (136,
+	0,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	2,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	135,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (137,
+	136,
+	0,
+	2,
+	1,
+	'Test Sequences::Awaiting Test Sequence Initiation line: 2');
+INSERT INTO E_ESS
+	VALUES (137,
+	1,
+	0,
+	2,
+	10,
+	2,
+	17,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (137);
+INSERT INTO E_GSME
+	VALUES (137,
+	122);
+INSERT INTO E_GEN
+	VALUES (137,
+	138);
+INSERT INTO V_VAR
+	VALUES (138,
+	136,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (138,
+	0,
+	121);
+INSERT INTO SM_STATE
+	VALUES (139,
+	129,
+	0,
+	'Performing Test Sequence 1',
+	2,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (139,
+	130,
+	129,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (139,
+	130,
+	129,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (139,
+	122,
+	129,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (139,
+	122,
+	129,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (139,
+	131,
+	129,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (139,
+	131,
+	129,
+	0);
+INSERT INTO SM_SEME
+	VALUES (139,
+	132,
+	129,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (140,
+	129,
+	139);
+INSERT INTO SM_AH
+	VALUES (140,
+	129);
+INSERT INTO SM_ACT
+	VALUES (140,
+	129,
+	1,
+	'// Step 1. At T+2000000us, open the oven door to insert dish
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance release_door of MO_D1:''release'' to door;
+   step1_timer=TIM::timer_start(microseconds:2000000,event_inst:release_door);
+end if;
+
+// Step 2. At T+3000000us, lower the output power setting to Med_High
+select any tube from instances of MO_MT;
+if (not_empty tube)
+   create event instance lower_power of MO_MT2:''decrease_power'' to tube;
+   step2_timer =TIM::timer_start(microseconds:3000000,event_inst:lower_power);
+end if;
+
+// Step 3. At T+4000000us, close oven door
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance close_door of MO_D2:''close'' to door;
+   step3_timer =TIM::timer_start(microseconds:4000000,event_inst:close_door);
+end if;
+
+// Step 4. At T+5000000us, assign cooking period of 10 seconds and start cooking
+select any oven from instances of MO_O;
+if (not_empty oven)
+   create event instance cooking_time of MO_O8:''cooking_period''(period:10000000) to oven;
+   step4a_timer =TIM::timer_start(microseconds:5000000,event_inst:cooking_time);
+   create event instance start of MO_O3:''start_cooking'' to oven;
+   step4b_timer =TIM::timer_start(microseconds:5000001,event_inst:start);
+end if;
+
+// Step 5. At T+15secs, open the oven door to remove cooked dish
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance release_door of MO_D1:''release'' to door;
+   step5_timer =TIM::timer_start(microseconds:15000000,event_inst:release_door);
+end if;
+
+// For codegen: Testing complete.  After 30 seconds, terminate the system
+// otherwise, executable will not terminate.
+create event instance finished of MO_TS4:''test_seq_complete'' to self;
+terminate_timer=TIM::timer_start(microseconds:30000000,event_inst:finished);',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (141,
+	129,
+	140);
+INSERT INTO ACT_ACT
+	VALUES (141,
+	'state',
+	0,
+	142,
+	0,
+	0,
+	'Test Sequences::Performing Test Sequence 1',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (142,
+	1,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	41,
+	1,
+	41,
+	17,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	141,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (143,
+	142,
+	144,
+	2,
+	1,
+	'Test Sequences::Performing Test Sequence 1 line: 2');
+INSERT INTO ACT_FIO
+	VALUES (143,
+	145,
+	1,
+	'any',
+	22,
+	2,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (144,
+	142,
+	146,
+	3,
+	1,
+	'Test Sequences::Performing Test Sequence 1 line: 3');
+INSERT INTO ACT_IF
+	VALUES (144,
+	147,
+	148,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (146,
+	142,
+	149,
+	9,
+	1,
+	'Test Sequences::Performing Test Sequence 1 line: 9');
+INSERT INTO ACT_FIO
+	VALUES (146,
+	150,
+	1,
+	'any',
+	30,
+	9,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (149,
+	142,
+	151,
+	10,
+	1,
+	'Test Sequences::Performing Test Sequence 1 line: 10');
+INSERT INTO ACT_IF
+	VALUES (149,
+	152,
+	153,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (151,
+	142,
+	154,
+	16,
+	1,
+	'Test Sequences::Performing Test Sequence 1 line: 16');
+INSERT INTO ACT_FIO
+	VALUES (151,
+	145,
+	0,
+	'any',
+	22,
+	16,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (154,
+	142,
+	155,
+	17,
+	1,
+	'Test Sequences::Performing Test Sequence 1 line: 17');
+INSERT INTO ACT_IF
+	VALUES (154,
+	156,
+	157,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (155,
+	142,
+	158,
+	23,
+	1,
+	'Test Sequences::Performing Test Sequence 1 line: 23');
+INSERT INTO ACT_FIO
+	VALUES (155,
+	159,
+	1,
+	'any',
+	13,
+	23,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (158,
+	142,
+	160,
+	24,
+	1,
+	'Test Sequences::Performing Test Sequence 1 line: 24');
+INSERT INTO ACT_IF
+	VALUES (158,
+	161,
+	162,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (160,
+	142,
+	163,
+	32,
+	1,
+	'Test Sequences::Performing Test Sequence 1 line: 32');
+INSERT INTO ACT_FIO
+	VALUES (160,
+	145,
+	0,
+	'any',
+	22,
+	32,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (163,
+	142,
+	164,
+	33,
+	1,
+	'Test Sequences::Performing Test Sequence 1 line: 33');
+INSERT INTO ACT_IF
+	VALUES (163,
+	165,
+	166,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (164,
+	142,
+	167,
+	40,
+	1,
+	'Test Sequences::Performing Test Sequence 1 line: 40');
+INSERT INTO E_ESS
+	VALUES (164,
+	1,
+	0,
+	40,
+	35,
+	40,
+	42,
+	32,
+	35,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (164,
+	1,
+	168);
+INSERT INTO E_CSME
+	VALUES (164,
+	132);
+INSERT INTO E_CEI
+	VALUES (164,
+	169);
+INSERT INTO ACT_SMT
+	VALUES (167,
+	142,
+	0,
+	41,
+	1,
+	'Test Sequences::Performing Test Sequence 1 line: 41');
+INSERT INTO ACT_AI
+	VALUES (167,
+	170,
+	171,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (172,
+	0,
+	0,
+	3,
+	15,
+	18,
+	0,
+	0,
+	0,
+	0,
+	15,
+	142);
+INSERT INTO V_IRF
+	VALUES (172,
+	145);
+INSERT INTO V_VAL
+	VALUES (148,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	142);
+INSERT INTO V_UNY
+	VALUES (148,
+	172,
+	'not_empty');
+INSERT INTO V_VAL
+	VALUES (173,
+	0,
+	0,
+	10,
+	15,
+	18,
+	0,
+	0,
+	0,
+	0,
+	15,
+	142);
+INSERT INTO V_IRF
+	VALUES (173,
+	150);
+INSERT INTO V_VAL
+	VALUES (153,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	142);
+INSERT INTO V_UNY
+	VALUES (153,
+	173,
+	'not_empty');
+INSERT INTO V_VAL
+	VALUES (174,
+	0,
+	0,
+	17,
+	15,
+	18,
+	0,
+	0,
+	0,
+	0,
+	15,
+	142);
+INSERT INTO V_IRF
+	VALUES (174,
+	145);
+INSERT INTO V_VAL
+	VALUES (157,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	142);
+INSERT INTO V_UNY
+	VALUES (157,
+	174,
+	'not_empty');
+INSERT INTO V_VAL
+	VALUES (175,
+	0,
+	0,
+	24,
+	15,
+	18,
+	0,
+	0,
+	0,
+	0,
+	15,
+	142);
+INSERT INTO V_IRF
+	VALUES (175,
+	159);
+INSERT INTO V_VAL
+	VALUES (162,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	142);
+INSERT INTO V_UNY
+	VALUES (162,
+	175,
+	'not_empty');
+INSERT INTO V_VAL
+	VALUES (176,
+	0,
+	0,
+	33,
+	15,
+	18,
+	0,
+	0,
+	0,
+	0,
+	15,
+	142);
+INSERT INTO V_IRF
+	VALUES (176,
+	145);
+INSERT INTO V_VAL
+	VALUES (166,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	142);
+INSERT INTO V_UNY
+	VALUES (166,
+	176,
+	'not_empty');
+INSERT INTO V_VAL
+	VALUES (171,
+	1,
+	1,
+	41,
+	1,
+	15,
+	0,
+	0,
+	0,
+	0,
+	177,
+	142);
+INSERT INTO V_TVL
+	VALUES (171,
+	178);
+INSERT INTO V_VAL
+	VALUES (170,
+	0,
+	0,
+	41,
+	22,
+	-1,
+	41,
+	34,
+	41,
+	56,
+	177,
+	142);
+INSERT INTO V_BRV
+	VALUES (170,
+	179,
+	1,
+	41,
+	17);
+INSERT INTO V_VAL
+	VALUES (180,
+	0,
+	0,
+	41,
+	47,
+	54,
+	0,
+	0,
+	0,
+	0,
+	70,
+	142);
+INSERT INTO V_LIN
+	VALUES (180,
+	'30000000');
+INSERT INTO V_PAR
+	VALUES (180,
+	0,
+	170,
+	'microseconds',
+	181,
+	41,
+	34);
+INSERT INTO V_VAL
+	VALUES (181,
+	0,
+	0,
+	41,
+	67,
+	74,
+	0,
+	0,
+	0,
+	0,
+	182,
+	142);
+INSERT INTO V_TVL
+	VALUES (181,
+	168);
+INSERT INTO V_PAR
+	VALUES (181,
+	0,
+	170,
+	'event_inst',
+	0,
+	41,
+	56);
+INSERT INTO V_VAR
+	VALUES (145,
+	142,
+	'door',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (145,
+	0,
+	22);
+INSERT INTO V_VAR
+	VALUES (150,
+	142,
+	'tube',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (150,
+	0,
+	30);
+INSERT INTO V_VAR
+	VALUES (159,
+	142,
+	'oven',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (159,
+	0,
+	13);
+INSERT INTO V_VAR
+	VALUES (168,
+	142,
+	'finished',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (168,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (169,
+	142,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (169,
+	0,
+	121);
+INSERT INTO V_VAR
+	VALUES (178,
+	142,
+	'terminate_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (178,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (147,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	5,
+	4,
+	5,
+	16,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	141,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (183,
+	147,
+	184,
+	4,
+	4,
+	'Test Sequences::Performing Test Sequence 1 line: 4');
+INSERT INTO E_ESS
+	VALUES (183,
+	1,
+	0,
+	4,
+	42,
+	4,
+	48,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (183,
+	1,
+	185);
+INSERT INTO E_CSME
+	VALUES (183,
+	92);
+INSERT INTO E_CEI
+	VALUES (183,
+	145);
+INSERT INTO ACT_SMT
+	VALUES (184,
+	147,
+	0,
+	5,
+	4,
+	'Test Sequences::Performing Test Sequence 1 line: 5');
+INSERT INTO ACT_AI
+	VALUES (184,
+	186,
+	187,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (187,
+	1,
+	1,
+	5,
+	4,
+	14,
+	0,
+	0,
+	0,
+	0,
+	177,
+	147);
+INSERT INTO V_TVL
+	VALUES (187,
+	188);
+INSERT INTO V_VAL
+	VALUES (186,
+	0,
+	0,
+	5,
+	21,
+	-1,
+	5,
+	33,
+	5,
+	54,
+	177,
+	147);
+INSERT INTO V_BRV
+	VALUES (186,
+	179,
+	1,
+	5,
+	16);
+INSERT INTO V_VAL
+	VALUES (189,
+	0,
+	0,
+	5,
+	46,
+	52,
+	0,
+	0,
+	0,
+	0,
+	70,
+	147);
+INSERT INTO V_LIN
+	VALUES (189,
+	'2000000');
+INSERT INTO V_PAR
+	VALUES (189,
+	0,
+	186,
+	'microseconds',
+	190,
+	5,
+	33);
+INSERT INTO V_VAL
+	VALUES (190,
+	0,
+	0,
+	5,
+	65,
+	76,
+	0,
+	0,
+	0,
+	0,
+	182,
+	147);
+INSERT INTO V_TVL
+	VALUES (190,
+	185);
+INSERT INTO V_PAR
+	VALUES (190,
+	0,
+	186,
+	'event_inst',
+	0,
+	5,
+	54);
+INSERT INTO V_VAR
+	VALUES (185,
+	147,
+	'release_door',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (185,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (188,
+	147,
+	'step1_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (188,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (152,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	12,
+	4,
+	12,
+	17,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	141,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (191,
+	152,
+	192,
+	11,
+	4,
+	'Test Sequences::Performing Test Sequence 1 line: 11');
+INSERT INTO E_ESS
+	VALUES (191,
+	1,
+	0,
+	11,
+	41,
+	11,
+	48,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (191,
+	1,
+	193);
+INSERT INTO E_CSME
+	VALUES (191,
+	31);
+INSERT INTO E_CEI
+	VALUES (191,
+	150);
+INSERT INTO ACT_SMT
+	VALUES (192,
+	152,
+	0,
+	12,
+	4,
+	'Test Sequences::Performing Test Sequence 1 line: 12');
+INSERT INTO ACT_AI
+	VALUES (192,
+	194,
+	195,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (195,
+	1,
+	1,
+	12,
+	4,
+	14,
+	0,
+	0,
+	0,
+	0,
+	177,
+	152);
+INSERT INTO V_TVL
+	VALUES (195,
+	196);
+INSERT INTO V_VAL
+	VALUES (194,
+	0,
+	0,
+	12,
+	22,
+	-1,
+	12,
+	34,
+	12,
+	55,
+	177,
+	152);
+INSERT INTO V_BRV
+	VALUES (194,
+	179,
+	1,
+	12,
+	17);
+INSERT INTO V_VAL
+	VALUES (197,
+	0,
+	0,
+	12,
+	47,
+	53,
+	0,
+	0,
+	0,
+	0,
+	70,
+	152);
+INSERT INTO V_LIN
+	VALUES (197,
+	'3000000');
+INSERT INTO V_PAR
+	VALUES (197,
+	0,
+	194,
+	'microseconds',
+	198,
+	12,
+	34);
+INSERT INTO V_VAL
+	VALUES (198,
+	0,
+	0,
+	12,
+	66,
+	76,
+	0,
+	0,
+	0,
+	0,
+	182,
+	152);
+INSERT INTO V_TVL
+	VALUES (198,
+	193);
+INSERT INTO V_PAR
+	VALUES (198,
+	0,
+	194,
+	'event_inst',
+	0,
+	12,
+	55);
+INSERT INTO V_VAR
+	VALUES (193,
+	152,
+	'lower_power',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (193,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (196,
+	152,
+	'step2_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (196,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (156,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	19,
+	4,
+	19,
+	17,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	141,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (199,
+	156,
+	200,
+	18,
+	4,
+	'Test Sequences::Performing Test Sequence 1 line: 18');
+INSERT INTO E_ESS
+	VALUES (199,
+	1,
+	0,
+	18,
+	40,
+	18,
+	46,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (199,
+	1,
+	201);
+INSERT INTO E_CSME
+	VALUES (199,
+	23);
+INSERT INTO E_CEI
+	VALUES (199,
+	145);
+INSERT INTO ACT_SMT
+	VALUES (200,
+	156,
+	0,
+	19,
+	4,
+	'Test Sequences::Performing Test Sequence 1 line: 19');
+INSERT INTO ACT_AI
+	VALUES (200,
+	202,
+	203,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (203,
+	1,
+	1,
+	19,
+	4,
+	14,
+	0,
+	0,
+	0,
+	0,
+	177,
+	156);
+INSERT INTO V_TVL
+	VALUES (203,
+	204);
+INSERT INTO V_VAL
+	VALUES (202,
+	0,
+	0,
+	19,
+	22,
+	-1,
+	19,
+	34,
+	19,
+	55,
+	177,
+	156);
+INSERT INTO V_BRV
+	VALUES (202,
+	179,
+	1,
+	19,
+	17);
+INSERT INTO V_VAL
+	VALUES (205,
+	0,
+	0,
+	19,
+	47,
+	53,
+	0,
+	0,
+	0,
+	0,
+	70,
+	156);
+INSERT INTO V_LIN
+	VALUES (205,
+	'4000000');
+INSERT INTO V_PAR
+	VALUES (205,
+	0,
+	202,
+	'microseconds',
+	206,
+	19,
+	34);
+INSERT INTO V_VAL
+	VALUES (206,
+	0,
+	0,
+	19,
+	66,
+	75,
+	0,
+	0,
+	0,
+	0,
+	182,
+	156);
+INSERT INTO V_TVL
+	VALUES (206,
+	201);
+INSERT INTO V_PAR
+	VALUES (206,
+	0,
+	202,
+	'event_inst',
+	0,
+	19,
+	55);
+INSERT INTO V_VAR
+	VALUES (201,
+	156,
+	'close_door',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (201,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (204,
+	156,
+	'step3_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (204,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (161,
+	0,
+	0,
+	0,
+	'TIM',
+	'period',
+	'period',
+	28,
+	4,
+	28,
+	18,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	141,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (207,
+	161,
+	208,
+	25,
+	4,
+	'Test Sequences::Performing Test Sequence 1 line: 25');
+INSERT INTO E_ESS
+	VALUES (207,
+	1,
+	0,
+	25,
+	42,
+	25,
+	48,
+	0,
+	0,
+	25,
+	65,
+	0,
+	0);
+INSERT INTO V_PAR
+	VALUES (209,
+	207,
+	0,
+	'period',
+	0,
+	25,
+	65);
+INSERT INTO E_CES
+	VALUES (207,
+	1,
+	210);
+INSERT INTO E_CSME
+	VALUES (207,
+	104);
+INSERT INTO E_CEI
+	VALUES (207,
+	159);
+INSERT INTO ACT_SMT
+	VALUES (208,
+	161,
+	211,
+	26,
+	4,
+	'Test Sequences::Performing Test Sequence 1 line: 26');
+INSERT INTO ACT_AI
+	VALUES (208,
+	212,
+	213,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (211,
+	161,
+	214,
+	27,
+	4,
+	'Test Sequences::Performing Test Sequence 1 line: 27');
+INSERT INTO E_ESS
+	VALUES (211,
+	1,
+	0,
+	27,
+	35,
+	27,
+	41,
+	26,
+	18,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (211,
+	1,
+	215);
+INSERT INTO E_CSME
+	VALUES (211,
+	114);
+INSERT INTO E_CEI
+	VALUES (211,
+	159);
+INSERT INTO ACT_SMT
+	VALUES (214,
+	161,
+	0,
+	28,
+	4,
+	'Test Sequences::Performing Test Sequence 1 line: 28');
+INSERT INTO ACT_AI
+	VALUES (214,
+	216,
+	217,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (209,
+	0,
+	0,
+	25,
+	72,
+	79,
+	0,
+	0,
+	0,
+	0,
+	70,
+	161);
+INSERT INTO V_LIN
+	VALUES (209,
+	'10000000');
+INSERT INTO V_VAL
+	VALUES (213,
+	1,
+	1,
+	26,
+	4,
+	15,
+	0,
+	0,
+	0,
+	0,
+	177,
+	161);
+INSERT INTO V_TVL
+	VALUES (213,
+	218);
+INSERT INTO V_VAL
+	VALUES (212,
+	0,
+	0,
+	26,
+	23,
+	-1,
+	26,
+	35,
+	26,
+	56,
+	177,
+	161);
+INSERT INTO V_BRV
+	VALUES (212,
+	179,
+	1,
+	26,
+	18);
+INSERT INTO V_VAL
+	VALUES (219,
+	0,
+	0,
+	26,
+	48,
+	54,
+	0,
+	0,
+	0,
+	0,
+	70,
+	161);
+INSERT INTO V_LIN
+	VALUES (219,
+	'5000000');
+INSERT INTO V_PAR
+	VALUES (219,
+	0,
+	212,
+	'microseconds',
+	220,
+	26,
+	35);
+INSERT INTO V_VAL
+	VALUES (220,
+	0,
+	0,
+	26,
+	67,
+	78,
+	0,
+	0,
+	0,
+	0,
+	182,
+	161);
+INSERT INTO V_TVL
+	VALUES (220,
+	210);
+INSERT INTO V_PAR
+	VALUES (220,
+	0,
+	212,
+	'event_inst',
+	0,
+	26,
+	56);
+INSERT INTO V_VAL
+	VALUES (217,
+	1,
+	1,
+	28,
+	4,
+	15,
+	0,
+	0,
+	0,
+	0,
+	177,
+	161);
+INSERT INTO V_TVL
+	VALUES (217,
+	221);
+INSERT INTO V_VAL
+	VALUES (216,
+	0,
+	0,
+	28,
+	23,
+	-1,
+	28,
+	35,
+	28,
+	56,
+	177,
+	161);
+INSERT INTO V_BRV
+	VALUES (216,
+	179,
+	1,
+	28,
+	18);
+INSERT INTO V_VAL
+	VALUES (222,
+	0,
+	0,
+	28,
+	48,
+	54,
+	0,
+	0,
+	0,
+	0,
+	70,
+	161);
+INSERT INTO V_LIN
+	VALUES (222,
+	'5000001');
+INSERT INTO V_PAR
+	VALUES (222,
+	0,
+	216,
+	'microseconds',
+	223,
+	28,
+	35);
+INSERT INTO V_VAL
+	VALUES (223,
+	0,
+	0,
+	28,
+	67,
+	71,
+	0,
+	0,
+	0,
+	0,
+	182,
+	161);
+INSERT INTO V_TVL
+	VALUES (223,
+	215);
+INSERT INTO V_PAR
+	VALUES (223,
+	0,
+	216,
+	'event_inst',
+	0,
+	28,
+	56);
+INSERT INTO V_VAR
+	VALUES (210,
+	161,
+	'cooking_time',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (210,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (218,
+	161,
+	'step4a_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (218,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (215,
+	161,
+	'start',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (215,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (221,
+	161,
+	'step4b_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (221,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (165,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	35,
+	4,
+	35,
+	17,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	141,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (224,
+	165,
+	225,
+	34,
+	4,
+	'Test Sequences::Performing Test Sequence 1 line: 34');
+INSERT INTO E_ESS
+	VALUES (224,
+	1,
+	0,
+	34,
+	42,
+	34,
+	48,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (224,
+	1,
+	226);
+INSERT INTO E_CSME
+	VALUES (224,
+	92);
+INSERT INTO E_CEI
+	VALUES (224,
+	145);
+INSERT INTO ACT_SMT
+	VALUES (225,
+	165,
+	0,
+	35,
+	4,
+	'Test Sequences::Performing Test Sequence 1 line: 35');
+INSERT INTO ACT_AI
+	VALUES (225,
+	227,
+	228,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (228,
+	1,
+	1,
+	35,
+	4,
+	14,
+	0,
+	0,
+	0,
+	0,
+	177,
+	165);
+INSERT INTO V_TVL
+	VALUES (228,
+	229);
+INSERT INTO V_VAL
+	VALUES (227,
+	0,
+	0,
+	35,
+	22,
+	-1,
+	35,
+	34,
+	35,
+	56,
+	177,
+	165);
+INSERT INTO V_BRV
+	VALUES (227,
+	179,
+	1,
+	35,
+	17);
+INSERT INTO V_VAL
+	VALUES (230,
+	0,
+	0,
+	35,
+	47,
+	54,
+	0,
+	0,
+	0,
+	0,
+	70,
+	165);
+INSERT INTO V_LIN
+	VALUES (230,
+	'15000000');
+INSERT INTO V_PAR
+	VALUES (230,
+	0,
+	227,
+	'microseconds',
+	231,
+	35,
+	34);
+INSERT INTO V_VAL
+	VALUES (231,
+	0,
+	0,
+	35,
+	67,
+	78,
+	0,
+	0,
+	0,
+	0,
+	182,
+	165);
+INSERT INTO V_TVL
+	VALUES (231,
+	226);
+INSERT INTO V_PAR
+	VALUES (231,
+	0,
+	227,
+	'event_inst',
+	0,
+	35,
+	56);
+INSERT INTO V_VAR
+	VALUES (226,
+	165,
+	'release_door',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (226,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (229,
+	165,
+	'step5_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (229,
+	0,
+	'');
+INSERT INTO SM_STATE
+	VALUES (232,
+	129,
+	0,
+	'Performing Test Sequence 2',
+	3,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (232,
+	130,
+	129,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (232,
+	130,
+	129,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (232,
+	122,
+	129,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (232,
+	122,
+	129,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (232,
+	131,
+	129,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (232,
+	131,
+	129,
+	0);
+INSERT INTO SM_SEME
+	VALUES (232,
+	132,
+	129,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (233,
+	129,
+	232);
+INSERT INTO SM_AH
+	VALUES (233,
+	129);
+INSERT INTO SM_ACT
+	VALUES (233,
+	129,
+	1,
+	'// Step 1. At T+2000000us, open the oven door to insert dish
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance release_door of MO_D1:''release'' to door;
+   step1_timer =TIM::timer_start(microseconds:2000000,event_inst:release_door);
+end if;
+
+// Step 2. At T+4000000us, close oven door
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance close_door of MO_D2:''close'' to door;
+   step2_timer =TIM::timer_start(microseconds:4000000,event_inst:close_door);
+end if;
+
+// Step 3. At T+5000000us, assign cooking period of 15seconds and start cooking
+select any oven from instances of MO_O;
+if (not_empty oven)
+   create event instance cooking_time of MO_O8:''cooking_period''(period:15000000) to oven;
+   step3a_timer =TIM::timer_start(microseconds:5000000,event_inst:cooking_time);
+   create event instance start of MO_O3:''start_cooking'' to oven;
+   step3b_timer =TIM::timer_start(microseconds:5000001,event_inst:start);
+end if;
+
+// Step 4. At T+6000000us, open the oven door to inspect dish
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance release_door of MO_D1:''release'' to door;
+   step4_timer =TIM::timer_start(microseconds:6000000,event_inst:release_door);
+end if;
+
+// Step 5. At T+7000000us, lower the output power setting to Medium
+select any tube from instances of MO_MT;
+if (not_empty tube)
+   create event instance lower_power of MO_MT2:''decrease_power'' to tube;
+   step5a_timer =TIM::timer_start(microseconds:3000000,event_inst:lower_power);
+   step5b_timer = TIM::timer_start(microseconds:3000001,event_inst:lower_power);
+end if;
+
+// Step 6. At T+9000000us, close oven door
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance close_door of MO_D2:''close'' to door;
+   step6_timer =TIM::timer_start(microseconds:9000000,event_inst:close_door);
+end if;
+
+// Step 7. At T+10000000us, resume cooking
+select any oven from instances of MO_O;
+if (not_empty oven)
+   create event instance restart of MO_O3:''start_cooking'' to oven;
+   step7_timer =TIM::timer_start(microseconds:10000000,event_inst:restart);
+end if;
+
+
+// For codegen: Testing complete.  After 30 seconds, terminate the system
+// otherwise, executable will not terminate.
+create event instance finished of MO_TS4:''test_seq_complete'' to self;
+terminate_timer=TIM::timer_start(microseconds:30000000,event_inst:finished);',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (234,
+	129,
+	233);
+INSERT INTO ACT_ACT
+	VALUES (234,
+	'state',
+	0,
+	235,
+	0,
+	0,
+	'Test Sequences::Performing Test Sequence 2',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (235,
+	1,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	57,
+	1,
+	57,
+	17,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	234,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (236,
+	235,
+	237,
+	2,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 2');
+INSERT INTO ACT_FIO
+	VALUES (236,
+	238,
+	1,
+	'any',
+	22,
+	2,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (237,
+	235,
+	239,
+	3,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 3');
+INSERT INTO ACT_IF
+	VALUES (237,
+	240,
+	241,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (239,
+	235,
+	242,
+	9,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 9');
+INSERT INTO ACT_FIO
+	VALUES (239,
+	238,
+	0,
+	'any',
+	22,
+	9,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (242,
+	235,
+	243,
+	10,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 10');
+INSERT INTO ACT_IF
+	VALUES (242,
+	244,
+	245,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (243,
+	235,
+	246,
+	16,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 16');
+INSERT INTO ACT_FIO
+	VALUES (243,
+	247,
+	1,
+	'any',
+	13,
+	16,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (246,
+	235,
+	248,
+	17,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 17');
+INSERT INTO ACT_IF
+	VALUES (246,
+	249,
+	250,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (248,
+	235,
+	251,
+	25,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 25');
+INSERT INTO ACT_FIO
+	VALUES (248,
+	238,
+	0,
+	'any',
+	22,
+	25,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (251,
+	235,
+	252,
+	26,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 26');
+INSERT INTO ACT_IF
+	VALUES (251,
+	253,
+	254,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (252,
+	235,
+	255,
+	32,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 32');
+INSERT INTO ACT_FIO
+	VALUES (252,
+	256,
+	1,
+	'any',
+	30,
+	32,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (255,
+	235,
+	257,
+	33,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 33');
+INSERT INTO ACT_IF
+	VALUES (255,
+	258,
+	259,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (257,
+	235,
+	260,
+	40,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 40');
+INSERT INTO ACT_FIO
+	VALUES (257,
+	238,
+	0,
+	'any',
+	22,
+	40,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (260,
+	235,
+	261,
+	41,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 41');
+INSERT INTO ACT_IF
+	VALUES (260,
+	262,
+	263,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (261,
+	235,
+	264,
+	47,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 47');
+INSERT INTO ACT_FIO
+	VALUES (261,
+	247,
+	0,
+	'any',
+	13,
+	47,
+	35);
+INSERT INTO ACT_SMT
+	VALUES (264,
+	235,
+	265,
+	48,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 48');
+INSERT INTO ACT_IF
+	VALUES (264,
+	266,
+	267,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (265,
+	235,
+	268,
+	56,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 56');
+INSERT INTO E_ESS
+	VALUES (265,
+	1,
+	0,
+	56,
+	35,
+	56,
+	42,
+	47,
+	35,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (265,
+	1,
+	269);
+INSERT INTO E_CSME
+	VALUES (265,
+	132);
+INSERT INTO E_CEI
+	VALUES (265,
+	270);
+INSERT INTO ACT_SMT
+	VALUES (268,
+	235,
+	0,
+	57,
+	1,
+	'Test Sequences::Performing Test Sequence 2 line: 57');
+INSERT INTO ACT_AI
+	VALUES (268,
+	271,
+	272,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (273,
+	0,
+	0,
+	3,
+	15,
+	18,
+	0,
+	0,
+	0,
+	0,
+	15,
+	235);
+INSERT INTO V_IRF
+	VALUES (273,
+	238);
+INSERT INTO V_VAL
+	VALUES (241,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	235);
+INSERT INTO V_UNY
+	VALUES (241,
+	273,
+	'not_empty');
+INSERT INTO V_VAL
+	VALUES (274,
+	0,
+	0,
+	10,
+	15,
+	18,
+	0,
+	0,
+	0,
+	0,
+	15,
+	235);
+INSERT INTO V_IRF
+	VALUES (274,
+	238);
+INSERT INTO V_VAL
+	VALUES (245,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	235);
+INSERT INTO V_UNY
+	VALUES (245,
+	274,
+	'not_empty');
+INSERT INTO V_VAL
+	VALUES (275,
+	0,
+	0,
+	17,
+	15,
+	18,
+	0,
+	0,
+	0,
+	0,
+	15,
+	235);
+INSERT INTO V_IRF
+	VALUES (275,
+	247);
+INSERT INTO V_VAL
+	VALUES (250,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	235);
+INSERT INTO V_UNY
+	VALUES (250,
+	275,
+	'not_empty');
+INSERT INTO V_VAL
+	VALUES (276,
+	0,
+	0,
+	26,
+	15,
+	18,
+	0,
+	0,
+	0,
+	0,
+	15,
+	235);
+INSERT INTO V_IRF
+	VALUES (276,
+	238);
+INSERT INTO V_VAL
+	VALUES (254,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	235);
+INSERT INTO V_UNY
+	VALUES (254,
+	276,
+	'not_empty');
+INSERT INTO V_VAL
+	VALUES (277,
+	0,
+	0,
+	33,
+	15,
+	18,
+	0,
+	0,
+	0,
+	0,
+	15,
+	235);
+INSERT INTO V_IRF
+	VALUES (277,
+	256);
+INSERT INTO V_VAL
+	VALUES (259,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	235);
+INSERT INTO V_UNY
+	VALUES (259,
+	277,
+	'not_empty');
+INSERT INTO V_VAL
+	VALUES (278,
+	0,
+	0,
+	41,
+	15,
+	18,
+	0,
+	0,
+	0,
+	0,
+	15,
+	235);
+INSERT INTO V_IRF
+	VALUES (278,
+	238);
+INSERT INTO V_VAL
+	VALUES (263,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	235);
+INSERT INTO V_UNY
+	VALUES (263,
+	278,
+	'not_empty');
+INSERT INTO V_VAL
+	VALUES (279,
+	0,
+	0,
+	48,
+	15,
+	18,
+	0,
+	0,
+	0,
+	0,
+	15,
+	235);
+INSERT INTO V_IRF
+	VALUES (279,
+	247);
+INSERT INTO V_VAL
+	VALUES (267,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	235);
+INSERT INTO V_UNY
+	VALUES (267,
+	279,
+	'not_empty');
+INSERT INTO V_VAL
+	VALUES (272,
+	1,
+	1,
+	57,
+	1,
+	15,
+	0,
+	0,
+	0,
+	0,
+	177,
+	235);
+INSERT INTO V_TVL
+	VALUES (272,
+	280);
+INSERT INTO V_VAL
+	VALUES (271,
+	0,
+	0,
+	57,
+	22,
+	-1,
+	57,
+	34,
+	57,
+	56,
+	177,
+	235);
+INSERT INTO V_BRV
+	VALUES (271,
+	179,
+	1,
+	57,
+	17);
+INSERT INTO V_VAL
+	VALUES (281,
+	0,
+	0,
+	57,
+	47,
+	54,
+	0,
+	0,
+	0,
+	0,
+	70,
+	235);
+INSERT INTO V_LIN
+	VALUES (281,
+	'30000000');
+INSERT INTO V_PAR
+	VALUES (281,
+	0,
+	271,
+	'microseconds',
+	282,
+	57,
+	34);
+INSERT INTO V_VAL
+	VALUES (282,
+	0,
+	0,
+	57,
+	67,
+	74,
+	0,
+	0,
+	0,
+	0,
+	182,
+	235);
+INSERT INTO V_TVL
+	VALUES (282,
+	269);
+INSERT INTO V_PAR
+	VALUES (282,
+	0,
+	271,
+	'event_inst',
+	0,
+	57,
+	56);
+INSERT INTO V_VAR
+	VALUES (238,
+	235,
+	'door',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (238,
+	0,
+	22);
+INSERT INTO V_VAR
+	VALUES (247,
+	235,
+	'oven',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (247,
+	0,
+	13);
+INSERT INTO V_VAR
+	VALUES (256,
+	235,
+	'tube',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (256,
+	0,
+	30);
+INSERT INTO V_VAR
+	VALUES (269,
+	235,
+	'finished',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (269,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (270,
+	235,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (270,
+	0,
+	121);
+INSERT INTO V_VAR
+	VALUES (280,
+	235,
+	'terminate_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (280,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (240,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	5,
+	4,
+	5,
+	17,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	234,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (283,
+	240,
+	284,
+	4,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 4');
+INSERT INTO E_ESS
+	VALUES (283,
+	1,
+	0,
+	4,
+	42,
+	4,
+	48,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (283,
+	1,
+	285);
+INSERT INTO E_CSME
+	VALUES (283,
+	92);
+INSERT INTO E_CEI
+	VALUES (283,
+	238);
+INSERT INTO ACT_SMT
+	VALUES (284,
+	240,
+	0,
+	5,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 5');
+INSERT INTO ACT_AI
+	VALUES (284,
+	286,
+	287,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (287,
+	1,
+	1,
+	5,
+	4,
+	14,
+	0,
+	0,
+	0,
+	0,
+	177,
+	240);
+INSERT INTO V_TVL
+	VALUES (287,
+	288);
+INSERT INTO V_VAL
+	VALUES (286,
+	0,
+	0,
+	5,
+	22,
+	-1,
+	5,
+	34,
+	5,
+	55,
+	177,
+	240);
+INSERT INTO V_BRV
+	VALUES (286,
+	179,
+	1,
+	5,
+	17);
+INSERT INTO V_VAL
+	VALUES (289,
+	0,
+	0,
+	5,
+	47,
+	53,
+	0,
+	0,
+	0,
+	0,
+	70,
+	240);
+INSERT INTO V_LIN
+	VALUES (289,
+	'2000000');
+INSERT INTO V_PAR
+	VALUES (289,
+	0,
+	286,
+	'microseconds',
+	290,
+	5,
+	34);
+INSERT INTO V_VAL
+	VALUES (290,
+	0,
+	0,
+	5,
+	66,
+	77,
+	0,
+	0,
+	0,
+	0,
+	182,
+	240);
+INSERT INTO V_TVL
+	VALUES (290,
+	285);
+INSERT INTO V_PAR
+	VALUES (290,
+	0,
+	286,
+	'event_inst',
+	0,
+	5,
+	55);
+INSERT INTO V_VAR
+	VALUES (285,
+	240,
+	'release_door',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (285,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (288,
+	240,
+	'step1_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (288,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (244,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	12,
+	4,
+	12,
+	17,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	234,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (291,
+	244,
+	292,
+	11,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 11');
+INSERT INTO E_ESS
+	VALUES (291,
+	1,
+	0,
+	11,
+	40,
+	11,
+	46,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (291,
+	1,
+	293);
+INSERT INTO E_CSME
+	VALUES (291,
+	23);
+INSERT INTO E_CEI
+	VALUES (291,
+	238);
+INSERT INTO ACT_SMT
+	VALUES (292,
+	244,
+	0,
+	12,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 12');
+INSERT INTO ACT_AI
+	VALUES (292,
+	294,
+	295,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (295,
+	1,
+	1,
+	12,
+	4,
+	14,
+	0,
+	0,
+	0,
+	0,
+	177,
+	244);
+INSERT INTO V_TVL
+	VALUES (295,
+	296);
+INSERT INTO V_VAL
+	VALUES (294,
+	0,
+	0,
+	12,
+	22,
+	-1,
+	12,
+	34,
+	12,
+	55,
+	177,
+	244);
+INSERT INTO V_BRV
+	VALUES (294,
+	179,
+	1,
+	12,
+	17);
+INSERT INTO V_VAL
+	VALUES (297,
+	0,
+	0,
+	12,
+	47,
+	53,
+	0,
+	0,
+	0,
+	0,
+	70,
+	244);
+INSERT INTO V_LIN
+	VALUES (297,
+	'4000000');
+INSERT INTO V_PAR
+	VALUES (297,
+	0,
+	294,
+	'microseconds',
+	298,
+	12,
+	34);
+INSERT INTO V_VAL
+	VALUES (298,
+	0,
+	0,
+	12,
+	66,
+	75,
+	0,
+	0,
+	0,
+	0,
+	182,
+	244);
+INSERT INTO V_TVL
+	VALUES (298,
+	293);
+INSERT INTO V_PAR
+	VALUES (298,
+	0,
+	294,
+	'event_inst',
+	0,
+	12,
+	55);
+INSERT INTO V_VAR
+	VALUES (293,
+	244,
+	'close_door',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (293,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (296,
+	244,
+	'step2_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (296,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (249,
+	0,
+	0,
+	0,
+	'TIM',
+	'period',
+	'period',
+	21,
+	4,
+	21,
+	18,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	234,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (299,
+	249,
+	300,
+	18,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 18');
+INSERT INTO E_ESS
+	VALUES (299,
+	1,
+	0,
+	18,
+	42,
+	18,
+	48,
+	0,
+	0,
+	18,
+	65,
+	0,
+	0);
+INSERT INTO V_PAR
+	VALUES (301,
+	299,
+	0,
+	'period',
+	0,
+	18,
+	65);
+INSERT INTO E_CES
+	VALUES (299,
+	1,
+	302);
+INSERT INTO E_CSME
+	VALUES (299,
+	104);
+INSERT INTO E_CEI
+	VALUES (299,
+	247);
+INSERT INTO ACT_SMT
+	VALUES (300,
+	249,
+	303,
+	19,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 19');
+INSERT INTO ACT_AI
+	VALUES (300,
+	304,
+	305,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (303,
+	249,
+	306,
+	20,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 20');
+INSERT INTO E_ESS
+	VALUES (303,
+	1,
+	0,
+	20,
+	35,
+	20,
+	41,
+	19,
+	18,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (303,
+	1,
+	307);
+INSERT INTO E_CSME
+	VALUES (303,
+	114);
+INSERT INTO E_CEI
+	VALUES (303,
+	247);
+INSERT INTO ACT_SMT
+	VALUES (306,
+	249,
+	0,
+	21,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 21');
+INSERT INTO ACT_AI
+	VALUES (306,
+	308,
+	309,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (301,
+	0,
+	0,
+	18,
+	72,
+	79,
+	0,
+	0,
+	0,
+	0,
+	70,
+	249);
+INSERT INTO V_LIN
+	VALUES (301,
+	'15000000');
+INSERT INTO V_VAL
+	VALUES (305,
+	1,
+	1,
+	19,
+	4,
+	15,
+	0,
+	0,
+	0,
+	0,
+	177,
+	249);
+INSERT INTO V_TVL
+	VALUES (305,
+	310);
+INSERT INTO V_VAL
+	VALUES (304,
+	0,
+	0,
+	19,
+	23,
+	-1,
+	19,
+	35,
+	19,
+	56,
+	177,
+	249);
+INSERT INTO V_BRV
+	VALUES (304,
+	179,
+	1,
+	19,
+	18);
+INSERT INTO V_VAL
+	VALUES (311,
+	0,
+	0,
+	19,
+	48,
+	54,
+	0,
+	0,
+	0,
+	0,
+	70,
+	249);
+INSERT INTO V_LIN
+	VALUES (311,
+	'5000000');
+INSERT INTO V_PAR
+	VALUES (311,
+	0,
+	304,
+	'microseconds',
+	312,
+	19,
+	35);
+INSERT INTO V_VAL
+	VALUES (312,
+	0,
+	0,
+	19,
+	67,
+	78,
+	0,
+	0,
+	0,
+	0,
+	182,
+	249);
+INSERT INTO V_TVL
+	VALUES (312,
+	302);
+INSERT INTO V_PAR
+	VALUES (312,
+	0,
+	304,
+	'event_inst',
+	0,
+	19,
+	56);
+INSERT INTO V_VAL
+	VALUES (309,
+	1,
+	1,
+	21,
+	4,
+	15,
+	0,
+	0,
+	0,
+	0,
+	177,
+	249);
+INSERT INTO V_TVL
+	VALUES (309,
+	313);
+INSERT INTO V_VAL
+	VALUES (308,
+	0,
+	0,
+	21,
+	23,
+	-1,
+	21,
+	35,
+	21,
+	56,
+	177,
+	249);
+INSERT INTO V_BRV
+	VALUES (308,
+	179,
+	1,
+	21,
+	18);
+INSERT INTO V_VAL
+	VALUES (314,
+	0,
+	0,
+	21,
+	48,
+	54,
+	0,
+	0,
+	0,
+	0,
+	70,
+	249);
+INSERT INTO V_LIN
+	VALUES (314,
+	'5000001');
+INSERT INTO V_PAR
+	VALUES (314,
+	0,
+	308,
+	'microseconds',
+	315,
+	21,
+	35);
+INSERT INTO V_VAL
+	VALUES (315,
+	0,
+	0,
+	21,
+	67,
+	71,
+	0,
+	0,
+	0,
+	0,
+	182,
+	249);
+INSERT INTO V_TVL
+	VALUES (315,
+	307);
+INSERT INTO V_PAR
+	VALUES (315,
+	0,
+	308,
+	'event_inst',
+	0,
+	21,
+	56);
+INSERT INTO V_VAR
+	VALUES (302,
+	249,
+	'cooking_time',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (302,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (310,
+	249,
+	'step3a_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (310,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (307,
+	249,
+	'start',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (307,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (313,
+	249,
+	'step3b_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (313,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (253,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	28,
+	4,
+	28,
+	17,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	234,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (316,
+	253,
+	317,
+	27,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 27');
+INSERT INTO E_ESS
+	VALUES (316,
+	1,
+	0,
+	27,
+	42,
+	27,
+	48,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (316,
+	1,
+	318);
+INSERT INTO E_CSME
+	VALUES (316,
+	92);
+INSERT INTO E_CEI
+	VALUES (316,
+	238);
+INSERT INTO ACT_SMT
+	VALUES (317,
+	253,
+	0,
+	28,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 28');
+INSERT INTO ACT_AI
+	VALUES (317,
+	319,
+	320,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (320,
+	1,
+	1,
+	28,
+	4,
+	14,
+	0,
+	0,
+	0,
+	0,
+	177,
+	253);
+INSERT INTO V_TVL
+	VALUES (320,
+	321);
+INSERT INTO V_VAL
+	VALUES (319,
+	0,
+	0,
+	28,
+	22,
+	-1,
+	28,
+	34,
+	28,
+	55,
+	177,
+	253);
+INSERT INTO V_BRV
+	VALUES (319,
+	179,
+	1,
+	28,
+	17);
+INSERT INTO V_VAL
+	VALUES (322,
+	0,
+	0,
+	28,
+	47,
+	53,
+	0,
+	0,
+	0,
+	0,
+	70,
+	253);
+INSERT INTO V_LIN
+	VALUES (322,
+	'6000000');
+INSERT INTO V_PAR
+	VALUES (322,
+	0,
+	319,
+	'microseconds',
+	323,
+	28,
+	34);
+INSERT INTO V_VAL
+	VALUES (323,
+	0,
+	0,
+	28,
+	66,
+	77,
+	0,
+	0,
+	0,
+	0,
+	182,
+	253);
+INSERT INTO V_TVL
+	VALUES (323,
+	318);
+INSERT INTO V_PAR
+	VALUES (323,
+	0,
+	319,
+	'event_inst',
+	0,
+	28,
+	55);
+INSERT INTO V_VAR
+	VALUES (318,
+	253,
+	'release_door',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (318,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (321,
+	253,
+	'step4_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (321,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (258,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	36,
+	4,
+	36,
+	19,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	234,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (324,
+	258,
+	325,
+	34,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 34');
+INSERT INTO E_ESS
+	VALUES (324,
+	1,
+	0,
+	34,
+	41,
+	34,
+	48,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (324,
+	1,
+	326);
+INSERT INTO E_CSME
+	VALUES (324,
+	31);
+INSERT INTO E_CEI
+	VALUES (324,
+	256);
+INSERT INTO ACT_SMT
+	VALUES (325,
+	258,
+	327,
+	35,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 35');
+INSERT INTO ACT_AI
+	VALUES (325,
+	328,
+	329,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (327,
+	258,
+	0,
+	36,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 36');
+INSERT INTO ACT_AI
+	VALUES (327,
+	330,
+	331,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (329,
+	1,
+	1,
+	35,
+	4,
+	15,
+	0,
+	0,
+	0,
+	0,
+	177,
+	258);
+INSERT INTO V_TVL
+	VALUES (329,
+	332);
+INSERT INTO V_VAL
+	VALUES (328,
+	0,
+	0,
+	35,
+	23,
+	-1,
+	35,
+	35,
+	35,
+	56,
+	177,
+	258);
+INSERT INTO V_BRV
+	VALUES (328,
+	179,
+	1,
+	35,
+	18);
+INSERT INTO V_VAL
+	VALUES (333,
+	0,
+	0,
+	35,
+	48,
+	54,
+	0,
+	0,
+	0,
+	0,
+	70,
+	258);
+INSERT INTO V_LIN
+	VALUES (333,
+	'3000000');
+INSERT INTO V_PAR
+	VALUES (333,
+	0,
+	328,
+	'microseconds',
+	334,
+	35,
+	35);
+INSERT INTO V_VAL
+	VALUES (334,
+	0,
+	0,
+	35,
+	67,
+	77,
+	0,
+	0,
+	0,
+	0,
+	182,
+	258);
+INSERT INTO V_TVL
+	VALUES (334,
+	326);
+INSERT INTO V_PAR
+	VALUES (334,
+	0,
+	328,
+	'event_inst',
+	0,
+	35,
+	56);
+INSERT INTO V_VAL
+	VALUES (331,
+	1,
+	1,
+	36,
+	4,
+	15,
+	0,
+	0,
+	0,
+	0,
+	177,
+	258);
+INSERT INTO V_TVL
+	VALUES (331,
+	335);
+INSERT INTO V_VAL
+	VALUES (330,
+	0,
+	0,
+	36,
+	24,
+	-1,
+	36,
+	36,
+	36,
+	57,
+	177,
+	258);
+INSERT INTO V_BRV
+	VALUES (330,
+	179,
+	1,
+	36,
+	19);
+INSERT INTO V_VAL
+	VALUES (336,
+	0,
+	0,
+	36,
+	49,
+	55,
+	0,
+	0,
+	0,
+	0,
+	70,
+	258);
+INSERT INTO V_LIN
+	VALUES (336,
+	'3000001');
+INSERT INTO V_PAR
+	VALUES (336,
+	0,
+	330,
+	'microseconds',
+	337,
+	36,
+	36);
+INSERT INTO V_VAL
+	VALUES (337,
+	0,
+	0,
+	36,
+	68,
+	78,
+	0,
+	0,
+	0,
+	0,
+	182,
+	258);
+INSERT INTO V_TVL
+	VALUES (337,
+	326);
+INSERT INTO V_PAR
+	VALUES (337,
+	0,
+	330,
+	'event_inst',
+	0,
+	36,
+	57);
+INSERT INTO V_VAR
+	VALUES (326,
+	258,
+	'lower_power',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (326,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (332,
+	258,
+	'step5a_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (332,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (335,
+	258,
+	'step5b_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (335,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (262,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	43,
+	4,
+	43,
+	17,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	234,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (338,
+	262,
+	339,
+	42,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 42');
+INSERT INTO E_ESS
+	VALUES (338,
+	1,
+	0,
+	42,
+	40,
+	42,
+	46,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (338,
+	1,
+	340);
+INSERT INTO E_CSME
+	VALUES (338,
+	23);
+INSERT INTO E_CEI
+	VALUES (338,
+	238);
+INSERT INTO ACT_SMT
+	VALUES (339,
+	262,
+	0,
+	43,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 43');
+INSERT INTO ACT_AI
+	VALUES (339,
+	341,
+	342,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (342,
+	1,
+	1,
+	43,
+	4,
+	14,
+	0,
+	0,
+	0,
+	0,
+	177,
+	262);
+INSERT INTO V_TVL
+	VALUES (342,
+	343);
+INSERT INTO V_VAL
+	VALUES (341,
+	0,
+	0,
+	43,
+	22,
+	-1,
+	43,
+	34,
+	43,
+	55,
+	177,
+	262);
+INSERT INTO V_BRV
+	VALUES (341,
+	179,
+	1,
+	43,
+	17);
+INSERT INTO V_VAL
+	VALUES (344,
+	0,
+	0,
+	43,
+	47,
+	53,
+	0,
+	0,
+	0,
+	0,
+	70,
+	262);
+INSERT INTO V_LIN
+	VALUES (344,
+	'9000000');
+INSERT INTO V_PAR
+	VALUES (344,
+	0,
+	341,
+	'microseconds',
+	345,
+	43,
+	34);
+INSERT INTO V_VAL
+	VALUES (345,
+	0,
+	0,
+	43,
+	66,
+	75,
+	0,
+	0,
+	0,
+	0,
+	182,
+	262);
+INSERT INTO V_TVL
+	VALUES (345,
+	340);
+INSERT INTO V_PAR
+	VALUES (345,
+	0,
+	341,
+	'event_inst',
+	0,
+	43,
+	55);
+INSERT INTO V_VAR
+	VALUES (340,
+	262,
+	'close_door',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (340,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (343,
+	262,
+	'step6_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (343,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (266,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	50,
+	4,
+	50,
+	17,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	234,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (346,
+	266,
+	347,
+	49,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 49');
+INSERT INTO E_ESS
+	VALUES (346,
+	1,
+	0,
+	49,
+	37,
+	49,
+	43,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (346,
+	1,
+	348);
+INSERT INTO E_CSME
+	VALUES (346,
+	114);
+INSERT INTO E_CEI
+	VALUES (346,
+	247);
+INSERT INTO ACT_SMT
+	VALUES (347,
+	266,
+	0,
+	50,
+	4,
+	'Test Sequences::Performing Test Sequence 2 line: 50');
+INSERT INTO ACT_AI
+	VALUES (347,
+	349,
+	350,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (350,
+	1,
+	1,
+	50,
+	4,
+	14,
+	0,
+	0,
+	0,
+	0,
+	177,
+	266);
+INSERT INTO V_TVL
+	VALUES (350,
+	351);
+INSERT INTO V_VAL
+	VALUES (349,
+	0,
+	0,
+	50,
+	22,
+	-1,
+	50,
+	34,
+	50,
+	56,
+	177,
+	266);
+INSERT INTO V_BRV
+	VALUES (349,
+	179,
+	1,
+	50,
+	17);
+INSERT INTO V_VAL
+	VALUES (352,
+	0,
+	0,
+	50,
+	47,
+	54,
+	0,
+	0,
+	0,
+	0,
+	70,
+	266);
+INSERT INTO V_LIN
+	VALUES (352,
+	'10000000');
+INSERT INTO V_PAR
+	VALUES (352,
+	0,
+	349,
+	'microseconds',
+	353,
+	50,
+	34);
+INSERT INTO V_VAL
+	VALUES (353,
+	0,
+	0,
+	50,
+	67,
+	73,
+	0,
+	0,
+	0,
+	0,
+	182,
+	266);
+INSERT INTO V_TVL
+	VALUES (353,
+	348);
+INSERT INTO V_PAR
+	VALUES (353,
+	0,
+	349,
+	'event_inst',
+	0,
+	50,
+	56);
+INSERT INTO V_VAR
+	VALUES (348,
+	266,
+	'restart',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (348,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (351,
+	266,
+	'step7_timer',
+	1,
+	177);
+INSERT INTO V_TRN
+	VALUES (351,
+	0,
+	'');
+INSERT INTO SM_STATE
+	VALUES (354,
+	129,
+	0,
+	'Cooking Complete',
+	4,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (354,
+	130,
+	129,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (354,
+	130,
+	129,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (354,
+	122,
+	129,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (354,
+	122,
+	129,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (354,
+	131,
+	129,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (354,
+	131,
+	129,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (354,
+	132,
+	129,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (354,
+	132,
+	129,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (355,
+	129,
+	354);
+INSERT INTO SM_AH
+	VALUES (355,
+	129);
+INSERT INTO SM_ACT
+	VALUES (355,
+	129,
+	1,
+	'//For code generation: terminate system once complete
+Bridge ARCH::shutdown();',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (356,
+	129,
+	355);
+INSERT INTO ACT_ACT
+	VALUES (356,
+	'state',
+	0,
+	357,
+	0,
+	0,
+	'Test Sequences::Cooking Complete',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (357,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	2,
+	1,
+	2,
+	8,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	356,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (358,
+	357,
+	0,
+	2,
+	1,
+	'Test Sequences::Cooking Complete line: 2');
+INSERT INTO ACT_BRG
+	VALUES (358,
+	359,
+	2,
+	14,
+	2,
+	8);
+INSERT INTO SM_NSTXN
+	VALUES (360,
+	129,
+	133,
+	130,
+	0);
+INSERT INTO SM_TAH
+	VALUES (361,
+	129,
+	360);
+INSERT INTO SM_AH
+	VALUES (361,
+	129);
+INSERT INTO SM_ACT
+	VALUES (361,
+	129,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (362,
+	129,
+	361);
+INSERT INTO ACT_ACT
+	VALUES (362,
+	'transition',
+	0,
+	363,
+	0,
+	0,
+	'MO_TS1: initialize',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (363,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	362,
+	0);
+INSERT INTO SM_TXN
+	VALUES (360,
+	129,
+	133,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (364,
+	129,
+	133,
+	122,
+	0);
+INSERT INTO SM_TAH
+	VALUES (365,
+	129,
+	364);
+INSERT INTO SM_AH
+	VALUES (365,
+	129);
+INSERT INTO SM_ACT
+	VALUES (365,
+	129,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (366,
+	129,
+	365);
+INSERT INTO ACT_ACT
+	VALUES (366,
+	'transition',
+	0,
+	367,
+	0,
+	0,
+	'MO_TS2: perform_test_seq_1',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (367,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	366,
+	0);
+INSERT INTO SM_TXN
+	VALUES (364,
+	129,
+	139,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (368,
+	129,
+	133,
+	131,
+	0);
+INSERT INTO SM_TAH
+	VALUES (369,
+	129,
+	368);
+INSERT INTO SM_AH
+	VALUES (369,
+	129);
+INSERT INTO SM_ACT
+	VALUES (369,
+	129,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (370,
+	129,
+	369);
+INSERT INTO ACT_ACT
+	VALUES (370,
+	'transition',
+	0,
+	371,
+	0,
+	0,
+	'MO_TS3: perform_test_seq_2',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (371,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	370,
+	0);
+INSERT INTO SM_TXN
+	VALUES (368,
+	129,
+	232,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (372,
+	129,
+	139,
+	132,
+	0);
+INSERT INTO SM_TAH
+	VALUES (373,
+	129,
+	372);
+INSERT INTO SM_AH
+	VALUES (373,
+	129);
+INSERT INTO SM_ACT
+	VALUES (373,
+	129,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (374,
+	129,
+	373);
+INSERT INTO ACT_ACT
+	VALUES (374,
+	'transition',
+	0,
+	375,
+	0,
+	0,
+	'MO_TS4: test_seq_complete',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (375,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	374,
+	0);
+INSERT INTO SM_TXN
+	VALUES (372,
+	129,
+	354,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (376,
+	129,
+	232,
+	132,
+	0);
+INSERT INTO SM_TAH
+	VALUES (377,
+	129,
+	376);
+INSERT INTO SM_AH
+	VALUES (377,
+	129);
+INSERT INTO SM_ACT
+	VALUES (377,
+	129,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (378,
+	129,
+	377);
+INSERT INTO ACT_ACT
+	VALUES (378,
+	'transition',
+	0,
+	379,
+	0,
+	0,
+	'MO_TS4: test_seq_complete',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (379,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	378,
+	0);
+INSERT INTO SM_TXN
+	VALUES (376,
+	129,
+	354,
+	0);
+INSERT INTO PE_PE
+	VALUES (380,
+	1,
+	0,
+	4,
+	7);
+INSERT INTO EP_PKG
+	VALUES (380,
+	0,
+	1,
+	'Microwave Oven',
+	'The microwave oven subsystem models the microwave oven application',
+	1);
+INSERT INTO PE_PE
+	VALUES (381,
+	1,
+	380,
+	0,
+	4);
+INSERT INTO PE_PE
+	VALUES (382,
+	1,
+	380,
+	0,
+	4);
+INSERT INTO PE_PE
+	VALUES (383,
+	1,
+	380,
+	0,
+	4);
+INSERT INTO PE_PE
+	VALUES (384,
+	1,
+	380,
+	0,
+	4);
+INSERT INTO PE_PE
+	VALUES (385,
+	1,
+	380,
+	0,
+	4);
+INSERT INTO PE_PE
+	VALUES (386,
+	1,
+	380,
+	0,
+	4);
+INSERT INTO PE_PE
+	VALUES (44,
+	1,
+	380,
+	0,
+	9);
+INSERT INTO R_REL
+	VALUES (44,
+	1,
+	'A single magnetron tube is the core component of the oven assembly. Being related to the oven, it can be direclty powered on & off.',
+	0);
+INSERT INTO R_SIMP
+	VALUES (44);
+INSERT INTO R_FORM
+	VALUES (13,
+	44,
+	387,
+	0,
+	0,
+	'is housed in');
+INSERT INTO R_RGO
+	VALUES (13,
+	44,
+	387);
+INSERT INTO R_OIR
+	VALUES (13,
+	44,
+	387,
+	0);
+INSERT INTO R_PART
+	VALUES (30,
+	44,
+	388,
+	0,
+	0,
+	'houses');
+INSERT INTO O_RTIDA
+	VALUES (389,
+	30,
+	0,
+	44,
+	388);
+INSERT INTO R_RTO
+	VALUES (30,
+	44,
+	388,
+	0);
+INSERT INTO R_OIR
+	VALUES (30,
+	44,
+	388,
+	0);
+INSERT INTO PE_PE
+	VALUES (52,
+	1,
+	380,
+	0,
+	9);
+INSERT INTO R_REL
+	VALUES (52,
+	2,
+	'A single, low wattage light illuminates the interior of the oven to aid viewing of the cooking process. Being related to the oven enables the light to be controlled on & off as necessary.',
+	0);
+INSERT INTO R_SIMP
+	VALUES (52);
+INSERT INTO R_FORM
+	VALUES (13,
+	52,
+	390,
+	0,
+	0,
+	'illuminates');
+INSERT INTO R_RGO
+	VALUES (13,
+	52,
+	390);
+INSERT INTO R_OIR
+	VALUES (13,
+	52,
+	390,
+	0);
+INSERT INTO R_PART
+	VALUES (50,
+	52,
+	391,
+	0,
+	0,
+	'is illuminated by');
+INSERT INTO O_RTIDA
+	VALUES (392,
+	50,
+	0,
+	52,
+	391);
+INSERT INTO R_RTO
+	VALUES (50,
+	52,
+	391,
+	0);
+INSERT INTO R_OIR
+	VALUES (50,
+	52,
+	391,
+	0);
+INSERT INTO PE_PE
+	VALUES (57,
+	1,
+	380,
+	0,
+	9);
+INSERT INTO R_REL
+	VALUES (57,
+	3,
+	'A single, audible, repeating beeper is a useful cosmetic component related to, and controlled by, the oven when cooking is over.',
+	0);
+INSERT INTO R_SIMP
+	VALUES (57);
+INSERT INTO R_FORM
+	VALUES (13,
+	57,
+	393,
+	0,
+	0,
+	'is located in');
+INSERT INTO R_RGO
+	VALUES (13,
+	57,
+	393);
+INSERT INTO R_OIR
+	VALUES (13,
+	57,
+	393,
+	0);
+INSERT INTO R_PART
+	VALUES (55,
+	57,
+	394,
+	0,
+	0,
+	'features');
+INSERT INTO O_RTIDA
+	VALUES (395,
+	55,
+	0,
+	57,
+	394);
+INSERT INTO R_RTO
+	VALUES (55,
+	57,
+	394,
+	0);
+INSERT INTO R_OIR
+	VALUES (55,
+	57,
+	394,
+	0);
+INSERT INTO PE_PE
+	VALUES (61,
+	1,
+	380,
+	0,
+	9);
+INSERT INTO R_REL
+	VALUES (61,
+	4,
+	'The oven door is a composite part of the microwave assembly, reflected by a mandatory 1:1 relationship.',
+	0);
+INSERT INTO R_SIMP
+	VALUES (61);
+INSERT INTO R_FORM
+	VALUES (13,
+	61,
+	396,
+	0,
+	0,
+	'provides access to');
+INSERT INTO R_RGO
+	VALUES (13,
+	61,
+	396);
+INSERT INTO R_OIR
+	VALUES (13,
+	61,
+	396,
+	0);
+INSERT INTO R_PART
+	VALUES (22,
+	61,
+	397,
+	0,
+	0,
+	'is accessed via');
+INSERT INTO O_RTIDA
+	VALUES (398,
+	22,
+	0,
+	61,
+	397);
+INSERT INTO R_RTO
+	VALUES (22,
+	61,
+	397,
+	0);
+INSERT INTO R_OIR
+	VALUES (22,
+	61,
+	397,
+	0);
+INSERT INTO PE_PE
+	VALUES (68,
+	1,
+	380,
+	0,
+	9);
+INSERT INTO R_REL
+	VALUES (68,
+	5,
+	'A single turntable is an integral component of any modern microwave oven. Being related to the oven, it can be controlled directly by the oven during cooking.',
+	0);
+INSERT INTO R_SIMP
+	VALUES (68);
+INSERT INTO R_PART
+	VALUES (67,
+	68,
+	399,
+	0,
+	0,
+	'has');
+INSERT INTO O_RTIDA
+	VALUES (400,
+	67,
+	0,
+	68,
+	399);
+INSERT INTO R_RTO
+	VALUES (67,
+	68,
+	399,
+	0);
+INSERT INTO R_OIR
+	VALUES (67,
+	68,
+	399,
+	0);
+INSERT INTO R_FORM
+	VALUES (13,
+	68,
+	401,
+	0,
+	0,
+	'occupies');
+INSERT INTO R_RGO
+	VALUES (13,
+	68,
+	401);
+INSERT INTO R_OIR
+	VALUES (13,
+	68,
+	401,
+	0);
+INSERT INTO PE_PE
+	VALUES (67,
+	1,
+	380,
+	0,
+	4);
+INSERT INTO O_OBJ
+	VALUES (67,
+	'Turntable',
+	6,
+	'MO_TRN',
+	'A flat circular platter positioned in the middle of the oven floor, where food is placed for cooking. The platter takes the form of a turntable, rotating at a constant speed during cooking to uniformly distribute microwave radiation through the food.',
+	0);
+INSERT INTO O_NBATTR
+	VALUES (400,
+	67);
+INSERT INTO O_BATTR
+	VALUES (400,
+	67);
+INSERT INTO O_ATTR
+	VALUES (400,
+	67,
+	0,
+	'TurntableID',
+	'',
+	'',
+	'TurntableID',
+	0,
+	126,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (402,
+	67);
+INSERT INTO O_BATTR
+	VALUES (402,
+	67);
+INSERT INTO O_ATTR
+	VALUES (402,
+	67,
+	400,
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	128,
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	67);
+INSERT INTO O_OIDA
+	VALUES (400,
+	67,
+	0,
+	'TurntableID');
+INSERT INTO O_ID
+	VALUES (1,
+	67);
+INSERT INTO O_ID
+	VALUES (2,
+	67);
+INSERT INTO SM_ISM
+	VALUES (403,
+	67);
+INSERT INTO SM_SM
+	VALUES (403,
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES (403);
+INSERT INTO SM_LEVT
+	VALUES (404,
+	403,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (404,
+	403,
+	0);
+INSERT INTO SM_EVT
+	VALUES (404,
+	403,
+	0,
+	1,
+	'spin',
+	0,
+	'',
+	'MO_TRN1',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (405,
+	403,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (405,
+	403,
+	0);
+INSERT INTO SM_EVT
+	VALUES (405,
+	403,
+	0,
+	2,
+	'stop',
+	0,
+	'',
+	'MO_TRN2',
+	'');
+INSERT INTO SM_STATE
+	VALUES (406,
+	403,
+	0,
+	'Stationary',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES (406,
+	404,
+	403,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (406,
+	405,
+	403,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (406,
+	405,
+	403,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (407,
+	403,
+	406);
+INSERT INTO SM_AH
+	VALUES (407,
+	403);
+INSERT INTO SM_ACT
+	VALUES (407,
+	403,
+	1,
+	'// Turntable stationary',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (408,
+	403,
+	407);
+INSERT INTO ACT_ACT
+	VALUES (408,
+	'state',
+	0,
+	409,
+	0,
+	0,
+	'Turntable::Stationary',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (409,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	408,
+	0);
+INSERT INTO SM_STATE
+	VALUES (410,
+	403,
+	0,
+	'Rotating',
+	2,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (410,
+	404,
+	403,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (410,
+	404,
+	403,
+	0);
+INSERT INTO SM_SEME
+	VALUES (410,
+	405,
+	403,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (411,
+	403,
+	410);
+INSERT INTO SM_AH
+	VALUES (411,
+	403);
+INSERT INTO SM_ACT
+	VALUES (411,
+	403,
+	1,
+	'// Turntable spinning',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (412,
+	403,
+	411);
+INSERT INTO ACT_ACT
+	VALUES (412,
+	'state',
+	0,
+	413,
+	0,
+	0,
+	'Turntable::Rotating',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (413,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	412,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (414,
+	403,
+	406,
+	404,
+	0);
+INSERT INTO SM_TAH
+	VALUES (415,
+	403,
+	414);
+INSERT INTO SM_AH
+	VALUES (415,
+	403);
+INSERT INTO SM_ACT
+	VALUES (415,
+	403,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (416,
+	403,
+	415);
+INSERT INTO ACT_ACT
+	VALUES (416,
+	'transition',
+	0,
+	417,
+	0,
+	0,
+	'MO_TRN1: spin',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (417,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	416,
+	0);
+INSERT INTO SM_TXN
+	VALUES (414,
+	403,
+	410,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (418,
+	403,
+	410,
+	405,
+	0);
+INSERT INTO SM_TAH
+	VALUES (419,
+	403,
+	418);
+INSERT INTO SM_AH
+	VALUES (419,
+	403);
+INSERT INTO SM_ACT
+	VALUES (419,
+	403,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (420,
+	403,
+	419);
+INSERT INTO ACT_ACT
+	VALUES (420,
+	'transition',
+	0,
+	421,
+	0,
+	0,
+	'MO_TRN2: stop',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (421,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	420,
+	0);
+INSERT INTO SM_TXN
+	VALUES (418,
+	403,
+	406,
+	0);
+INSERT INTO PE_PE
+	VALUES (13,
+	1,
+	380,
+	0,
+	4);
+INSERT INTO O_OBJ
+	VALUES (13,
+	'Oven',
+	1,
+	'MO_O',
+	'The entire microwave oven assembly (with the exception of the Control Panel), comprising :
+
+* a door
+* an internal light
+* a turntable
+* a magnetron tube
+* a beeper',
+	0);
+INSERT INTO O_NBATTR
+	VALUES (422,
+	13);
+INSERT INTO O_BATTR
+	VALUES (422,
+	13);
+INSERT INTO O_ATTR
+	VALUES (422,
+	13,
+	0,
+	'OvenID',
+	'A uniquely assigned Oven identifier',
+	'',
+	'OvenID',
+	0,
+	126,
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES (13,
+	30,
+	0,
+	389,
+	44,
+	387,
+	388,
+	423,
+	424,
+	0,
+	0,
+	'',
+	'Magnetron Tube',
+	'TubeID',
+	'R1.''houses''');
+INSERT INTO O_RATTR
+	VALUES (423,
+	13,
+	389,
+	30,
+	1,
+	'TubeID');
+INSERT INTO O_ATTR
+	VALUES (423,
+	13,
+	422,
+	'TubeID',
+	'',
+	'',
+	'TubeID',
+	0,
+	425,
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES (13,
+	50,
+	0,
+	392,
+	52,
+	390,
+	391,
+	426,
+	427,
+	0,
+	0,
+	'',
+	'Internal Light',
+	'LightID',
+	'R2.''is illuminated by''');
+INSERT INTO O_RATTR
+	VALUES (426,
+	13,
+	392,
+	50,
+	1,
+	'LightID');
+INSERT INTO O_ATTR
+	VALUES (426,
+	13,
+	423,
+	'LightID',
+	'',
+	'',
+	'LightID',
+	0,
+	425,
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES (13,
+	55,
+	0,
+	395,
+	57,
+	393,
+	394,
+	428,
+	429,
+	0,
+	0,
+	'',
+	'Beeper',
+	'BeeperID',
+	'R3.''features''');
+INSERT INTO O_RATTR
+	VALUES (428,
+	13,
+	395,
+	55,
+	1,
+	'BeeperID');
+INSERT INTO O_ATTR
+	VALUES (428,
+	13,
+	426,
+	'BeeperID',
+	'',
+	'',
+	'BeeperID',
+	0,
+	425,
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES (13,
+	22,
+	0,
+	398,
+	61,
+	396,
+	397,
+	430,
+	431,
+	0,
+	0,
+	'',
+	'Door',
+	'DoorID',
+	'R4.''is accessed via''');
+INSERT INTO O_RATTR
+	VALUES (430,
+	13,
+	398,
+	22,
+	1,
+	'DoorID');
+INSERT INTO O_ATTR
+	VALUES (430,
+	13,
+	428,
+	'DoorID',
+	'',
+	'',
+	'DoorID',
+	0,
+	425,
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES (13,
+	67,
+	0,
+	400,
+	68,
+	401,
+	399,
+	432,
+	433,
+	0,
+	0,
+	'',
+	'Turntable',
+	'TurntableID',
+	'R5.''has''');
+INSERT INTO O_RATTR
+	VALUES (432,
+	13,
+	400,
+	67,
+	1,
+	'TurntableID');
+INSERT INTO O_ATTR
+	VALUES (432,
+	13,
+	430,
+	'TurntableID',
+	'',
+	'',
+	'TurntableID',
+	0,
+	425,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (434,
+	13);
+INSERT INTO O_BATTR
+	VALUES (434,
+	13);
+INSERT INTO O_ATTR
+	VALUES (434,
+	13,
+	432,
+	'oven_timer',
+	'A local oven countdown timer, set and reset by the user via the Control Panel',
+	'',
+	'oven_timer',
+	0,
+	177,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (71,
+	13);
+INSERT INTO O_BATTR
+	VALUES (71,
+	13);
+INSERT INTO O_ATTR
+	VALUES (71,
+	13,
+	434,
+	'remaining_cooking_time',
+	'Records any remaining cooking period when cooking is suspended as a consequence of the oven door being opened or the ''cancel'' key being pressed by the oven user.',
+	'',
+	'remaining_cooking_time',
+	0,
+	70,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (435,
+	13);
+INSERT INTO O_BATTR
+	VALUES (435,
+	13);
+INSERT INTO O_ATTR
+	VALUES (435,
+	13,
+	71,
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	128,
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	13);
+INSERT INTO O_OIDA
+	VALUES (422,
+	13,
+	0,
+	'OvenID');
+INSERT INTO O_ID
+	VALUES (1,
+	13);
+INSERT INTO O_ID
+	VALUES (2,
+	13);
+INSERT INTO SM_ISM
+	VALUES (436,
+	13);
+INSERT INTO SM_SM
+	VALUES (436,
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES (436);
+INSERT INTO SM_EVTDI
+	VALUES (437,
+	436,
+	'period',
+	'',
+	70,
+	'',
+	104,
+	0);
+INSERT INTO SM_EVTDI
+	VALUES (438,
+	436,
+	'confirmation',
+	'',
+	182,
+	'',
+	439,
+	0);
+INSERT INTO SM_LEVT
+	VALUES (440,
+	436,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (440,
+	436,
+	0);
+INSERT INTO SM_EVT
+	VALUES (440,
+	436,
+	0,
+	1,
+	'initialise',
+	0,
+	'',
+	'MO_O1',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (441,
+	436,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (441,
+	436,
+	0);
+INSERT INTO SM_EVT
+	VALUES (441,
+	436,
+	0,
+	2,
+	'oven_initialised',
+	0,
+	'',
+	'MO_O2',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (114,
+	436,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (114,
+	436,
+	0);
+INSERT INTO SM_EVT
+	VALUES (114,
+	436,
+	0,
+	3,
+	'start_cooking',
+	0,
+	'',
+	'MO_O3',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (14,
+	436,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (14,
+	436,
+	0);
+INSERT INTO SM_EVT
+	VALUES (14,
+	436,
+	0,
+	4,
+	'cancel_cooking',
+	0,
+	'',
+	'MO_O4',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (442,
+	436,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (442,
+	436,
+	0);
+INSERT INTO SM_EVT
+	VALUES (442,
+	436,
+	0,
+	5,
+	'cooking_period_over',
+	0,
+	'',
+	'MO_O5',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (443,
+	436,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (443,
+	436,
+	0);
+INSERT INTO SM_EVT
+	VALUES (443,
+	436,
+	0,
+	6,
+	'beeping_over',
+	0,
+	'',
+	'MO_O6',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (444,
+	436,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (444,
+	436,
+	0);
+INSERT INTO SM_EVT
+	VALUES (444,
+	436,
+	0,
+	7,
+	'oven_safe',
+	0,
+	'',
+	'MO_O7',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (104,
+	436,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (104,
+	436,
+	0);
+INSERT INTO SM_EVT
+	VALUES (104,
+	436,
+	0,
+	8,
+	'cooking_period',
+	0,
+	'',
+	'MO_O8',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (439,
+	436,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (439,
+	436,
+	0);
+INSERT INTO SM_EVT
+	VALUES (439,
+	436,
+	0,
+	9,
+	'Unassigned Parameter Placeholder',
+	0,
+	'',
+	'MO_O9',
+	'');
+INSERT INTO SM_STATE
+	VALUES (445,
+	436,
+	0,
+	'Awaiting Cooking Request',
+	1,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (445,
+	440,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (445,
+	440,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (445,
+	441,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (445,
+	441,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (445,
+	114,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (445,
+	114,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (445,
+	14,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (445,
+	14,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (445,
+	442,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (445,
+	442,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (445,
+	443,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (445,
+	443,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (445,
+	444,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (445,
+	444,
+	436,
+	0);
+INSERT INTO SM_SEME
+	VALUES (445,
+	104,
+	436,
+	0);
+INSERT INTO SM_CH
+	VALUES (445,
+	439,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (445,
+	439,
+	436,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (446,
+	436,
+	445);
+INSERT INTO SM_AH
+	VALUES (446,
+	436);
+INSERT INTO SM_ACT
+	VALUES (446,
+	436,
+	1,
+	'assign self.remaining_cooking_time = 0;
+
+select one beeper related by self->MO_B[R3];
+generate MO_B4:''stop_beeping'' to beeper;',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (447,
+	436,
+	446);
+INSERT INTO ACT_ACT
+	VALUES (447,
+	'state',
+	0,
+	448,
+	0,
+	0,
+	'Oven::Awaiting Cooking Request',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (448,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	4,
+	1,
+	3,
+	36,
+	0,
+	0,
+	3,
+	41,
+	0,
+	0,
+	0,
+	0,
+	0,
+	447,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (449,
+	448,
+	450,
+	1,
+	1,
+	'Oven::Awaiting Cooking Request line: 1');
+INSERT INTO ACT_AI
+	VALUES (449,
+	451,
+	452,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (450,
+	448,
+	453,
+	3,
+	1,
+	'Oven::Awaiting Cooking Request line: 3');
+INSERT INTO ACT_SEL
+	VALUES (450,
+	454,
+	1,
+	'one',
+	455);
+INSERT INTO ACT_SR
+	VALUES (450);
+INSERT INTO ACT_LNK
+	VALUES (456,
+	'',
+	450,
+	57,
+	0,
+	1,
+	55,
+	3,
+	36,
+	3,
+	41,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (453,
+	448,
+	0,
+	4,
+	1,
+	'Oven::Awaiting Cooking Request line: 4');
+INSERT INTO E_ESS
+	VALUES (453,
+	1,
+	0,
+	4,
+	10,
+	4,
+	16,
+	3,
+	36,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (453);
+INSERT INTO E_GSME
+	VALUES (453,
+	457);
+INSERT INTO E_GEN
+	VALUES (453,
+	454);
+INSERT INTO V_VAL
+	VALUES (458,
+	1,
+	0,
+	1,
+	8,
+	11,
+	0,
+	0,
+	0,
+	0,
+	15,
+	448);
+INSERT INTO V_IRF
+	VALUES (458,
+	459);
+INSERT INTO V_VAL
+	VALUES (452,
+	1,
+	0,
+	1,
+	13,
+	34,
+	0,
+	0,
+	0,
+	0,
+	70,
+	448);
+INSERT INTO V_AVL
+	VALUES (452,
+	458,
+	13,
+	71);
+INSERT INTO V_VAL
+	VALUES (451,
+	0,
+	0,
+	1,
+	38,
+	38,
+	0,
+	0,
+	0,
+	0,
+	70,
+	448);
+INSERT INTO V_LIN
+	VALUES (451,
+	'0');
+INSERT INTO V_VAL
+	VALUES (455,
+	0,
+	0,
+	3,
+	30,
+	33,
+	0,
+	0,
+	0,
+	0,
+	15,
+	448);
+INSERT INTO V_IRF
+	VALUES (455,
+	459);
+INSERT INTO V_VAR
+	VALUES (459,
+	448,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (459,
+	0,
+	13);
+INSERT INTO V_VAR
+	VALUES (454,
+	448,
+	'beeper',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (454,
+	0,
+	55);
+INSERT INTO SM_STATE
+	VALUES (460,
+	436,
+	0,
+	'Ensuring Safe to Cook',
+	2,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (460,
+	440,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (460,
+	440,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (460,
+	441,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (460,
+	441,
+	436,
+	0);
+INSERT INTO SM_SEME
+	VALUES (460,
+	114,
+	436,
+	0);
+INSERT INTO SM_SEME
+	VALUES (460,
+	14,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (460,
+	442,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (460,
+	442,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (460,
+	443,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (460,
+	443,
+	436,
+	0);
+INSERT INTO SM_SEME
+	VALUES (460,
+	444,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (460,
+	104,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (460,
+	104,
+	436,
+	0);
+INSERT INTO SM_CH
+	VALUES (460,
+	439,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (460,
+	439,
+	436,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (461,
+	436,
+	460);
+INSERT INTO SM_AH
+	VALUES (461,
+	436);
+INSERT INTO SM_ACT
+	VALUES (461,
+	436,
+	1,
+	'if (self.remaining_cooking_time != 0)
+   select one door related by self->MO_D[R4];
+   if (door.is_secure == true)
+      generate MO_O7:''oven_safe''() to self;
+   end if;
+end if;',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (462,
+	436,
+	461);
+INSERT INTO ACT_ACT
+	VALUES (462,
+	'state',
+	0,
+	463,
+	0,
+	0,
+	'Oven::Ensuring Safe to Cook',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (463,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	1,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	462,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (464,
+	463,
+	0,
+	1,
+	1,
+	'Oven::Ensuring Safe to Cook line: 1');
+INSERT INTO ACT_IF
+	VALUES (464,
+	465,
+	466,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (467,
+	0,
+	0,
+	1,
+	5,
+	8,
+	0,
+	0,
+	0,
+	0,
+	15,
+	463);
+INSERT INTO V_IRF
+	VALUES (467,
+	468);
+INSERT INTO V_VAL
+	VALUES (469,
+	0,
+	0,
+	1,
+	10,
+	31,
+	0,
+	0,
+	0,
+	0,
+	70,
+	463);
+INSERT INTO V_AVL
+	VALUES (469,
+	467,
+	13,
+	71);
+INSERT INTO V_VAL
+	VALUES (466,
+	0,
+	0,
+	1,
+	10,
+	36,
+	0,
+	0,
+	0,
+	0,
+	77,
+	463);
+INSERT INTO V_BIN
+	VALUES (466,
+	470,
+	469,
+	'!=');
+INSERT INTO V_VAL
+	VALUES (470,
+	0,
+	0,
+	1,
+	36,
+	36,
+	0,
+	0,
+	0,
+	0,
+	70,
+	463);
+INSERT INTO V_LIN
+	VALUES (470,
+	'0');
+INSERT INTO V_VAR
+	VALUES (468,
+	463,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (468,
+	0,
+	13);
+INSERT INTO ACT_BLK
+	VALUES (465,
+	1,
+	0,
+	0,
+	'',
+	'',
+	'',
+	3,
+	4,
+	2,
+	37,
+	0,
+	0,
+	2,
+	42,
+	0,
+	0,
+	0,
+	0,
+	0,
+	462,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (471,
+	465,
+	472,
+	2,
+	4,
+	'Oven::Ensuring Safe to Cook line: 2');
+INSERT INTO ACT_SEL
+	VALUES (471,
+	473,
+	1,
+	'one',
+	474);
+INSERT INTO ACT_SR
+	VALUES (471);
+INSERT INTO ACT_LNK
+	VALUES (475,
+	'',
+	471,
+	61,
+	0,
+	1,
+	22,
+	2,
+	37,
+	2,
+	42,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (472,
+	465,
+	0,
+	3,
+	4,
+	'Oven::Ensuring Safe to Cook line: 3');
+INSERT INTO ACT_IF
+	VALUES (472,
+	476,
+	477,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (474,
+	0,
+	0,
+	2,
+	31,
+	34,
+	0,
+	0,
+	0,
+	0,
+	15,
+	465);
+INSERT INTO V_IRF
+	VALUES (474,
+	468);
+INSERT INTO V_VAL
+	VALUES (478,
+	0,
+	0,
+	3,
+	8,
+	11,
+	0,
+	0,
+	0,
+	0,
+	15,
+	465);
+INSERT INTO V_IRF
+	VALUES (478,
+	473);
+INSERT INTO V_VAL
+	VALUES (479,
+	0,
+	0,
+	3,
+	13,
+	21,
+	0,
+	0,
+	0,
+	0,
+	77,
+	465);
+INSERT INTO V_AVL
+	VALUES (479,
+	478,
+	22,
+	78);
+INSERT INTO V_VAL
+	VALUES (477,
+	0,
+	0,
+	3,
+	13,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	465);
+INSERT INTO V_BIN
+	VALUES (477,
+	480,
+	479,
+	'==');
+INSERT INTO V_VAL
+	VALUES (480,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	465);
+INSERT INTO V_LBO
+	VALUES (480,
+	'TRUE');
+INSERT INTO V_VAR
+	VALUES (473,
+	465,
+	'door',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (473,
+	0,
+	22);
+INSERT INTO ACT_BLK
+	VALUES (476,
+	0,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	4,
+	7,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	462,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (481,
+	476,
+	0,
+	4,
+	7,
+	'Oven::Ensuring Safe to Cook line: 4');
+INSERT INTO E_ESS
+	VALUES (481,
+	1,
+	0,
+	4,
+	16,
+	4,
+	22,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (481);
+INSERT INTO E_GSME
+	VALUES (481,
+	444);
+INSERT INTO E_GEN
+	VALUES (481,
+	468);
+INSERT INTO SM_STATE
+	VALUES (482,
+	436,
+	0,
+	'Cooking',
+	3,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (482,
+	440,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (482,
+	440,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (482,
+	441,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (482,
+	441,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (482,
+	114,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (482,
+	114,
+	436,
+	0);
+INSERT INTO SM_SEME
+	VALUES (482,
+	14,
+	436,
+	0);
+INSERT INTO SM_SEME
+	VALUES (482,
+	442,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (482,
+	443,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (482,
+	443,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (482,
+	444,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (482,
+	444,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (482,
+	104,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (482,
+	104,
+	436,
+	0);
+INSERT INTO SM_CH
+	VALUES (482,
+	439,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (482,
+	439,
+	436,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (483,
+	436,
+	482);
+INSERT INTO SM_AH
+	VALUES (483,
+	436);
+INSERT INTO SM_ACT
+	VALUES (483,
+	436,
+	1,
+	'create event instance cooking_over of MO_O5:''cooking_period_over''() to self;
+self.oven_timer = TIM::timer_start(microseconds:self.remaining_cooking_time, event_inst:cooking_over);
+
+select one light related by self->MO_IL[R2];
+generate MO_IL1:''switch_on'' to light;
+
+select one turntable related by self->MO_TRN[R5];
+generate MO_TRN1:''spin'' to turntable;
+
+select one tube related by self->MO_MT[R1];
+generate MO_MT3:''power_on'' to tube;',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (484,
+	436,
+	483);
+INSERT INTO ACT_ACT
+	VALUES (484,
+	'state',
+	0,
+	485,
+	0,
+	0,
+	'Oven::Cooking',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (485,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	11,
+	1,
+	10,
+	34,
+	0,
+	0,
+	10,
+	40,
+	0,
+	0,
+	0,
+	0,
+	0,
+	484,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (486,
+	485,
+	487,
+	1,
+	1,
+	'Oven::Cooking line: 1');
+INSERT INTO E_ESS
+	VALUES (486,
+	1,
+	0,
+	1,
+	39,
+	1,
+	45,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (486,
+	1,
+	488);
+INSERT INTO E_CSME
+	VALUES (486,
+	442);
+INSERT INTO E_CEI
+	VALUES (486,
+	489);
+INSERT INTO ACT_SMT
+	VALUES (487,
+	485,
+	490,
+	2,
+	1,
+	'Oven::Cooking line: 2');
+INSERT INTO ACT_AI
+	VALUES (487,
+	491,
+	492,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (490,
+	485,
+	493,
+	4,
+	1,
+	'Oven::Cooking line: 4');
+INSERT INTO ACT_SEL
+	VALUES (490,
+	494,
+	1,
+	'one',
+	495);
+INSERT INTO ACT_SR
+	VALUES (490);
+INSERT INTO ACT_LNK
+	VALUES (496,
+	'',
+	490,
+	52,
+	0,
+	1,
+	50,
+	4,
+	35,
+	4,
+	41,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (493,
+	485,
+	497,
+	5,
+	1,
+	'Oven::Cooking line: 5');
+INSERT INTO E_ESS
+	VALUES (493,
+	1,
+	0,
+	5,
+	10,
+	5,
+	17,
+	4,
+	35,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (493);
+INSERT INTO E_GSME
+	VALUES (493,
+	498);
+INSERT INTO E_GEN
+	VALUES (493,
+	494);
+INSERT INTO ACT_SMT
+	VALUES (497,
+	485,
+	499,
+	7,
+	1,
+	'Oven::Cooking line: 7');
+INSERT INTO ACT_SEL
+	VALUES (497,
+	500,
+	1,
+	'one',
+	501);
+INSERT INTO ACT_SR
+	VALUES (497);
+INSERT INTO ACT_LNK
+	VALUES (502,
+	'',
+	497,
+	68,
+	0,
+	1,
+	67,
+	7,
+	39,
+	7,
+	46,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (499,
+	485,
+	503,
+	8,
+	1,
+	'Oven::Cooking line: 8');
+INSERT INTO E_ESS
+	VALUES (499,
+	1,
+	0,
+	8,
+	10,
+	8,
+	18,
+	7,
+	39,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (499);
+INSERT INTO E_GSME
+	VALUES (499,
+	404);
+INSERT INTO E_GEN
+	VALUES (499,
+	500);
+INSERT INTO ACT_SMT
+	VALUES (503,
+	485,
+	504,
+	10,
+	1,
+	'Oven::Cooking line: 10');
+INSERT INTO ACT_SEL
+	VALUES (503,
+	505,
+	1,
+	'one',
+	506);
+INSERT INTO ACT_SR
+	VALUES (503);
+INSERT INTO ACT_LNK
+	VALUES (507,
+	'',
+	503,
+	44,
+	0,
+	1,
+	30,
+	10,
+	34,
+	10,
+	40,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (504,
+	485,
+	0,
+	11,
+	1,
+	'Oven::Cooking line: 11');
+INSERT INTO E_ESS
+	VALUES (504,
+	1,
+	0,
+	11,
+	10,
+	11,
+	17,
+	10,
+	34,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (504);
+INSERT INTO E_GSME
+	VALUES (504,
+	508);
+INSERT INTO E_GEN
+	VALUES (504,
+	505);
+INSERT INTO V_VAL
+	VALUES (509,
+	1,
+	0,
+	2,
+	1,
+	4,
+	0,
+	0,
+	0,
+	0,
+	15,
+	485);
+INSERT INTO V_IRF
+	VALUES (509,
+	489);
+INSERT INTO V_VAL
+	VALUES (492,
+	1,
+	0,
+	2,
+	6,
+	15,
+	0,
+	0,
+	0,
+	0,
+	177,
+	485);
+INSERT INTO V_AVL
+	VALUES (492,
+	509,
+	13,
+	434);
+INSERT INTO V_VAL
+	VALUES (491,
+	0,
+	0,
+	2,
+	24,
+	-1,
+	2,
+	36,
+	2,
+	78,
+	177,
+	485);
+INSERT INTO V_BRV
+	VALUES (491,
+	179,
+	1,
+	2,
+	19);
+INSERT INTO V_VAL
+	VALUES (510,
+	0,
+	0,
+	2,
+	49,
+	52,
+	0,
+	0,
+	0,
+	0,
+	15,
+	485);
+INSERT INTO V_IRF
+	VALUES (510,
+	489);
+INSERT INTO V_VAL
+	VALUES (511,
+	0,
+	0,
+	2,
+	54,
+	75,
+	0,
+	0,
+	0,
+	0,
+	70,
+	485);
+INSERT INTO V_AVL
+	VALUES (511,
+	510,
+	13,
+	71);
+INSERT INTO V_PAR
+	VALUES (511,
+	0,
+	491,
+	'microseconds',
+	512,
+	2,
+	36);
+INSERT INTO V_VAL
+	VALUES (512,
+	0,
+	0,
+	2,
+	89,
+	100,
+	0,
+	0,
+	0,
+	0,
+	182,
+	485);
+INSERT INTO V_TVL
+	VALUES (512,
+	488);
+INSERT INTO V_PAR
+	VALUES (512,
+	0,
+	491,
+	'event_inst',
+	0,
+	2,
+	78);
+INSERT INTO V_VAL
+	VALUES (495,
+	0,
+	0,
+	4,
+	29,
+	32,
+	0,
+	0,
+	0,
+	0,
+	15,
+	485);
+INSERT INTO V_IRF
+	VALUES (495,
+	489);
+INSERT INTO V_VAL
+	VALUES (501,
+	0,
+	0,
+	7,
+	33,
+	36,
+	0,
+	0,
+	0,
+	0,
+	15,
+	485);
+INSERT INTO V_IRF
+	VALUES (501,
+	489);
+INSERT INTO V_VAL
+	VALUES (506,
+	0,
+	0,
+	10,
+	28,
+	31,
+	0,
+	0,
+	0,
+	0,
+	15,
+	485);
+INSERT INTO V_IRF
+	VALUES (506,
+	489);
+INSERT INTO V_VAR
+	VALUES (488,
+	485,
+	'cooking_over',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (488,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (489,
+	485,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (489,
+	0,
+	13);
+INSERT INTO V_VAR
+	VALUES (494,
+	485,
+	'light',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (494,
+	0,
+	50);
+INSERT INTO V_VAR
+	VALUES (500,
+	485,
+	'turntable',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (500,
+	0,
+	67);
+INSERT INTO V_VAR
+	VALUES (505,
+	485,
+	'tube',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (505,
+	0,
+	30);
+INSERT INTO SM_STATE
+	VALUES (513,
+	436,
+	0,
+	'Cooking Suspended',
+	4,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (513,
+	440,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (513,
+	440,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (513,
+	441,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (513,
+	441,
+	436,
+	0);
+INSERT INTO SM_SEME
+	VALUES (513,
+	114,
+	436,
+	0);
+INSERT INTO SM_SEME
+	VALUES (513,
+	14,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (513,
+	442,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (513,
+	442,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (513,
+	443,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (513,
+	443,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (513,
+	444,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (513,
+	444,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (513,
+	104,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (513,
+	104,
+	436,
+	0);
+INSERT INTO SM_CH
+	VALUES (513,
+	439,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (513,
+	439,
+	436,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (514,
+	436,
+	513);
+INSERT INTO SM_AH
+	VALUES (514,
+	436);
+INSERT INTO SM_ACT
+	VALUES (514,
+	436,
+	1,
+	'assign self.remaining_cooking_time = TIM::timer_remaining_time(timer_inst_ref:self.oven_timer);
+cancelled = TIM::timer_cancel(timer_inst_ref:self.oven_timer);
+
+select one light related by self->MO_IL[R2];
+generate MO_IL2:''switch_off'' to light;
+
+select one turntable related by self->MO_TRN[R5];
+generate MO_TRN2:''stop'' to turntable;
+
+select one tube related by self->MO_MT[R1];
+generate MO_MT4:''power_off'' to tube;',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (515,
+	436,
+	514);
+INSERT INTO ACT_ACT
+	VALUES (515,
+	'state',
+	0,
+	516,
+	0,
+	0,
+	'Oven::Cooking Suspended',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (516,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	11,
+	1,
+	10,
+	34,
+	0,
+	0,
+	10,
+	40,
+	0,
+	0,
+	0,
+	0,
+	0,
+	515,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (517,
+	516,
+	518,
+	1,
+	1,
+	'Oven::Cooking Suspended line: 1');
+INSERT INTO ACT_AI
+	VALUES (517,
+	519,
+	520,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (518,
+	516,
+	521,
+	2,
+	1,
+	'Oven::Cooking Suspended line: 2');
+INSERT INTO ACT_AI
+	VALUES (518,
+	522,
+	523,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (521,
+	516,
+	524,
+	4,
+	1,
+	'Oven::Cooking Suspended line: 4');
+INSERT INTO ACT_SEL
+	VALUES (521,
+	525,
+	1,
+	'one',
+	526);
+INSERT INTO ACT_SR
+	VALUES (521);
+INSERT INTO ACT_LNK
+	VALUES (527,
+	'',
+	521,
+	52,
+	0,
+	1,
+	50,
+	4,
+	35,
+	4,
+	41,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (524,
+	516,
+	528,
+	5,
+	1,
+	'Oven::Cooking Suspended line: 5');
+INSERT INTO E_ESS
+	VALUES (524,
+	1,
+	0,
+	5,
+	10,
+	5,
+	17,
+	4,
+	35,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (524);
+INSERT INTO E_GSME
+	VALUES (524,
+	529);
+INSERT INTO E_GEN
+	VALUES (524,
+	525);
+INSERT INTO ACT_SMT
+	VALUES (528,
+	516,
+	530,
+	7,
+	1,
+	'Oven::Cooking Suspended line: 7');
+INSERT INTO ACT_SEL
+	VALUES (528,
+	531,
+	1,
+	'one',
+	532);
+INSERT INTO ACT_SR
+	VALUES (528);
+INSERT INTO ACT_LNK
+	VALUES (533,
+	'',
+	528,
+	68,
+	0,
+	1,
+	67,
+	7,
+	39,
+	7,
+	46,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (530,
+	516,
+	534,
+	8,
+	1,
+	'Oven::Cooking Suspended line: 8');
+INSERT INTO E_ESS
+	VALUES (530,
+	1,
+	0,
+	8,
+	10,
+	8,
+	18,
+	7,
+	39,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (530);
+INSERT INTO E_GSME
+	VALUES (530,
+	405);
+INSERT INTO E_GEN
+	VALUES (530,
+	531);
+INSERT INTO ACT_SMT
+	VALUES (534,
+	516,
+	535,
+	10,
+	1,
+	'Oven::Cooking Suspended line: 10');
+INSERT INTO ACT_SEL
+	VALUES (534,
+	536,
+	1,
+	'one',
+	537);
+INSERT INTO ACT_SR
+	VALUES (534);
+INSERT INTO ACT_LNK
+	VALUES (538,
+	'',
+	534,
+	44,
+	0,
+	1,
+	30,
+	10,
+	34,
+	10,
+	40,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (535,
+	516,
+	0,
+	11,
+	1,
+	'Oven::Cooking Suspended line: 11');
+INSERT INTO E_ESS
+	VALUES (535,
+	1,
+	0,
+	11,
+	10,
+	11,
+	17,
+	10,
+	34,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (535);
+INSERT INTO E_GSME
+	VALUES (535,
+	539);
+INSERT INTO E_GEN
+	VALUES (535,
+	536);
+INSERT INTO V_VAL
+	VALUES (540,
+	1,
+	0,
+	1,
+	8,
+	11,
+	0,
+	0,
+	0,
+	0,
+	15,
+	516);
+INSERT INTO V_IRF
+	VALUES (540,
+	541);
+INSERT INTO V_VAL
+	VALUES (520,
+	1,
+	0,
+	1,
+	13,
+	34,
+	0,
+	0,
+	0,
+	0,
+	70,
+	516);
+INSERT INTO V_AVL
+	VALUES (520,
+	540,
+	13,
+	71);
+INSERT INTO V_VAL
+	VALUES (519,
+	0,
+	0,
+	1,
+	43,
+	-1,
+	1,
+	64,
+	0,
+	0,
+	70,
+	516);
+INSERT INTO V_BRV
+	VALUES (519,
+	542,
+	1,
+	1,
+	38);
+INSERT INTO V_VAL
+	VALUES (543,
+	0,
+	0,
+	1,
+	79,
+	82,
+	0,
+	0,
+	0,
+	0,
+	15,
+	516);
+INSERT INTO V_IRF
+	VALUES (543,
+	541);
+INSERT INTO V_VAL
+	VALUES (544,
+	0,
+	0,
+	1,
+	84,
+	93,
+	0,
+	0,
+	0,
+	0,
+	177,
+	516);
+INSERT INTO V_AVL
+	VALUES (544,
+	543,
+	13,
+	434);
+INSERT INTO V_PAR
+	VALUES (544,
+	0,
+	519,
+	'timer_inst_ref',
+	0,
+	1,
+	64);
+INSERT INTO V_VAL
+	VALUES (523,
+	1,
+	1,
+	2,
+	1,
+	9,
+	0,
+	0,
+	0,
+	0,
+	77,
+	516);
+INSERT INTO V_TVL
+	VALUES (523,
+	545);
+INSERT INTO V_VAL
+	VALUES (522,
+	0,
+	0,
+	2,
+	18,
+	-1,
+	2,
+	31,
+	0,
+	0,
+	77,
+	516);
+INSERT INTO V_BRV
+	VALUES (522,
+	546,
+	1,
+	2,
+	13);
+INSERT INTO V_VAL
+	VALUES (547,
+	0,
+	0,
+	2,
+	46,
+	49,
+	0,
+	0,
+	0,
+	0,
+	15,
+	516);
+INSERT INTO V_IRF
+	VALUES (547,
+	541);
+INSERT INTO V_VAL
+	VALUES (548,
+	0,
+	0,
+	2,
+	51,
+	60,
+	0,
+	0,
+	0,
+	0,
+	177,
+	516);
+INSERT INTO V_AVL
+	VALUES (548,
+	547,
+	13,
+	434);
+INSERT INTO V_PAR
+	VALUES (548,
+	0,
+	522,
+	'timer_inst_ref',
+	0,
+	2,
+	31);
+INSERT INTO V_VAL
+	VALUES (526,
+	0,
+	0,
+	4,
+	29,
+	32,
+	0,
+	0,
+	0,
+	0,
+	15,
+	516);
+INSERT INTO V_IRF
+	VALUES (526,
+	541);
+INSERT INTO V_VAL
+	VALUES (532,
+	0,
+	0,
+	7,
+	33,
+	36,
+	0,
+	0,
+	0,
+	0,
+	15,
+	516);
+INSERT INTO V_IRF
+	VALUES (532,
+	541);
+INSERT INTO V_VAL
+	VALUES (537,
+	0,
+	0,
+	10,
+	28,
+	31,
+	0,
+	0,
+	0,
+	0,
+	15,
+	516);
+INSERT INTO V_IRF
+	VALUES (537,
+	541);
+INSERT INTO V_VAR
+	VALUES (541,
+	516,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (541,
+	0,
+	13);
+INSERT INTO V_VAR
+	VALUES (545,
+	516,
+	'cancelled',
+	1,
+	77);
+INSERT INTO V_TRN
+	VALUES (545,
+	0,
+	'');
+INSERT INTO V_VAR
+	VALUES (525,
+	516,
+	'light',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (525,
+	0,
+	50);
+INSERT INTO V_VAR
+	VALUES (531,
+	516,
+	'turntable',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (531,
+	0,
+	67);
+INSERT INTO V_VAR
+	VALUES (536,
+	516,
+	'tube',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (536,
+	0,
+	30);
+INSERT INTO SM_STATE
+	VALUES (549,
+	436,
+	0,
+	'Signalling Cooking Period Over',
+	5,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (549,
+	440,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (549,
+	440,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (549,
+	441,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (549,
+	441,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (549,
+	114,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (549,
+	114,
+	436,
+	0);
+INSERT INTO SM_SEME
+	VALUES (549,
+	14,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (549,
+	442,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (549,
+	442,
+	436,
+	0);
+INSERT INTO SM_SEME
+	VALUES (549,
+	443,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (549,
+	444,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (549,
+	444,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (549,
+	104,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (549,
+	104,
+	436,
+	0);
+INSERT INTO SM_CH
+	VALUES (549,
+	439,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (549,
+	439,
+	436,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (550,
+	436,
+	549);
+INSERT INTO SM_AH
+	VALUES (550,
+	436);
+INSERT INTO SM_ACT
+	VALUES (550,
+	436,
+	1,
+	'select one beeper related by self->MO_B[R3];
+generate MO_B1:''start_beeping'' to beeper;
+
+select one light related by self->MO_IL[R2];
+generate MO_IL2:''switch_off'' to light;
+
+select one turntable related by self->MO_TRN[R5];
+generate MO_TRN2:''stop'' to turntable;
+
+select one tube related by self->MO_MT[R1];
+generate MO_MT4:''power_off'' to tube;',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (551,
+	436,
+	550);
+INSERT INTO ACT_ACT
+	VALUES (551,
+	'state',
+	0,
+	552,
+	0,
+	0,
+	'Oven::Signalling Cooking Period Over',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (552,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	11,
+	1,
+	10,
+	34,
+	0,
+	0,
+	10,
+	40,
+	0,
+	0,
+	0,
+	0,
+	0,
+	551,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (553,
+	552,
+	554,
+	1,
+	1,
+	'Oven::Signalling Cooking Period Over line: 1');
+INSERT INTO ACT_SEL
+	VALUES (553,
+	555,
+	1,
+	'one',
+	556);
+INSERT INTO ACT_SR
+	VALUES (553);
+INSERT INTO ACT_LNK
+	VALUES (557,
+	'',
+	553,
+	57,
+	0,
+	1,
+	55,
+	1,
+	36,
+	1,
+	41,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (554,
+	552,
+	558,
+	2,
+	1,
+	'Oven::Signalling Cooking Period Over line: 2');
+INSERT INTO E_ESS
+	VALUES (554,
+	1,
+	0,
+	2,
+	10,
+	2,
+	16,
+	1,
+	36,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (554);
+INSERT INTO E_GSME
+	VALUES (554,
+	559);
+INSERT INTO E_GEN
+	VALUES (554,
+	555);
+INSERT INTO ACT_SMT
+	VALUES (558,
+	552,
+	560,
+	4,
+	1,
+	'Oven::Signalling Cooking Period Over line: 4');
+INSERT INTO ACT_SEL
+	VALUES (558,
+	561,
+	1,
+	'one',
+	562);
+INSERT INTO ACT_SR
+	VALUES (558);
+INSERT INTO ACT_LNK
+	VALUES (563,
+	'',
+	558,
+	52,
+	0,
+	1,
+	50,
+	4,
+	35,
+	4,
+	41,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (560,
+	552,
+	564,
+	5,
+	1,
+	'Oven::Signalling Cooking Period Over line: 5');
+INSERT INTO E_ESS
+	VALUES (560,
+	1,
+	0,
+	5,
+	10,
+	5,
+	17,
+	4,
+	35,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (560);
+INSERT INTO E_GSME
+	VALUES (560,
+	529);
+INSERT INTO E_GEN
+	VALUES (560,
+	561);
+INSERT INTO ACT_SMT
+	VALUES (564,
+	552,
+	565,
+	7,
+	1,
+	'Oven::Signalling Cooking Period Over line: 7');
+INSERT INTO ACT_SEL
+	VALUES (564,
+	566,
+	1,
+	'one',
+	567);
+INSERT INTO ACT_SR
+	VALUES (564);
+INSERT INTO ACT_LNK
+	VALUES (568,
+	'',
+	564,
+	68,
+	0,
+	1,
+	67,
+	7,
+	39,
+	7,
+	46,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (565,
+	552,
+	569,
+	8,
+	1,
+	'Oven::Signalling Cooking Period Over line: 8');
+INSERT INTO E_ESS
+	VALUES (565,
+	1,
+	0,
+	8,
+	10,
+	8,
+	18,
+	7,
+	39,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (565);
+INSERT INTO E_GSME
+	VALUES (565,
+	405);
+INSERT INTO E_GEN
+	VALUES (565,
+	566);
+INSERT INTO ACT_SMT
+	VALUES (569,
+	552,
+	570,
+	10,
+	1,
+	'Oven::Signalling Cooking Period Over line: 10');
+INSERT INTO ACT_SEL
+	VALUES (569,
+	571,
+	1,
+	'one',
+	572);
+INSERT INTO ACT_SR
+	VALUES (569);
+INSERT INTO ACT_LNK
+	VALUES (573,
+	'',
+	569,
+	44,
+	0,
+	1,
+	30,
+	10,
+	34,
+	10,
+	40,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (570,
+	552,
+	0,
+	11,
+	1,
+	'Oven::Signalling Cooking Period Over line: 11');
+INSERT INTO E_ESS
+	VALUES (570,
+	1,
+	0,
+	11,
+	10,
+	11,
+	17,
+	10,
+	34,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (570);
+INSERT INTO E_GSME
+	VALUES (570,
+	539);
+INSERT INTO E_GEN
+	VALUES (570,
+	571);
+INSERT INTO V_VAL
+	VALUES (556,
+	0,
+	0,
+	1,
+	30,
+	33,
+	0,
+	0,
+	0,
+	0,
+	15,
+	552);
+INSERT INTO V_IRF
+	VALUES (556,
+	574);
+INSERT INTO V_VAL
+	VALUES (562,
+	0,
+	0,
+	4,
+	29,
+	32,
+	0,
+	0,
+	0,
+	0,
+	15,
+	552);
+INSERT INTO V_IRF
+	VALUES (562,
+	574);
+INSERT INTO V_VAL
+	VALUES (567,
+	0,
+	0,
+	7,
+	33,
+	36,
+	0,
+	0,
+	0,
+	0,
+	15,
+	552);
+INSERT INTO V_IRF
+	VALUES (567,
+	574);
+INSERT INTO V_VAL
+	VALUES (572,
+	0,
+	0,
+	10,
+	28,
+	31,
+	0,
+	0,
+	0,
+	0,
+	15,
+	552);
+INSERT INTO V_IRF
+	VALUES (572,
+	574);
+INSERT INTO V_VAR
+	VALUES (555,
+	552,
+	'beeper',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (555,
+	0,
+	55);
+INSERT INTO V_VAR
+	VALUES (574,
+	552,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (574,
+	0,
+	13);
+INSERT INTO V_VAR
+	VALUES (561,
+	552,
+	'light',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (561,
+	0,
+	50);
+INSERT INTO V_VAR
+	VALUES (566,
+	552,
+	'turntable',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (566,
+	0,
+	67);
+INSERT INTO V_VAR
+	VALUES (571,
+	552,
+	'tube',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (571,
+	0,
+	30);
+INSERT INTO SM_STATE
+	VALUES (575,
+	436,
+	0,
+	'Assigning Cooking Period',
+	6,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (575,
+	440,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (575,
+	440,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (575,
+	441,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (575,
+	441,
+	436,
+	0);
+INSERT INTO SM_SEME
+	VALUES (575,
+	114,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (575,
+	14,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (575,
+	14,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (575,
+	442,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (575,
+	442,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (575,
+	443,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (575,
+	443,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (575,
+	444,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (575,
+	444,
+	436,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (575,
+	104,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (575,
+	104,
+	436,
+	0);
+INSERT INTO SM_CH
+	VALUES (575,
+	439,
+	436,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (575,
+	439,
+	436,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (576,
+	436,
+	575);
+INSERT INTO SM_AH
+	VALUES (576,
+	436);
+INSERT INTO SM_ACT
+	VALUES (576,
+	436,
+	1,
+	'assign self.remaining_cooking_time = rcvd_evt.period;',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (577,
+	436,
+	576);
+INSERT INTO ACT_ACT
+	VALUES (577,
+	'state',
+	0,
+	578,
+	0,
+	0,
+	'Oven::Assigning Cooking Period',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (578,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	1,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	577,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (579,
+	578,
+	0,
+	1,
+	1,
+	'Oven::Assigning Cooking Period line: 1');
+INSERT INTO ACT_AI
+	VALUES (579,
+	580,
+	581,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (582,
+	1,
+	0,
+	1,
+	8,
+	11,
+	0,
+	0,
+	0,
+	0,
+	15,
+	578);
+INSERT INTO V_IRF
+	VALUES (582,
+	583);
+INSERT INTO V_VAL
+	VALUES (581,
+	1,
+	0,
+	1,
+	13,
+	34,
+	0,
+	0,
+	0,
+	0,
+	70,
+	578);
+INSERT INTO V_AVL
+	VALUES (581,
+	582,
+	13,
+	71);
+INSERT INTO V_VAL
+	VALUES (580,
+	0,
+	0,
+	1,
+	47,
+	52,
+	0,
+	0,
+	0,
+	0,
+	70,
+	578);
+INSERT INTO V_EDV
+	VALUES (580);
+INSERT INTO V_EPR
+	VALUES (580,
+	436,
+	437,
+	0);
+INSERT INTO V_VAR
+	VALUES (583,
+	578,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (583,
+	0,
+	13);
+INSERT INTO SM_NSTXN
+	VALUES (584,
+	436,
+	445,
+	104,
+	0);
+INSERT INTO SM_TAH
+	VALUES (585,
+	436,
+	584);
+INSERT INTO SM_AH
+	VALUES (585,
+	436);
+INSERT INTO SM_ACT
+	VALUES (585,
+	436,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (586,
+	436,
+	585);
+INSERT INTO ACT_ACT
+	VALUES (586,
+	'transition',
+	0,
+	587,
+	0,
+	0,
+	'MO_O8: cooking_period',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (587,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	586,
+	0);
+INSERT INTO SM_TXN
+	VALUES (584,
+	436,
+	575,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (588,
+	436,
+	460,
+	114,
+	0);
+INSERT INTO SM_TAH
+	VALUES (589,
+	436,
+	588);
+INSERT INTO SM_AH
+	VALUES (589,
+	436);
+INSERT INTO SM_ACT
+	VALUES (589,
+	436,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (590,
+	436,
+	589);
+INSERT INTO ACT_ACT
+	VALUES (590,
+	'transition',
+	0,
+	591,
+	0,
+	0,
+	'MO_O3: start_cooking',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (591,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	590,
+	0);
+INSERT INTO SM_TXN
+	VALUES (588,
+	436,
+	460,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (592,
+	436,
+	460,
+	14,
+	0);
+INSERT INTO SM_TAH
+	VALUES (593,
+	436,
+	592);
+INSERT INTO SM_AH
+	VALUES (593,
+	436);
+INSERT INTO SM_ACT
+	VALUES (593,
+	436,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (594,
+	436,
+	593);
+INSERT INTO ACT_ACT
+	VALUES (594,
+	'transition',
+	0,
+	595,
+	0,
+	0,
+	'MO_O4: cancel_cooking',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (595,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	594,
+	0);
+INSERT INTO SM_TXN
+	VALUES (592,
+	436,
+	445,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (596,
+	436,
+	460,
+	444,
+	0);
+INSERT INTO SM_TAH
+	VALUES (597,
+	436,
+	596);
+INSERT INTO SM_AH
+	VALUES (597,
+	436);
+INSERT INTO SM_ACT
+	VALUES (597,
+	436,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (598,
+	436,
+	597);
+INSERT INTO ACT_ACT
+	VALUES (598,
+	'transition',
+	0,
+	599,
+	0,
+	0,
+	'MO_O7: oven_safe',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (599,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	598,
+	0);
+INSERT INTO SM_TXN
+	VALUES (596,
+	436,
+	482,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (600,
+	436,
+	482,
+	14,
+	0);
+INSERT INTO SM_TAH
+	VALUES (601,
+	436,
+	600);
+INSERT INTO SM_AH
+	VALUES (601,
+	436);
+INSERT INTO SM_ACT
+	VALUES (601,
+	436,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (602,
+	436,
+	601);
+INSERT INTO ACT_ACT
+	VALUES (602,
+	'transition',
+	0,
+	603,
+	0,
+	0,
+	'MO_O4: cancel_cooking',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (603,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	602,
+	0);
+INSERT INTO SM_TXN
+	VALUES (600,
+	436,
+	513,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (604,
+	436,
+	482,
+	442,
+	0);
+INSERT INTO SM_TAH
+	VALUES (605,
+	436,
+	604);
+INSERT INTO SM_AH
+	VALUES (605,
+	436);
+INSERT INTO SM_ACT
+	VALUES (605,
+	436,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (606,
+	436,
+	605);
+INSERT INTO ACT_ACT
+	VALUES (606,
+	'transition',
+	0,
+	607,
+	0,
+	0,
+	'MO_O5: cooking_period_over',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (607,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	606,
+	0);
+INSERT INTO SM_TXN
+	VALUES (604,
+	436,
+	549,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (608,
+	436,
+	513,
+	114,
+	0);
+INSERT INTO SM_TAH
+	VALUES (609,
+	436,
+	608);
+INSERT INTO SM_AH
+	VALUES (609,
+	436);
+INSERT INTO SM_ACT
+	VALUES (609,
+	436,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (610,
+	436,
+	609);
+INSERT INTO ACT_ACT
+	VALUES (610,
+	'transition',
+	0,
+	611,
+	0,
+	0,
+	'MO_O3: start_cooking',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (611,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	610,
+	0);
+INSERT INTO SM_TXN
+	VALUES (608,
+	436,
+	460,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (612,
+	436,
+	513,
+	14,
+	0);
+INSERT INTO SM_TAH
+	VALUES (613,
+	436,
+	612);
+INSERT INTO SM_AH
+	VALUES (613,
+	436);
+INSERT INTO SM_ACT
+	VALUES (613,
+	436,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (614,
+	436,
+	613);
+INSERT INTO ACT_ACT
+	VALUES (614,
+	'transition',
+	0,
+	615,
+	0,
+	0,
+	'MO_O4: cancel_cooking',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (615,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	614,
+	0);
+INSERT INTO SM_TXN
+	VALUES (612,
+	436,
+	445,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (616,
+	436,
+	549,
+	14,
+	0);
+INSERT INTO SM_TAH
+	VALUES (617,
+	436,
+	616);
+INSERT INTO SM_AH
+	VALUES (617,
+	436);
+INSERT INTO SM_ACT
+	VALUES (617,
+	436,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (618,
+	436,
+	617);
+INSERT INTO ACT_ACT
+	VALUES (618,
+	'transition',
+	0,
+	619,
+	0,
+	0,
+	'MO_O4: cancel_cooking',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (619,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	618,
+	0);
+INSERT INTO SM_TXN
+	VALUES (616,
+	436,
+	445,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (620,
+	436,
+	549,
+	443,
+	0);
+INSERT INTO SM_TAH
+	VALUES (621,
+	436,
+	620);
+INSERT INTO SM_AH
+	VALUES (621,
+	436);
+INSERT INTO SM_ACT
+	VALUES (621,
+	436,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (622,
+	436,
+	621);
+INSERT INTO ACT_ACT
+	VALUES (622,
+	'transition',
+	0,
+	623,
+	0,
+	0,
+	'MO_O6: beeping_over',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (623,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	622,
+	0);
+INSERT INTO SM_TXN
+	VALUES (620,
+	436,
+	445,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (624,
+	436,
+	575,
+	114,
+	0);
+INSERT INTO SM_TAH
+	VALUES (625,
+	436,
+	624);
+INSERT INTO SM_AH
+	VALUES (625,
+	436);
+INSERT INTO SM_ACT
+	VALUES (625,
+	436,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (626,
+	436,
+	625);
+INSERT INTO ACT_ACT
+	VALUES (626,
+	'transition',
+	0,
+	627,
+	0,
+	0,
+	'MO_O3: start_cooking',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (627,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	626,
+	0);
+INSERT INTO SM_TXN
+	VALUES (624,
+	436,
+	460,
+	0);
+INSERT INTO PE_PE
+	VALUES (30,
+	1,
+	380,
+	0,
+	4);
+INSERT INTO O_OBJ
+	VALUES (30,
+	'Magnetron Tube',
+	2,
+	'MO_MT',
+	'The magnetron tube is the core element of the microwave oven, generating microwave energy following AC/DC Voltage conversion. The tube operates from a 240V, 50Hz supply.
+
+The tube has variable power output, ranging from 600W to 1000W in discrete 100W steps.
+
+The relevant behaviour of the tube is confined to :
+
+* power on
+* power off
+* raising & lowering output power level',
+	0);
+INSERT INTO O_NBATTR
+	VALUES (389,
+	30);
+INSERT INTO O_BATTR
+	VALUES (389,
+	30);
+INSERT INTO O_ATTR
+	VALUES (389,
+	30,
+	0,
+	'TubeID',
+	'The uniquely-specified tube identifier.',
+	'',
+	'TubeID',
+	0,
+	126,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (74,
+	30);
+INSERT INTO O_BATTR
+	VALUES (74,
+	30);
+INSERT INTO O_ATTR
+	VALUES (74,
+	30,
+	389,
+	'current_power_output',
+	'Refer to the user-defined data type "tube_wattage" for a full description.',
+	'',
+	'current_power_output',
+	0,
+	73,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (628,
+	30);
+INSERT INTO O_BATTR
+	VALUES (628,
+	30);
+INSERT INTO O_ATTR
+	VALUES (628,
+	30,
+	74,
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	128,
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	30);
+INSERT INTO O_OIDA
+	VALUES (389,
+	30,
+	0,
+	'TubeID');
+INSERT INTO O_ID
+	VALUES (1,
+	30);
+INSERT INTO O_ID
+	VALUES (2,
+	30);
+INSERT INTO SM_ISM
+	VALUES (629,
+	30);
+INSERT INTO SM_SM
+	VALUES (629,
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES (629);
+INSERT INTO SM_LEVT
+	VALUES (85,
+	629,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (85,
+	629,
+	0);
+INSERT INTO SM_EVT
+	VALUES (85,
+	629,
+	0,
+	1,
+	'increase_power',
+	0,
+	'',
+	'MO_MT1',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (31,
+	629,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (31,
+	629,
+	0);
+INSERT INTO SM_EVT
+	VALUES (31,
+	629,
+	0,
+	2,
+	'decrease_power',
+	0,
+	'',
+	'MO_MT2',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (508,
+	629,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (508,
+	629,
+	0);
+INSERT INTO SM_EVT
+	VALUES (508,
+	629,
+	0,
+	3,
+	'power_on',
+	0,
+	'',
+	'MO_MT3',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (539,
+	629,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (539,
+	629,
+	0);
+INSERT INTO SM_EVT
+	VALUES (539,
+	629,
+	0,
+	4,
+	'power_off',
+	0,
+	'',
+	'MO_MT4',
+	'');
+INSERT INTO SM_STATE
+	VALUES (630,
+	629,
+	0,
+	'Output Power Stable and OFF',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES (630,
+	85,
+	629,
+	0);
+INSERT INTO SM_SEME
+	VALUES (630,
+	31,
+	629,
+	0);
+INSERT INTO SM_SEME
+	VALUES (630,
+	508,
+	629,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (630,
+	539,
+	629,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (630,
+	539,
+	629,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (631,
+	629,
+	630);
+INSERT INTO SM_AH
+	VALUES (631,
+	629);
+INSERT INTO SM_ACT
+	VALUES (631,
+	629,
+	1,
+	'',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (632,
+	629,
+	631);
+INSERT INTO ACT_ACT
+	VALUES (632,
+	'state',
+	0,
+	633,
+	0,
+	0,
+	'Magnetron Tube::Output Power Stable and OFF',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (633,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	632,
+	0);
+INSERT INTO SM_STATE
+	VALUES (634,
+	629,
+	0,
+	'Reducing Output Power',
+	2,
+	0);
+INSERT INTO SM_SEME
+	VALUES (634,
+	85,
+	629,
+	0);
+INSERT INTO SM_SEME
+	VALUES (634,
+	31,
+	629,
+	0);
+INSERT INTO SM_SEME
+	VALUES (634,
+	508,
+	629,
+	0);
+INSERT INTO SM_SEME
+	VALUES (634,
+	539,
+	629,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (635,
+	629,
+	634);
+INSERT INTO SM_AH
+	VALUES (635,
+	629);
+INSERT INTO SM_ACT
+	VALUES (635,
+	629,
+	1,
+	'if (self.current_power_output == tube_wattage::med_low)
+   self.current_power_output = tube_wattage::low;
+elif (self.current_power_output == tube_wattage::medium)
+   self.current_power_output = tube_wattage::med_low;
+elif (self.current_power_output == tube_wattage::med_high)
+   self.current_power_output = tube_wattage::medium;
+elif (self.current_power_output == tube_wattage::high)
+   self.current_power_output = tube_wattage::med_high;
+end if;',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (636,
+	629,
+	635);
+INSERT INTO ACT_ACT
+	VALUES (636,
+	'state',
+	0,
+	637,
+	0,
+	0,
+	'Magnetron Tube::Reducing Output Power',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (637,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	7,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	7,
+	36,
+	0,
+	636,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (638,
+	637,
+	0,
+	1,
+	1,
+	'Magnetron Tube::Reducing Output Power line: 1');
+INSERT INTO ACT_IF
+	VALUES (638,
+	639,
+	640,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (641,
+	637,
+	0,
+	3,
+	1,
+	'Magnetron Tube::Reducing Output Power line: 3');
+INSERT INTO ACT_EL
+	VALUES (641,
+	642,
+	643,
+	638);
+INSERT INTO ACT_SMT
+	VALUES (644,
+	637,
+	0,
+	5,
+	1,
+	'Magnetron Tube::Reducing Output Power line: 5');
+INSERT INTO ACT_EL
+	VALUES (644,
+	645,
+	646,
+	638);
+INSERT INTO ACT_SMT
+	VALUES (647,
+	637,
+	0,
+	7,
+	1,
+	'Magnetron Tube::Reducing Output Power line: 7');
+INSERT INTO ACT_EL
+	VALUES (647,
+	648,
+	649,
+	638);
+INSERT INTO V_VAL
+	VALUES (650,
+	0,
+	0,
+	1,
+	5,
+	8,
+	0,
+	0,
+	0,
+	0,
+	15,
+	637);
+INSERT INTO V_IRF
+	VALUES (650,
+	651);
+INSERT INTO V_VAL
+	VALUES (652,
+	0,
+	0,
+	1,
+	10,
+	29,
+	0,
+	0,
+	0,
+	0,
+	73,
+	637);
+INSERT INTO V_AVL
+	VALUES (652,
+	650,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (640,
+	0,
+	0,
+	1,
+	10,
+	54,
+	0,
+	0,
+	0,
+	0,
+	77,
+	637);
+INSERT INTO V_BIN
+	VALUES (640,
+	653,
+	652,
+	'==');
+INSERT INTO V_VAL
+	VALUES (653,
+	0,
+	0,
+	1,
+	48,
+	54,
+	0,
+	0,
+	0,
+	0,
+	73,
+	637);
+INSERT INTO V_LEN
+	VALUES (653,
+	654,
+	1,
+	34);
+INSERT INTO V_VAL
+	VALUES (655,
+	0,
+	0,
+	3,
+	7,
+	10,
+	0,
+	0,
+	0,
+	0,
+	15,
+	637);
+INSERT INTO V_IRF
+	VALUES (655,
+	651);
+INSERT INTO V_VAL
+	VALUES (656,
+	0,
+	0,
+	3,
+	12,
+	31,
+	0,
+	0,
+	0,
+	0,
+	73,
+	637);
+INSERT INTO V_AVL
+	VALUES (656,
+	655,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (643,
+	0,
+	0,
+	3,
+	12,
+	55,
+	0,
+	0,
+	0,
+	0,
+	77,
+	637);
+INSERT INTO V_BIN
+	VALUES (643,
+	657,
+	656,
+	'==');
+INSERT INTO V_VAL
+	VALUES (657,
+	0,
+	0,
+	3,
+	50,
+	55,
+	0,
+	0,
+	0,
+	0,
+	73,
+	637);
+INSERT INTO V_LEN
+	VALUES (657,
+	658,
+	3,
+	36);
+INSERT INTO V_VAL
+	VALUES (659,
+	0,
+	0,
+	5,
+	7,
+	10,
+	0,
+	0,
+	0,
+	0,
+	15,
+	637);
+INSERT INTO V_IRF
+	VALUES (659,
+	651);
+INSERT INTO V_VAL
+	VALUES (660,
+	0,
+	0,
+	5,
+	12,
+	31,
+	0,
+	0,
+	0,
+	0,
+	73,
+	637);
+INSERT INTO V_AVL
+	VALUES (660,
+	659,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (646,
+	0,
+	0,
+	5,
+	12,
+	57,
+	0,
+	0,
+	0,
+	0,
+	77,
+	637);
+INSERT INTO V_BIN
+	VALUES (646,
+	661,
+	660,
+	'==');
+INSERT INTO V_VAL
+	VALUES (661,
+	0,
+	0,
+	5,
+	50,
+	57,
+	0,
+	0,
+	0,
+	0,
+	73,
+	637);
+INSERT INTO V_LEN
+	VALUES (661,
+	662,
+	5,
+	36);
+INSERT INTO V_VAL
+	VALUES (663,
+	0,
+	0,
+	7,
+	7,
+	10,
+	0,
+	0,
+	0,
+	0,
+	15,
+	637);
+INSERT INTO V_IRF
+	VALUES (663,
+	651);
+INSERT INTO V_VAL
+	VALUES (664,
+	0,
+	0,
+	7,
+	12,
+	31,
+	0,
+	0,
+	0,
+	0,
+	73,
+	637);
+INSERT INTO V_AVL
+	VALUES (664,
+	663,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (649,
+	0,
+	0,
+	7,
+	12,
+	53,
+	0,
+	0,
+	0,
+	0,
+	77,
+	637);
+INSERT INTO V_BIN
+	VALUES (649,
+	665,
+	664,
+	'==');
+INSERT INTO V_VAL
+	VALUES (665,
+	0,
+	0,
+	7,
+	50,
+	53,
+	0,
+	0,
+	0,
+	0,
+	73,
+	637);
+INSERT INTO V_LEN
+	VALUES (665,
+	75,
+	7,
+	36);
+INSERT INTO V_VAR
+	VALUES (651,
+	637,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (651,
+	0,
+	30);
+INSERT INTO ACT_BLK
+	VALUES (639,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	2,
+	4,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	2,
+	32,
+	0,
+	636,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (666,
+	639,
+	0,
+	2,
+	4,
+	'Magnetron Tube::Reducing Output Power line: 2');
+INSERT INTO ACT_AI
+	VALUES (666,
+	667,
+	668,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (669,
+	1,
+	0,
+	2,
+	4,
+	7,
+	0,
+	0,
+	0,
+	0,
+	15,
+	639);
+INSERT INTO V_IRF
+	VALUES (669,
+	651);
+INSERT INTO V_VAL
+	VALUES (668,
+	1,
+	0,
+	2,
+	9,
+	28,
+	0,
+	0,
+	0,
+	0,
+	73,
+	639);
+INSERT INTO V_AVL
+	VALUES (668,
+	669,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (667,
+	0,
+	0,
+	2,
+	46,
+	48,
+	0,
+	0,
+	0,
+	0,
+	73,
+	639);
+INSERT INTO V_LEN
+	VALUES (667,
+	670,
+	2,
+	32);
+INSERT INTO ACT_BLK
+	VALUES (642,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	4,
+	4,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	4,
+	32,
+	0,
+	636,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (671,
+	642,
+	0,
+	4,
+	4,
+	'Magnetron Tube::Reducing Output Power line: 4');
+INSERT INTO ACT_AI
+	VALUES (671,
+	672,
+	673,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (674,
+	1,
+	0,
+	4,
+	4,
+	7,
+	0,
+	0,
+	0,
+	0,
+	15,
+	642);
+INSERT INTO V_IRF
+	VALUES (674,
+	651);
+INSERT INTO V_VAL
+	VALUES (673,
+	1,
+	0,
+	4,
+	9,
+	28,
+	0,
+	0,
+	0,
+	0,
+	73,
+	642);
+INSERT INTO V_AVL
+	VALUES (673,
+	674,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (672,
+	0,
+	0,
+	4,
+	46,
+	52,
+	0,
+	0,
+	0,
+	0,
+	73,
+	642);
+INSERT INTO V_LEN
+	VALUES (672,
+	654,
+	4,
+	32);
+INSERT INTO ACT_BLK
+	VALUES (645,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	6,
+	4,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	6,
+	32,
+	0,
+	636,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (675,
+	645,
+	0,
+	6,
+	4,
+	'Magnetron Tube::Reducing Output Power line: 6');
+INSERT INTO ACT_AI
+	VALUES (675,
+	676,
+	677,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (678,
+	1,
+	0,
+	6,
+	4,
+	7,
+	0,
+	0,
+	0,
+	0,
+	15,
+	645);
+INSERT INTO V_IRF
+	VALUES (678,
+	651);
+INSERT INTO V_VAL
+	VALUES (677,
+	1,
+	0,
+	6,
+	9,
+	28,
+	0,
+	0,
+	0,
+	0,
+	73,
+	645);
+INSERT INTO V_AVL
+	VALUES (677,
+	678,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (676,
+	0,
+	0,
+	6,
+	46,
+	51,
+	0,
+	0,
+	0,
+	0,
+	73,
+	645);
+INSERT INTO V_LEN
+	VALUES (676,
+	658,
+	6,
+	32);
+INSERT INTO ACT_BLK
+	VALUES (648,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	8,
+	4,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	8,
+	32,
+	0,
+	636,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (679,
+	648,
+	0,
+	8,
+	4,
+	'Magnetron Tube::Reducing Output Power line: 8');
+INSERT INTO ACT_AI
+	VALUES (679,
+	680,
+	681,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (682,
+	1,
+	0,
+	8,
+	4,
+	7,
+	0,
+	0,
+	0,
+	0,
+	15,
+	648);
+INSERT INTO V_IRF
+	VALUES (682,
+	651);
+INSERT INTO V_VAL
+	VALUES (681,
+	1,
+	0,
+	8,
+	9,
+	28,
+	0,
+	0,
+	0,
+	0,
+	73,
+	648);
+INSERT INTO V_AVL
+	VALUES (681,
+	682,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (680,
+	0,
+	0,
+	8,
+	46,
+	53,
+	0,
+	0,
+	0,
+	0,
+	73,
+	648);
+INSERT INTO V_LEN
+	VALUES (680,
+	662,
+	8,
+	32);
+INSERT INTO SM_STATE
+	VALUES (683,
+	629,
+	0,
+	'Raising Output Power',
+	3,
+	0);
+INSERT INTO SM_SEME
+	VALUES (683,
+	85,
+	629,
+	0);
+INSERT INTO SM_SEME
+	VALUES (683,
+	31,
+	629,
+	0);
+INSERT INTO SM_SEME
+	VALUES (683,
+	508,
+	629,
+	0);
+INSERT INTO SM_SEME
+	VALUES (683,
+	539,
+	629,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (684,
+	629,
+	683);
+INSERT INTO SM_AH
+	VALUES (684,
+	629);
+INSERT INTO SM_ACT
+	VALUES (684,
+	629,
+	1,
+	'if (self.current_power_output == tube_wattage::low)
+   self.current_power_output = tube_wattage::med_low;
+elif (self.current_power_output == tube_wattage::med_low)
+   self.current_power_output = tube_wattage::medium;
+elif (self.current_power_output == tube_wattage::medium)
+   self.current_power_output = tube_wattage::med_high;
+elif (self.current_power_output == tube_wattage::med_high)
+   self.current_power_output = tube_wattage::high;
+end if;',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (685,
+	629,
+	684);
+INSERT INTO ACT_ACT
+	VALUES (685,
+	'state',
+	0,
+	686,
+	0,
+	0,
+	'Magnetron Tube::Raising Output Power',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (686,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	7,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	7,
+	36,
+	0,
+	685,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (687,
+	686,
+	0,
+	1,
+	1,
+	'Magnetron Tube::Raising Output Power line: 1');
+INSERT INTO ACT_IF
+	VALUES (687,
+	688,
+	689,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (690,
+	686,
+	0,
+	3,
+	1,
+	'Magnetron Tube::Raising Output Power line: 3');
+INSERT INTO ACT_EL
+	VALUES (690,
+	691,
+	692,
+	687);
+INSERT INTO ACT_SMT
+	VALUES (693,
+	686,
+	0,
+	5,
+	1,
+	'Magnetron Tube::Raising Output Power line: 5');
+INSERT INTO ACT_EL
+	VALUES (693,
+	694,
+	695,
+	687);
+INSERT INTO ACT_SMT
+	VALUES (696,
+	686,
+	0,
+	7,
+	1,
+	'Magnetron Tube::Raising Output Power line: 7');
+INSERT INTO ACT_EL
+	VALUES (696,
+	697,
+	698,
+	687);
+INSERT INTO V_VAL
+	VALUES (699,
+	0,
+	0,
+	1,
+	5,
+	8,
+	0,
+	0,
+	0,
+	0,
+	15,
+	686);
+INSERT INTO V_IRF
+	VALUES (699,
+	700);
+INSERT INTO V_VAL
+	VALUES (701,
+	0,
+	0,
+	1,
+	10,
+	29,
+	0,
+	0,
+	0,
+	0,
+	73,
+	686);
+INSERT INTO V_AVL
+	VALUES (701,
+	699,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (689,
+	0,
+	0,
+	1,
+	10,
+	50,
+	0,
+	0,
+	0,
+	0,
+	77,
+	686);
+INSERT INTO V_BIN
+	VALUES (689,
+	702,
+	701,
+	'==');
+INSERT INTO V_VAL
+	VALUES (702,
+	0,
+	0,
+	1,
+	48,
+	50,
+	0,
+	0,
+	0,
+	0,
+	73,
+	686);
+INSERT INTO V_LEN
+	VALUES (702,
+	670,
+	1,
+	34);
+INSERT INTO V_VAL
+	VALUES (703,
+	0,
+	0,
+	3,
+	7,
+	10,
+	0,
+	0,
+	0,
+	0,
+	15,
+	686);
+INSERT INTO V_IRF
+	VALUES (703,
+	700);
+INSERT INTO V_VAL
+	VALUES (704,
+	0,
+	0,
+	3,
+	12,
+	31,
+	0,
+	0,
+	0,
+	0,
+	73,
+	686);
+INSERT INTO V_AVL
+	VALUES (704,
+	703,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (692,
+	0,
+	0,
+	3,
+	12,
+	56,
+	0,
+	0,
+	0,
+	0,
+	77,
+	686);
+INSERT INTO V_BIN
+	VALUES (692,
+	705,
+	704,
+	'==');
+INSERT INTO V_VAL
+	VALUES (705,
+	0,
+	0,
+	3,
+	50,
+	56,
+	0,
+	0,
+	0,
+	0,
+	73,
+	686);
+INSERT INTO V_LEN
+	VALUES (705,
+	654,
+	3,
+	36);
+INSERT INTO V_VAL
+	VALUES (706,
+	0,
+	0,
+	5,
+	7,
+	10,
+	0,
+	0,
+	0,
+	0,
+	15,
+	686);
+INSERT INTO V_IRF
+	VALUES (706,
+	700);
+INSERT INTO V_VAL
+	VALUES (707,
+	0,
+	0,
+	5,
+	12,
+	31,
+	0,
+	0,
+	0,
+	0,
+	73,
+	686);
+INSERT INTO V_AVL
+	VALUES (707,
+	706,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (695,
+	0,
+	0,
+	5,
+	12,
+	55,
+	0,
+	0,
+	0,
+	0,
+	77,
+	686);
+INSERT INTO V_BIN
+	VALUES (695,
+	708,
+	707,
+	'==');
+INSERT INTO V_VAL
+	VALUES (708,
+	0,
+	0,
+	5,
+	50,
+	55,
+	0,
+	0,
+	0,
+	0,
+	73,
+	686);
+INSERT INTO V_LEN
+	VALUES (708,
+	658,
+	5,
+	36);
+INSERT INTO V_VAL
+	VALUES (709,
+	0,
+	0,
+	7,
+	7,
+	10,
+	0,
+	0,
+	0,
+	0,
+	15,
+	686);
+INSERT INTO V_IRF
+	VALUES (709,
+	700);
+INSERT INTO V_VAL
+	VALUES (710,
+	0,
+	0,
+	7,
+	12,
+	31,
+	0,
+	0,
+	0,
+	0,
+	73,
+	686);
+INSERT INTO V_AVL
+	VALUES (710,
+	709,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (698,
+	0,
+	0,
+	7,
+	12,
+	57,
+	0,
+	0,
+	0,
+	0,
+	77,
+	686);
+INSERT INTO V_BIN
+	VALUES (698,
+	711,
+	710,
+	'==');
+INSERT INTO V_VAL
+	VALUES (711,
+	0,
+	0,
+	7,
+	50,
+	57,
+	0,
+	0,
+	0,
+	0,
+	73,
+	686);
+INSERT INTO V_LEN
+	VALUES (711,
+	662,
+	7,
+	36);
+INSERT INTO V_VAR
+	VALUES (700,
+	686,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (700,
+	0,
+	30);
+INSERT INTO ACT_BLK
+	VALUES (688,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	2,
+	4,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	2,
+	32,
+	0,
+	685,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (712,
+	688,
+	0,
+	2,
+	4,
+	'Magnetron Tube::Raising Output Power line: 2');
+INSERT INTO ACT_AI
+	VALUES (712,
+	713,
+	714,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (715,
+	1,
+	0,
+	2,
+	4,
+	7,
+	0,
+	0,
+	0,
+	0,
+	15,
+	688);
+INSERT INTO V_IRF
+	VALUES (715,
+	700);
+INSERT INTO V_VAL
+	VALUES (714,
+	1,
+	0,
+	2,
+	9,
+	28,
+	0,
+	0,
+	0,
+	0,
+	73,
+	688);
+INSERT INTO V_AVL
+	VALUES (714,
+	715,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (713,
+	0,
+	0,
+	2,
+	46,
+	52,
+	0,
+	0,
+	0,
+	0,
+	73,
+	688);
+INSERT INTO V_LEN
+	VALUES (713,
+	654,
+	2,
+	32);
+INSERT INTO ACT_BLK
+	VALUES (691,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	4,
+	4,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	4,
+	32,
+	0,
+	685,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (716,
+	691,
+	0,
+	4,
+	4,
+	'Magnetron Tube::Raising Output Power line: 4');
+INSERT INTO ACT_AI
+	VALUES (716,
+	717,
+	718,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (719,
+	1,
+	0,
+	4,
+	4,
+	7,
+	0,
+	0,
+	0,
+	0,
+	15,
+	691);
+INSERT INTO V_IRF
+	VALUES (719,
+	700);
+INSERT INTO V_VAL
+	VALUES (718,
+	1,
+	0,
+	4,
+	9,
+	28,
+	0,
+	0,
+	0,
+	0,
+	73,
+	691);
+INSERT INTO V_AVL
+	VALUES (718,
+	719,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (717,
+	0,
+	0,
+	4,
+	46,
+	51,
+	0,
+	0,
+	0,
+	0,
+	73,
+	691);
+INSERT INTO V_LEN
+	VALUES (717,
+	658,
+	4,
+	32);
+INSERT INTO ACT_BLK
+	VALUES (694,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	6,
+	4,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	6,
+	32,
+	0,
+	685,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (720,
+	694,
+	0,
+	6,
+	4,
+	'Magnetron Tube::Raising Output Power line: 6');
+INSERT INTO ACT_AI
+	VALUES (720,
+	721,
+	722,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (723,
+	1,
+	0,
+	6,
+	4,
+	7,
+	0,
+	0,
+	0,
+	0,
+	15,
+	694);
+INSERT INTO V_IRF
+	VALUES (723,
+	700);
+INSERT INTO V_VAL
+	VALUES (722,
+	1,
+	0,
+	6,
+	9,
+	28,
+	0,
+	0,
+	0,
+	0,
+	73,
+	694);
+INSERT INTO V_AVL
+	VALUES (722,
+	723,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (721,
+	0,
+	0,
+	6,
+	46,
+	53,
+	0,
+	0,
+	0,
+	0,
+	73,
+	694);
+INSERT INTO V_LEN
+	VALUES (721,
+	662,
+	6,
+	32);
+INSERT INTO ACT_BLK
+	VALUES (697,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	8,
+	4,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	8,
+	32,
+	0,
+	685,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (724,
+	697,
+	0,
+	8,
+	4,
+	'Magnetron Tube::Raising Output Power line: 8');
+INSERT INTO ACT_AI
+	VALUES (724,
+	725,
+	726,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (727,
+	1,
+	0,
+	8,
+	4,
+	7,
+	0,
+	0,
+	0,
+	0,
+	15,
+	697);
+INSERT INTO V_IRF
+	VALUES (727,
+	700);
+INSERT INTO V_VAL
+	VALUES (726,
+	1,
+	0,
+	8,
+	9,
+	28,
+	0,
+	0,
+	0,
+	0,
+	73,
+	697);
+INSERT INTO V_AVL
+	VALUES (726,
+	727,
+	30,
+	74);
+INSERT INTO V_VAL
+	VALUES (725,
+	0,
+	0,
+	8,
+	46,
+	49,
+	0,
+	0,
+	0,
+	0,
+	73,
+	697);
+INSERT INTO V_LEN
+	VALUES (725,
+	75,
+	8,
+	32);
+INSERT INTO SM_STATE
+	VALUES (728,
+	629,
+	0,
+	'Output Power Stable and ON',
+	4,
+	0);
+INSERT INTO SM_SEME
+	VALUES (728,
+	85,
+	629,
+	0);
+INSERT INTO SM_SEME
+	VALUES (728,
+	31,
+	629,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (728,
+	508,
+	629,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (728,
+	508,
+	629,
+	0);
+INSERT INTO SM_SEME
+	VALUES (728,
+	539,
+	629,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (729,
+	629,
+	728);
+INSERT INTO SM_AH
+	VALUES (729,
+	629);
+INSERT INTO SM_ACT
+	VALUES (729,
+	629,
+	1,
+	'',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (730,
+	629,
+	729);
+INSERT INTO ACT_ACT
+	VALUES (730,
+	'state',
+	0,
+	731,
+	0,
+	0,
+	'Magnetron Tube::Output Power Stable and ON',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (731,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	730,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (732,
+	629,
+	630,
+	85,
+	0);
+INSERT INTO SM_TAH
+	VALUES (733,
+	629,
+	732);
+INSERT INTO SM_AH
+	VALUES (733,
+	629);
+INSERT INTO SM_ACT
+	VALUES (733,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (734,
+	629,
+	733);
+INSERT INTO ACT_ACT
+	VALUES (734,
+	'transition',
+	0,
+	735,
+	0,
+	0,
+	'MO_MT1: increase_power',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (735,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	734,
+	0);
+INSERT INTO SM_TXN
+	VALUES (732,
+	629,
+	683,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (736,
+	629,
+	630,
+	31,
+	0);
+INSERT INTO SM_TAH
+	VALUES (737,
+	629,
+	736);
+INSERT INTO SM_AH
+	VALUES (737,
+	629);
+INSERT INTO SM_ACT
+	VALUES (737,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (738,
+	629,
+	737);
+INSERT INTO ACT_ACT
+	VALUES (738,
+	'transition',
+	0,
+	739,
+	0,
+	0,
+	'MO_MT2: decrease_power',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (739,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	738,
+	0);
+INSERT INTO SM_TXN
+	VALUES (736,
+	629,
+	634,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (740,
+	629,
+	630,
+	508,
+	0);
+INSERT INTO SM_TAH
+	VALUES (741,
+	629,
+	740);
+INSERT INTO SM_AH
+	VALUES (741,
+	629);
+INSERT INTO SM_ACT
+	VALUES (741,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (742,
+	629,
+	741);
+INSERT INTO ACT_ACT
+	VALUES (742,
+	'transition',
+	0,
+	743,
+	0,
+	0,
+	'MO_MT3: power_on',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (743,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	742,
+	0);
+INSERT INTO SM_TXN
+	VALUES (740,
+	629,
+	728,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (744,
+	629,
+	634,
+	85,
+	0);
+INSERT INTO SM_TAH
+	VALUES (745,
+	629,
+	744);
+INSERT INTO SM_AH
+	VALUES (745,
+	629);
+INSERT INTO SM_ACT
+	VALUES (745,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (746,
+	629,
+	745);
+INSERT INTO ACT_ACT
+	VALUES (746,
+	'transition',
+	0,
+	747,
+	0,
+	0,
+	'MO_MT1: increase_power',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (747,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	746,
+	0);
+INSERT INTO SM_TXN
+	VALUES (744,
+	629,
+	683,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (748,
+	629,
+	634,
+	31,
+	0);
+INSERT INTO SM_TAH
+	VALUES (749,
+	629,
+	748);
+INSERT INTO SM_AH
+	VALUES (749,
+	629);
+INSERT INTO SM_ACT
+	VALUES (749,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (750,
+	629,
+	749);
+INSERT INTO ACT_ACT
+	VALUES (750,
+	'transition',
+	0,
+	751,
+	0,
+	0,
+	'MO_MT2: decrease_power',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (751,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	750,
+	0);
+INSERT INTO SM_TXN
+	VALUES (748,
+	629,
+	634,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (752,
+	629,
+	634,
+	508,
+	0);
+INSERT INTO SM_TAH
+	VALUES (753,
+	629,
+	752);
+INSERT INTO SM_AH
+	VALUES (753,
+	629);
+INSERT INTO SM_ACT
+	VALUES (753,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (754,
+	629,
+	753);
+INSERT INTO ACT_ACT
+	VALUES (754,
+	'transition',
+	0,
+	755,
+	0,
+	0,
+	'MO_MT3: power_on',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (755,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	754,
+	0);
+INSERT INTO SM_TXN
+	VALUES (752,
+	629,
+	728,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (756,
+	629,
+	634,
+	539,
+	0);
+INSERT INTO SM_TAH
+	VALUES (757,
+	629,
+	756);
+INSERT INTO SM_AH
+	VALUES (757,
+	629);
+INSERT INTO SM_ACT
+	VALUES (757,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (758,
+	629,
+	757);
+INSERT INTO ACT_ACT
+	VALUES (758,
+	'transition',
+	0,
+	759,
+	0,
+	0,
+	'MO_MT4: power_off',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (759,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	758,
+	0);
+INSERT INTO SM_TXN
+	VALUES (756,
+	629,
+	630,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (760,
+	629,
+	683,
+	85,
+	0);
+INSERT INTO SM_TAH
+	VALUES (761,
+	629,
+	760);
+INSERT INTO SM_AH
+	VALUES (761,
+	629);
+INSERT INTO SM_ACT
+	VALUES (761,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (762,
+	629,
+	761);
+INSERT INTO ACT_ACT
+	VALUES (762,
+	'transition',
+	0,
+	763,
+	0,
+	0,
+	'MO_MT1: increase_power',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (763,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	762,
+	0);
+INSERT INTO SM_TXN
+	VALUES (760,
+	629,
+	683,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (764,
+	629,
+	683,
+	31,
+	0);
+INSERT INTO SM_TAH
+	VALUES (765,
+	629,
+	764);
+INSERT INTO SM_AH
+	VALUES (765,
+	629);
+INSERT INTO SM_ACT
+	VALUES (765,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (766,
+	629,
+	765);
+INSERT INTO ACT_ACT
+	VALUES (766,
+	'transition',
+	0,
+	767,
+	0,
+	0,
+	'MO_MT2: decrease_power',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (767,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	766,
+	0);
+INSERT INTO SM_TXN
+	VALUES (764,
+	629,
+	634,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (768,
+	629,
+	683,
+	508,
+	0);
+INSERT INTO SM_TAH
+	VALUES (769,
+	629,
+	768);
+INSERT INTO SM_AH
+	VALUES (769,
+	629);
+INSERT INTO SM_ACT
+	VALUES (769,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (770,
+	629,
+	769);
+INSERT INTO ACT_ACT
+	VALUES (770,
+	'transition',
+	0,
+	771,
+	0,
+	0,
+	'MO_MT3: power_on',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (771,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	770,
+	0);
+INSERT INTO SM_TXN
+	VALUES (768,
+	629,
+	728,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (772,
+	629,
+	683,
+	539,
+	0);
+INSERT INTO SM_TAH
+	VALUES (773,
+	629,
+	772);
+INSERT INTO SM_AH
+	VALUES (773,
+	629);
+INSERT INTO SM_ACT
+	VALUES (773,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (774,
+	629,
+	773);
+INSERT INTO ACT_ACT
+	VALUES (774,
+	'transition',
+	0,
+	775,
+	0,
+	0,
+	'MO_MT4: power_off',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (775,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	774,
+	0);
+INSERT INTO SM_TXN
+	VALUES (772,
+	629,
+	630,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (776,
+	629,
+	728,
+	85,
+	0);
+INSERT INTO SM_TAH
+	VALUES (777,
+	629,
+	776);
+INSERT INTO SM_AH
+	VALUES (777,
+	629);
+INSERT INTO SM_ACT
+	VALUES (777,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (778,
+	629,
+	777);
+INSERT INTO ACT_ACT
+	VALUES (778,
+	'transition',
+	0,
+	779,
+	0,
+	0,
+	'MO_MT1: increase_power',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (779,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	778,
+	0);
+INSERT INTO SM_TXN
+	VALUES (776,
+	629,
+	683,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (780,
+	629,
+	728,
+	31,
+	0);
+INSERT INTO SM_TAH
+	VALUES (781,
+	629,
+	780);
+INSERT INTO SM_AH
+	VALUES (781,
+	629);
+INSERT INTO SM_ACT
+	VALUES (781,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (782,
+	629,
+	781);
+INSERT INTO ACT_ACT
+	VALUES (782,
+	'transition',
+	0,
+	783,
+	0,
+	0,
+	'MO_MT2: decrease_power',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (783,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	782,
+	0);
+INSERT INTO SM_TXN
+	VALUES (780,
+	629,
+	634,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (784,
+	629,
+	728,
+	539,
+	0);
+INSERT INTO SM_TAH
+	VALUES (785,
+	629,
+	784);
+INSERT INTO SM_AH
+	VALUES (785,
+	629);
+INSERT INTO SM_ACT
+	VALUES (785,
+	629,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (786,
+	629,
+	785);
+INSERT INTO ACT_ACT
+	VALUES (786,
+	'transition',
+	0,
+	787,
+	0,
+	0,
+	'MO_MT4: power_off',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (787,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	786,
+	0);
+INSERT INTO SM_TXN
+	VALUES (784,
+	629,
+	630,
+	0);
+INSERT INTO PE_PE
+	VALUES (50,
+	1,
+	380,
+	0,
+	4);
+INSERT INTO O_OBJ
+	VALUES (50,
+	'Internal Light',
+	3,
+	'MO_IL',
+	'The internal oven light, illuminated only when the oven tube is powered on.',
+	0);
+INSERT INTO O_NBATTR
+	VALUES (392,
+	50);
+INSERT INTO O_BATTR
+	VALUES (392,
+	50);
+INSERT INTO O_ATTR
+	VALUES (392,
+	50,
+	0,
+	'LightID',
+	'The uniquely-specified light identifier.',
+	'',
+	'LightID',
+	0,
+	126,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (788,
+	50);
+INSERT INTO O_BATTR
+	VALUES (788,
+	50);
+INSERT INTO O_ATTR
+	VALUES (788,
+	50,
+	392,
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	128,
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	50);
+INSERT INTO O_OIDA
+	VALUES (392,
+	50,
+	0,
+	'LightID');
+INSERT INTO O_ID
+	VALUES (1,
+	50);
+INSERT INTO O_ID
+	VALUES (2,
+	50);
+INSERT INTO SM_ISM
+	VALUES (789,
+	50);
+INSERT INTO SM_SM
+	VALUES (789,
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES (789);
+INSERT INTO SM_LEVT
+	VALUES (498,
+	789,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (498,
+	789,
+	0);
+INSERT INTO SM_EVT
+	VALUES (498,
+	789,
+	0,
+	1,
+	'switch_on',
+	0,
+	'',
+	'MO_IL1',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (529,
+	789,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (529,
+	789,
+	0);
+INSERT INTO SM_EVT
+	VALUES (529,
+	789,
+	0,
+	2,
+	'switch_off',
+	0,
+	'',
+	'MO_IL2',
+	'');
+INSERT INTO SM_STATE
+	VALUES (790,
+	789,
+	0,
+	'Off',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES (790,
+	498,
+	789,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (790,
+	529,
+	789,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (790,
+	529,
+	789,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (791,
+	789,
+	790);
+INSERT INTO SM_AH
+	VALUES (791,
+	789);
+INSERT INTO SM_ACT
+	VALUES (791,
+	789,
+	1,
+	'// Light off',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (792,
+	789,
+	791);
+INSERT INTO ACT_ACT
+	VALUES (792,
+	'state',
+	0,
+	793,
+	0,
+	0,
+	'Internal Light::Off',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (793,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	792,
+	0);
+INSERT INTO SM_STATE
+	VALUES (794,
+	789,
+	0,
+	'On',
+	2,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (794,
+	498,
+	789,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (794,
+	498,
+	789,
+	0);
+INSERT INTO SM_SEME
+	VALUES (794,
+	529,
+	789,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (795,
+	789,
+	794);
+INSERT INTO SM_AH
+	VALUES (795,
+	789);
+INSERT INTO SM_ACT
+	VALUES (795,
+	789,
+	1,
+	'// Light on',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (796,
+	789,
+	795);
+INSERT INTO ACT_ACT
+	VALUES (796,
+	'state',
+	0,
+	797,
+	0,
+	0,
+	'Internal Light::On',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (797,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	796,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (798,
+	789,
+	790,
+	498,
+	0);
+INSERT INTO SM_TAH
+	VALUES (799,
+	789,
+	798);
+INSERT INTO SM_AH
+	VALUES (799,
+	789);
+INSERT INTO SM_ACT
+	VALUES (799,
+	789,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (800,
+	789,
+	799);
+INSERT INTO ACT_ACT
+	VALUES (800,
+	'transition',
+	0,
+	801,
+	0,
+	0,
+	'MO_IL1: switch_on',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (801,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	800,
+	0);
+INSERT INTO SM_TXN
+	VALUES (798,
+	789,
+	794,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (802,
+	789,
+	794,
+	529,
+	0);
+INSERT INTO SM_TAH
+	VALUES (803,
+	789,
+	802);
+INSERT INTO SM_AH
+	VALUES (803,
+	789);
+INSERT INTO SM_ACT
+	VALUES (803,
+	789,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (804,
+	789,
+	803);
+INSERT INTO ACT_ACT
+	VALUES (804,
+	'transition',
+	0,
+	805,
+	0,
+	0,
+	'MO_IL2: switch_off',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (805,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	804,
+	0);
+INSERT INTO SM_TXN
+	VALUES (802,
+	789,
+	790,
+	0);
+INSERT INTO PE_PE
+	VALUES (55,
+	1,
+	380,
+	0,
+	4);
+INSERT INTO O_OBJ
+	VALUES (55,
+	'Beeper',
+	4,
+	'MO_B',
+	'An audible signal generator.
+
+The beeper repeats four times on completion of the cooking period, signalling to the user that the oven door can be opened to inspect the readiness of the food inside.',
+	0);
+INSERT INTO O_NBATTR
+	VALUES (395,
+	55);
+INSERT INTO O_BATTR
+	VALUES (395,
+	55);
+INSERT INTO O_ATTR
+	VALUES (395,
+	55,
+	0,
+	'BeeperID',
+	'The uniquely-specified beeper identifier.',
+	'',
+	'BeeperID',
+	0,
+	126,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (806,
+	55);
+INSERT INTO O_BATTR
+	VALUES (806,
+	55);
+INSERT INTO O_ATTR
+	VALUES (806,
+	55,
+	395,
+	'beeper_timer',
+	'A local timer, used to generate delays of 1 second between the sounding of each beep.',
+	'',
+	'beeper_timer',
+	0,
+	177,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (807,
+	55);
+INSERT INTO O_BATTR
+	VALUES (807,
+	55);
+INSERT INTO O_ATTR
+	VALUES (807,
+	55,
+	806,
+	'beep_count',
+	'A counter, incrementally increasing from zero as the beeper sounds.',
+	'',
+	'beep_count',
+	0,
+	70,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (808,
+	55);
+INSERT INTO O_BATTR
+	VALUES (808,
+	55);
+INSERT INTO O_ATTR
+	VALUES (808,
+	55,
+	807,
+	'beeper_delay_over',
+	'The delayed event supplied to the beeper''s local timer, which fires to signify the completion of the 1 second beeper delay.',
+	'',
+	'beeper_delay_over',
+	0,
+	182,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (809,
+	55);
+INSERT INTO O_BATTR
+	VALUES (809,
+	55);
+INSERT INTO O_ATTR
+	VALUES (809,
+	55,
+	808,
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	128,
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	55);
+INSERT INTO O_OIDA
+	VALUES (395,
+	55,
+	0,
+	'BeeperID');
+INSERT INTO O_ID
+	VALUES (1,
+	55);
+INSERT INTO O_ID
+	VALUES (2,
+	55);
+INSERT INTO SM_ISM
+	VALUES (810,
+	55);
+INSERT INTO SM_SM
+	VALUES (810,
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES (810);
+INSERT INTO SM_LEVT
+	VALUES (559,
+	810,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (559,
+	810,
+	0);
+INSERT INTO SM_EVT
+	VALUES (559,
+	810,
+	0,
+	1,
+	'start_beeping',
+	0,
+	'',
+	'MO_B1',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (811,
+	810,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (811,
+	810,
+	0);
+INSERT INTO SM_EVT
+	VALUES (811,
+	810,
+	0,
+	2,
+	'beep_delay_over',
+	0,
+	'',
+	'MO_B2',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (812,
+	810,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (812,
+	810,
+	0);
+INSERT INTO SM_EVT
+	VALUES (812,
+	810,
+	0,
+	3,
+	'beeping_stopped',
+	0,
+	'',
+	'MO_B3',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (457,
+	810,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (457,
+	810,
+	0);
+INSERT INTO SM_EVT
+	VALUES (457,
+	810,
+	0,
+	4,
+	'stop_beeping',
+	0,
+	'',
+	'MO_B4',
+	'');
+INSERT INTO SM_STATE
+	VALUES (813,
+	810,
+	0,
+	'Awaiting Beeper Request',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES (813,
+	559,
+	810,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (813,
+	811,
+	810,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (813,
+	811,
+	810,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (813,
+	812,
+	810,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (813,
+	812,
+	810,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (813,
+	457,
+	810,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (813,
+	457,
+	810,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (814,
+	810,
+	813);
+INSERT INTO SM_AH
+	VALUES (814,
+	810);
+INSERT INTO SM_ACT
+	VALUES (814,
+	810,
+	1,
+	'assign self.beep_count = 0;
+
+cancelled_timer = TIM::timer_cancel(timer_inst_ref:self.beeper_timer);',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (815,
+	810,
+	814);
+INSERT INTO ACT_ACT
+	VALUES (815,
+	'state',
+	0,
+	816,
+	0,
+	0,
+	'Beeper::Awaiting Beeper Request',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (816,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	3,
+	1,
+	3,
+	19,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	815,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (817,
+	816,
+	818,
+	1,
+	1,
+	'Beeper::Awaiting Beeper Request line: 1');
+INSERT INTO ACT_AI
+	VALUES (817,
+	819,
+	820,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (818,
+	816,
+	0,
+	3,
+	1,
+	'Beeper::Awaiting Beeper Request line: 3');
+INSERT INTO ACT_AI
+	VALUES (818,
+	821,
+	822,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (823,
+	1,
+	0,
+	1,
+	8,
+	11,
+	0,
+	0,
+	0,
+	0,
+	15,
+	816);
+INSERT INTO V_IRF
+	VALUES (823,
+	824);
+INSERT INTO V_VAL
+	VALUES (820,
+	1,
+	0,
+	1,
+	13,
+	22,
+	0,
+	0,
+	0,
+	0,
+	70,
+	816);
+INSERT INTO V_AVL
+	VALUES (820,
+	823,
+	55,
+	807);
+INSERT INTO V_VAL
+	VALUES (819,
+	0,
+	0,
+	1,
+	26,
+	26,
+	0,
+	0,
+	0,
+	0,
+	70,
+	816);
+INSERT INTO V_LIN
+	VALUES (819,
+	'0');
+INSERT INTO V_VAL
+	VALUES (822,
+	1,
+	1,
+	3,
+	1,
+	15,
+	0,
+	0,
+	0,
+	0,
+	77,
+	816);
+INSERT INTO V_TVL
+	VALUES (822,
+	825);
+INSERT INTO V_VAL
+	VALUES (821,
+	0,
+	0,
+	3,
+	24,
+	-1,
+	3,
+	37,
+	0,
+	0,
+	77,
+	816);
+INSERT INTO V_BRV
+	VALUES (821,
+	546,
+	1,
+	3,
+	19);
+INSERT INTO V_VAL
+	VALUES (826,
+	0,
+	0,
+	3,
+	52,
+	55,
+	0,
+	0,
+	0,
+	0,
+	15,
+	816);
+INSERT INTO V_IRF
+	VALUES (826,
+	824);
+INSERT INTO V_VAL
+	VALUES (827,
+	0,
+	0,
+	3,
+	57,
+	68,
+	0,
+	0,
+	0,
+	0,
+	177,
+	816);
+INSERT INTO V_AVL
+	VALUES (827,
+	826,
+	55,
+	806);
+INSERT INTO V_PAR
+	VALUES (827,
+	0,
+	821,
+	'timer_inst_ref',
+	0,
+	3,
+	37);
+INSERT INTO V_VAR
+	VALUES (824,
+	816,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (824,
+	0,
+	55);
+INSERT INTO V_VAR
+	VALUES (825,
+	816,
+	'cancelled_timer',
+	1,
+	77);
+INSERT INTO V_TRN
+	VALUES (825,
+	0,
+	'');
+INSERT INTO SM_STATE
+	VALUES (828,
+	810,
+	0,
+	'Beeping',
+	2,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (828,
+	559,
+	810,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (828,
+	559,
+	810,
+	0);
+INSERT INTO SM_SEME
+	VALUES (828,
+	811,
+	810,
+	0);
+INSERT INTO SM_SEME
+	VALUES (828,
+	812,
+	810,
+	0);
+INSERT INTO SM_SEME
+	VALUES (828,
+	457,
+	810,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (829,
+	810,
+	828);
+INSERT INTO SM_AH
+	VALUES (829,
+	810);
+INSERT INTO SM_ACT
+	VALUES (829,
+	810,
+	1,
+	'if (self.beep_count == 0) // beeper yet to begin
+
+   create event instance delay_over of MO_B2:''beep_delay_over'' to self;
+   assign self.beeper_delay_over = delay_over;
+   assign self.beeper_timer = TIM::timer_start(microseconds:100000,event_inst:self.beeper_delay_over);
+
+elif (self.beep_count == 4) // last beep 
+
+   generate MO_B3:''beeping_stopped'' to self;
+   select one oven related by self->MO_O[R3];
+   generate MO_O6:''beeping_over'' to oven;
+
+else
+
+   assign self.beeper_timer = TIM::timer_start(microseconds:100000,event_inst:self.beeper_delay_over);
+
+end if;
+
+assign self.beep_count = self.beep_count + 1;',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (830,
+	810,
+	829);
+INSERT INTO ACT_ACT
+	VALUES (830,
+	'state',
+	0,
+	831,
+	0,
+	0,
+	'Beeper::Beeping',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (831,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	19,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	830,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (832,
+	831,
+	833,
+	1,
+	1,
+	'Beeper::Beeping line: 1');
+INSERT INTO ACT_IF
+	VALUES (832,
+	834,
+	835,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (836,
+	831,
+	0,
+	7,
+	1,
+	'Beeper::Beeping line: 7');
+INSERT INTO ACT_EL
+	VALUES (836,
+	837,
+	838,
+	832);
+INSERT INTO ACT_SMT
+	VALUES (839,
+	831,
+	0,
+	13,
+	1,
+	'Beeper::Beeping line: 13');
+INSERT INTO ACT_E
+	VALUES (839,
+	840,
+	832);
+INSERT INTO ACT_SMT
+	VALUES (833,
+	831,
+	0,
+	19,
+	1,
+	'Beeper::Beeping line: 19');
+INSERT INTO ACT_AI
+	VALUES (833,
+	841,
+	842,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (843,
+	0,
+	0,
+	1,
+	5,
+	8,
+	0,
+	0,
+	0,
+	0,
+	15,
+	831);
+INSERT INTO V_IRF
+	VALUES (843,
+	844);
+INSERT INTO V_VAL
+	VALUES (845,
+	0,
+	0,
+	1,
+	10,
+	19,
+	0,
+	0,
+	0,
+	0,
+	70,
+	831);
+INSERT INTO V_AVL
+	VALUES (845,
+	843,
+	55,
+	807);
+INSERT INTO V_VAL
+	VALUES (835,
+	0,
+	0,
+	1,
+	10,
+	24,
+	0,
+	0,
+	0,
+	0,
+	77,
+	831);
+INSERT INTO V_BIN
+	VALUES (835,
+	846,
+	845,
+	'==');
+INSERT INTO V_VAL
+	VALUES (846,
+	0,
+	0,
+	1,
+	24,
+	24,
+	0,
+	0,
+	0,
+	0,
+	70,
+	831);
+INSERT INTO V_LIN
+	VALUES (846,
+	'0');
+INSERT INTO V_VAL
+	VALUES (847,
+	0,
+	0,
+	7,
+	7,
+	10,
+	0,
+	0,
+	0,
+	0,
+	15,
+	831);
+INSERT INTO V_IRF
+	VALUES (847,
+	844);
+INSERT INTO V_VAL
+	VALUES (848,
+	0,
+	0,
+	7,
+	12,
+	21,
+	0,
+	0,
+	0,
+	0,
+	70,
+	831);
+INSERT INTO V_AVL
+	VALUES (848,
+	847,
+	55,
+	807);
+INSERT INTO V_VAL
+	VALUES (838,
+	0,
+	0,
+	7,
+	12,
+	26,
+	0,
+	0,
+	0,
+	0,
+	77,
+	831);
+INSERT INTO V_BIN
+	VALUES (838,
+	849,
+	848,
+	'==');
+INSERT INTO V_VAL
+	VALUES (849,
+	0,
+	0,
+	7,
+	26,
+	26,
+	0,
+	0,
+	0,
+	0,
+	70,
+	831);
+INSERT INTO V_LIN
+	VALUES (849,
+	'4');
+INSERT INTO V_VAL
+	VALUES (850,
+	1,
+	0,
+	19,
+	8,
+	11,
+	0,
+	0,
+	0,
+	0,
+	15,
+	831);
+INSERT INTO V_IRF
+	VALUES (850,
+	844);
+INSERT INTO V_VAL
+	VALUES (842,
+	1,
+	0,
+	19,
+	13,
+	22,
+	0,
+	0,
+	0,
+	0,
+	70,
+	831);
+INSERT INTO V_AVL
+	VALUES (842,
+	850,
+	55,
+	807);
+INSERT INTO V_VAL
+	VALUES (851,
+	0,
+	0,
+	19,
+	26,
+	29,
+	0,
+	0,
+	0,
+	0,
+	15,
+	831);
+INSERT INTO V_IRF
+	VALUES (851,
+	844);
+INSERT INTO V_VAL
+	VALUES (852,
+	0,
+	0,
+	19,
+	31,
+	40,
+	0,
+	0,
+	0,
+	0,
+	70,
+	831);
+INSERT INTO V_AVL
+	VALUES (852,
+	851,
+	55,
+	807);
+INSERT INTO V_VAL
+	VALUES (841,
+	0,
+	0,
+	19,
+	31,
+	44,
+	0,
+	0,
+	0,
+	0,
+	70,
+	831);
+INSERT INTO V_BIN
+	VALUES (841,
+	853,
+	852,
+	'+');
+INSERT INTO V_VAL
+	VALUES (853,
+	0,
+	0,
+	19,
+	44,
+	44,
+	0,
+	0,
+	0,
+	0,
+	70,
+	831);
+INSERT INTO V_LIN
+	VALUES (853,
+	'1');
+INSERT INTO V_VAR
+	VALUES (844,
+	831,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (844,
+	0,
+	55);
+INSERT INTO ACT_BLK
+	VALUES (834,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	5,
+	4,
+	5,
+	31,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	830,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (854,
+	834,
+	855,
+	3,
+	4,
+	'Beeper::Beeping line: 3');
+INSERT INTO E_ESS
+	VALUES (854,
+	1,
+	0,
+	3,
+	40,
+	3,
+	46,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_CES
+	VALUES (854,
+	1,
+	856);
+INSERT INTO E_CSME
+	VALUES (854,
+	811);
+INSERT INTO E_CEI
+	VALUES (854,
+	844);
+INSERT INTO ACT_SMT
+	VALUES (855,
+	834,
+	857,
+	4,
+	4,
+	'Beeper::Beeping line: 4');
+INSERT INTO ACT_AI
+	VALUES (855,
+	858,
+	859,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (857,
+	834,
+	0,
+	5,
+	4,
+	'Beeper::Beeping line: 5');
+INSERT INTO ACT_AI
+	VALUES (857,
+	860,
+	861,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (862,
+	1,
+	0,
+	4,
+	11,
+	14,
+	0,
+	0,
+	0,
+	0,
+	15,
+	834);
+INSERT INTO V_IRF
+	VALUES (862,
+	844);
+INSERT INTO V_VAL
+	VALUES (859,
+	1,
+	0,
+	4,
+	16,
+	32,
+	0,
+	0,
+	0,
+	0,
+	182,
+	834);
+INSERT INTO V_AVL
+	VALUES (859,
+	862,
+	55,
+	808);
+INSERT INTO V_VAL
+	VALUES (858,
+	0,
+	0,
+	4,
+	36,
+	45,
+	0,
+	0,
+	0,
+	0,
+	182,
+	834);
+INSERT INTO V_TVL
+	VALUES (858,
+	856);
+INSERT INTO V_VAL
+	VALUES (863,
+	1,
+	0,
+	5,
+	11,
+	14,
+	0,
+	0,
+	0,
+	0,
+	15,
+	834);
+INSERT INTO V_IRF
+	VALUES (863,
+	844);
+INSERT INTO V_VAL
+	VALUES (861,
+	1,
+	0,
+	5,
+	16,
+	27,
+	0,
+	0,
+	0,
+	0,
+	177,
+	834);
+INSERT INTO V_AVL
+	VALUES (861,
+	863,
+	55,
+	806);
+INSERT INTO V_VAL
+	VALUES (860,
+	0,
+	0,
+	5,
+	36,
+	-1,
+	5,
+	48,
+	5,
+	68,
+	177,
+	834);
+INSERT INTO V_BRV
+	VALUES (860,
+	179,
+	1,
+	5,
+	31);
+INSERT INTO V_VAL
+	VALUES (864,
+	0,
+	0,
+	5,
+	61,
+	66,
+	0,
+	0,
+	0,
+	0,
+	70,
+	834);
+INSERT INTO V_LIN
+	VALUES (864,
+	'100000');
+INSERT INTO V_PAR
+	VALUES (864,
+	0,
+	860,
+	'microseconds',
+	865,
+	5,
+	48);
+INSERT INTO V_VAL
+	VALUES (866,
+	0,
+	0,
+	5,
+	79,
+	82,
+	0,
+	0,
+	0,
+	0,
+	15,
+	834);
+INSERT INTO V_IRF
+	VALUES (866,
+	844);
+INSERT INTO V_VAL
+	VALUES (865,
+	0,
+	0,
+	5,
+	84,
+	100,
+	0,
+	0,
+	0,
+	0,
+	182,
+	834);
+INSERT INTO V_AVL
+	VALUES (865,
+	866,
+	55,
+	808);
+INSERT INTO V_PAR
+	VALUES (865,
+	0,
+	860,
+	'event_inst',
+	0,
+	5,
+	68);
+INSERT INTO V_VAR
+	VALUES (856,
+	834,
+	'delay_over',
+	1,
+	182);
+INSERT INTO V_TRN
+	VALUES (856,
+	0,
+	'');
+INSERT INTO ACT_BLK
+	VALUES (837,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	11,
+	4,
+	10,
+	37,
+	0,
+	0,
+	10,
+	42,
+	0,
+	0,
+	0,
+	0,
+	0,
+	830,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (867,
+	837,
+	868,
+	9,
+	4,
+	'Beeper::Beeping line: 9');
+INSERT INTO E_ESS
+	VALUES (867,
+	1,
+	0,
+	9,
+	13,
+	9,
+	19,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (867);
+INSERT INTO E_GSME
+	VALUES (867,
+	812);
+INSERT INTO E_GEN
+	VALUES (867,
+	844);
+INSERT INTO ACT_SMT
+	VALUES (868,
+	837,
+	869,
+	10,
+	4,
+	'Beeper::Beeping line: 10');
+INSERT INTO ACT_SEL
+	VALUES (868,
+	870,
+	1,
+	'one',
+	871);
+INSERT INTO ACT_SR
+	VALUES (868);
+INSERT INTO ACT_LNK
+	VALUES (872,
+	'',
+	868,
+	57,
+	0,
+	1,
+	13,
+	10,
+	37,
+	10,
+	42,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (869,
+	837,
+	0,
+	11,
+	4,
+	'Beeper::Beeping line: 11');
+INSERT INTO E_ESS
+	VALUES (869,
+	1,
+	0,
+	11,
+	13,
+	11,
+	19,
+	10,
+	37,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (869);
+INSERT INTO E_GSME
+	VALUES (869,
+	443);
+INSERT INTO E_GEN
+	VALUES (869,
+	870);
+INSERT INTO V_VAL
+	VALUES (871,
+	0,
+	0,
+	10,
+	31,
+	34,
+	0,
+	0,
+	0,
+	0,
+	15,
+	837);
+INSERT INTO V_IRF
+	VALUES (871,
+	844);
+INSERT INTO V_VAR
+	VALUES (870,
+	837,
+	'oven',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (870,
+	0,
+	13);
+INSERT INTO ACT_BLK
+	VALUES (840,
+	0,
+	0,
+	0,
+	'TIM',
+	'',
+	'',
+	15,
+	4,
+	15,
+	31,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	830,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (873,
+	840,
+	0,
+	15,
+	4,
+	'Beeper::Beeping line: 15');
+INSERT INTO ACT_AI
+	VALUES (873,
+	874,
+	875,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (876,
+	1,
+	0,
+	15,
+	11,
+	14,
+	0,
+	0,
+	0,
+	0,
+	15,
+	840);
+INSERT INTO V_IRF
+	VALUES (876,
+	844);
+INSERT INTO V_VAL
+	VALUES (875,
+	1,
+	0,
+	15,
+	16,
+	27,
+	0,
+	0,
+	0,
+	0,
+	177,
+	840);
+INSERT INTO V_AVL
+	VALUES (875,
+	876,
+	55,
+	806);
+INSERT INTO V_VAL
+	VALUES (874,
+	0,
+	0,
+	15,
+	36,
+	-1,
+	15,
+	48,
+	15,
+	68,
+	177,
+	840);
+INSERT INTO V_BRV
+	VALUES (874,
+	179,
+	1,
+	15,
+	31);
+INSERT INTO V_VAL
+	VALUES (877,
+	0,
+	0,
+	15,
+	61,
+	66,
+	0,
+	0,
+	0,
+	0,
+	70,
+	840);
+INSERT INTO V_LIN
+	VALUES (877,
+	'100000');
+INSERT INTO V_PAR
+	VALUES (877,
+	0,
+	874,
+	'microseconds',
+	878,
+	15,
+	48);
+INSERT INTO V_VAL
+	VALUES (879,
+	0,
+	0,
+	15,
+	79,
+	82,
+	0,
+	0,
+	0,
+	0,
+	15,
+	840);
+INSERT INTO V_IRF
+	VALUES (879,
+	844);
+INSERT INTO V_VAL
+	VALUES (878,
+	0,
+	0,
+	15,
+	84,
+	100,
+	0,
+	0,
+	0,
+	0,
+	182,
+	840);
+INSERT INTO V_AVL
+	VALUES (878,
+	879,
+	55,
+	808);
+INSERT INTO V_PAR
+	VALUES (878,
+	0,
+	874,
+	'event_inst',
+	0,
+	15,
+	68);
+INSERT INTO SM_NSTXN
+	VALUES (880,
+	810,
+	813,
+	559,
+	0);
+INSERT INTO SM_TAH
+	VALUES (881,
+	810,
+	880);
+INSERT INTO SM_AH
+	VALUES (881,
+	810);
+INSERT INTO SM_ACT
+	VALUES (881,
+	810,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (882,
+	810,
+	881);
+INSERT INTO ACT_ACT
+	VALUES (882,
+	'transition',
+	0,
+	883,
+	0,
+	0,
+	'MO_B1: start_beeping',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (883,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	882,
+	0);
+INSERT INTO SM_TXN
+	VALUES (880,
+	810,
+	828,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (884,
+	810,
+	828,
+	811,
+	0);
+INSERT INTO SM_TAH
+	VALUES (885,
+	810,
+	884);
+INSERT INTO SM_AH
+	VALUES (885,
+	810);
+INSERT INTO SM_ACT
+	VALUES (885,
+	810,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (886,
+	810,
+	885);
+INSERT INTO ACT_ACT
+	VALUES (886,
+	'transition',
+	0,
+	887,
+	0,
+	0,
+	'MO_B2: beep_delay_over',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (887,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	886,
+	0);
+INSERT INTO SM_TXN
+	VALUES (884,
+	810,
+	828,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (888,
+	810,
+	828,
+	812,
+	0);
+INSERT INTO SM_TAH
+	VALUES (889,
+	810,
+	888);
+INSERT INTO SM_AH
+	VALUES (889,
+	810);
+INSERT INTO SM_ACT
+	VALUES (889,
+	810,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (890,
+	810,
+	889);
+INSERT INTO ACT_ACT
+	VALUES (890,
+	'transition',
+	0,
+	891,
+	0,
+	0,
+	'MO_B3: beeping_stopped',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (891,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	890,
+	0);
+INSERT INTO SM_TXN
+	VALUES (888,
+	810,
+	813,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (892,
+	810,
+	828,
+	457,
+	0);
+INSERT INTO SM_TAH
+	VALUES (893,
+	810,
+	892);
+INSERT INTO SM_AH
+	VALUES (893,
+	810);
+INSERT INTO SM_ACT
+	VALUES (893,
+	810,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (894,
+	810,
+	893);
+INSERT INTO ACT_ACT
+	VALUES (894,
+	'transition',
+	0,
+	895,
+	0,
+	0,
+	'MO_B4: stop_beeping',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (895,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	894,
+	0);
+INSERT INTO SM_TXN
+	VALUES (892,
+	810,
+	813,
+	0);
+INSERT INTO PE_PE
+	VALUES (22,
+	1,
+	380,
+	0,
+	4);
+INSERT INTO O_OBJ
+	VALUES (22,
+	'Door',
+	5,
+	'MO_D',
+	'The hinged oven door, opened with an electro-mechanical release button on the control panel, and secured by steady force to the door front. The door is a vital safety component of the oven. The door must be securely closed before the oven tube can be powered on.',
+	0);
+INSERT INTO O_NBATTR
+	VALUES (398,
+	22);
+INSERT INTO O_BATTR
+	VALUES (398,
+	22);
+INSERT INTO O_ATTR
+	VALUES (398,
+	22,
+	0,
+	'DoorID',
+	'The uniquely-specified door identifier.',
+	'',
+	'DoorID',
+	0,
+	126,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (78,
+	22);
+INSERT INTO O_BATTR
+	VALUES (78,
+	22);
+INSERT INTO O_ATTR
+	VALUES (78,
+	22,
+	398,
+	'is_secure',
+	'A boolean status attribute reflecting whether the door is currently closed (secure) or open (not secure).',
+	'',
+	'is_secure',
+	0,
+	77,
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES (896,
+	22);
+INSERT INTO O_BATTR
+	VALUES (896,
+	22);
+INSERT INTO O_ATTR
+	VALUES (896,
+	22,
+	78,
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	128,
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	22);
+INSERT INTO O_OIDA
+	VALUES (398,
+	22,
+	0,
+	'DoorID');
+INSERT INTO O_ID
+	VALUES (1,
+	22);
+INSERT INTO O_ID
+	VALUES (2,
+	22);
+INSERT INTO SM_ISM
+	VALUES (897,
+	22);
+INSERT INTO SM_SM
+	VALUES (897,
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES (897);
+INSERT INTO SM_LEVT
+	VALUES (92,
+	897,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (92,
+	897,
+	0);
+INSERT INTO SM_EVT
+	VALUES (92,
+	897,
+	0,
+	1,
+	'release',
+	0,
+	'',
+	'MO_D1',
+	'');
+INSERT INTO SM_LEVT
+	VALUES (23,
+	897,
+	0);
+INSERT INTO SM_SEVT
+	VALUES (23,
+	897,
+	0);
+INSERT INTO SM_EVT
+	VALUES (23,
+	897,
+	0,
+	2,
+	'close',
+	0,
+	'',
+	'MO_D2',
+	'');
+INSERT INTO SM_STATE
+	VALUES (898,
+	897,
+	0,
+	'Open',
+	1,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (898,
+	92,
+	897,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (898,
+	92,
+	897,
+	0);
+INSERT INTO SM_SEME
+	VALUES (898,
+	23,
+	897,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (899,
+	897,
+	898);
+INSERT INTO SM_AH
+	VALUES (899,
+	897);
+INSERT INTO SM_ACT
+	VALUES (899,
+	897,
+	1,
+	'assign self.is_secure = false;
+
+select one oven related by self->MO_O[R4];
+generate MO_O4:''cancel_cooking'' to oven;',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (900,
+	897,
+	899);
+INSERT INTO ACT_ACT
+	VALUES (900,
+	'state',
+	0,
+	901,
+	0,
+	0,
+	'Door::Open',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (901,
+	1,
+	0,
+	0,
+	'V_VAR.Var_ID',
+	'',
+	'',
+	4,
+	1,
+	3,
+	34,
+	0,
+	0,
+	3,
+	39,
+	0,
+	0,
+	0,
+	0,
+	0,
+	900,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (902,
+	901,
+	903,
+	1,
+	1,
+	'Door::Open line: 1');
+INSERT INTO ACT_AI
+	VALUES (902,
+	904,
+	905,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (903,
+	901,
+	906,
+	3,
+	1,
+	'Door::Open line: 3');
+INSERT INTO ACT_SEL
+	VALUES (903,
+	907,
+	1,
+	'one',
+	908);
+INSERT INTO ACT_SR
+	VALUES (903);
+INSERT INTO ACT_LNK
+	VALUES (909,
+	'',
+	903,
+	61,
+	0,
+	1,
+	13,
+	3,
+	34,
+	3,
+	39,
+	0,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (906,
+	901,
+	0,
+	4,
+	1,
+	'Door::Open line: 4');
+INSERT INTO E_ESS
+	VALUES (906,
+	1,
+	0,
+	4,
+	10,
+	4,
+	16,
+	3,
+	34,
+	0,
+	0,
+	0,
+	0);
+INSERT INTO E_GES
+	VALUES (906);
+INSERT INTO E_GSME
+	VALUES (906,
+	14);
+INSERT INTO E_GEN
+	VALUES (906,
+	907);
+INSERT INTO V_VAL
+	VALUES (910,
+	1,
+	0,
+	1,
+	8,
+	11,
+	0,
+	0,
+	0,
+	0,
+	15,
+	901);
+INSERT INTO V_IRF
+	VALUES (910,
+	911);
+INSERT INTO V_VAL
+	VALUES (905,
+	1,
+	0,
+	1,
+	13,
+	21,
+	0,
+	0,
+	0,
+	0,
+	77,
+	901);
+INSERT INTO V_AVL
+	VALUES (905,
+	910,
+	22,
+	78);
+INSERT INTO V_VAL
+	VALUES (904,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	901);
+INSERT INTO V_LBO
+	VALUES (904,
+	'FALSE');
+INSERT INTO V_VAL
+	VALUES (908,
+	0,
+	0,
+	3,
+	28,
+	31,
+	0,
+	0,
+	0,
+	0,
+	15,
+	901);
+INSERT INTO V_IRF
+	VALUES (908,
+	911);
+INSERT INTO V_VAR
+	VALUES (911,
+	901,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (911,
+	0,
+	22);
+INSERT INTO V_VAR
+	VALUES (907,
+	901,
+	'oven',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (907,
+	0,
+	13);
+INSERT INTO SM_STATE
+	VALUES (912,
+	897,
+	0,
+	'Closed',
+	2,
+	0);
+INSERT INTO SM_SEME
+	VALUES (912,
+	92,
+	897,
+	0);
+INSERT INTO SM_EIGN
+	VALUES (912,
+	23,
+	897,
+	0,
+	'');
+INSERT INTO SM_SEME
+	VALUES (912,
+	23,
+	897,
+	0);
+INSERT INTO SM_MOAH
+	VALUES (913,
+	897,
+	912);
+INSERT INTO SM_AH
+	VALUES (913,
+	897);
+INSERT INTO SM_ACT
+	VALUES (913,
+	897,
+	1,
+	'assign self.is_secure = true;',
+	'',
+	0);
+INSERT INTO ACT_SAB
+	VALUES (914,
+	897,
+	913);
+INSERT INTO ACT_ACT
+	VALUES (914,
+	'state',
+	0,
+	915,
+	0,
+	0,
+	'Door::Closed',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (915,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	1,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	914,
+	0);
+INSERT INTO ACT_SMT
+	VALUES (916,
+	915,
+	0,
+	1,
+	1,
+	'Door::Closed line: 1');
+INSERT INTO ACT_AI
+	VALUES (916,
+	917,
+	918,
+	0,
+	0);
+INSERT INTO V_VAL
+	VALUES (919,
+	1,
+	0,
+	1,
+	8,
+	11,
+	0,
+	0,
+	0,
+	0,
+	15,
+	915);
+INSERT INTO V_IRF
+	VALUES (919,
+	920);
+INSERT INTO V_VAL
+	VALUES (918,
+	1,
+	0,
+	1,
+	13,
+	21,
+	0,
+	0,
+	0,
+	0,
+	77,
+	915);
+INSERT INTO V_AVL
+	VALUES (918,
+	919,
+	22,
+	78);
+INSERT INTO V_VAL
+	VALUES (917,
+	0,
+	0,
+	-1,
+	-1,
+	-1,
+	0,
+	0,
+	0,
+	0,
+	77,
+	915);
+INSERT INTO V_LBO
+	VALUES (917,
+	'TRUE');
+INSERT INTO V_VAR
+	VALUES (920,
+	915,
+	'self',
+	1,
+	15);
+INSERT INTO V_INT
+	VALUES (920,
+	0,
+	22);
+INSERT INTO SM_NSTXN
+	VALUES (921,
+	897,
+	898,
+	23,
+	0);
+INSERT INTO SM_TAH
+	VALUES (922,
+	897,
+	921);
+INSERT INTO SM_AH
+	VALUES (922,
+	897);
+INSERT INTO SM_ACT
+	VALUES (922,
+	897,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (923,
+	897,
+	922);
+INSERT INTO ACT_ACT
+	VALUES (923,
+	'transition',
+	0,
+	924,
+	0,
+	0,
+	'MO_D2: close',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (924,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	923,
+	0);
+INSERT INTO SM_TXN
+	VALUES (921,
+	897,
+	912,
+	0);
+INSERT INTO SM_NSTXN
+	VALUES (925,
+	897,
+	912,
+	92,
+	0);
+INSERT INTO SM_TAH
+	VALUES (926,
+	897,
+	925);
+INSERT INTO SM_AH
+	VALUES (926,
+	897);
+INSERT INTO SM_ACT
+	VALUES (926,
+	897,
+	1,
+	'',
+	'',
+	-1);
+INSERT INTO ACT_TAB
+	VALUES (927,
+	897,
+	926);
+INSERT INTO ACT_ACT
+	VALUES (927,
+	'transition',
+	0,
+	928,
+	0,
+	0,
+	'MO_D1: release',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (928,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	927,
+	0);
+INSERT INTO SM_TXN
+	VALUES (925,
+	897,
+	898,
+	0);
+INSERT INTO PE_PE
+	VALUES (929,
+	1,
+	0,
+	4,
+	7);
+INSERT INTO EP_PKG
+	VALUES (929,
+	0,
+	1,
+	'Datatypes',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES (73,
+	1,
+	929,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (73,
+	0,
+	'tube_wattage',
+	'',
+	'');
+INSERT INTO S_EDT
+	VALUES (73);
+INSERT INTO S_ENUM
+	VALUES (75,
+	'high',
+	'1000w',
+	73,
+	0);
+INSERT INTO S_ENUM
+	VALUES (670,
+	'low',
+	'600w',
+	73,
+	75);
+INSERT INTO S_ENUM
+	VALUES (662,
+	'med_high',
+	'900w',
+	73,
+	670);
+INSERT INTO S_ENUM
+	VALUES (654,
+	'med_low',
+	'700w',
+	73,
+	662);
+INSERT INTO S_ENUM
+	VALUES (658,
+	'medium',
+	'800w',
+	73,
+	654);
+INSERT INTO PE_PE
+	VALUES (930,
+	1,
+	0,
+	4,
+	7);
+INSERT INTO EP_PKG
+	VALUES (930,
+	0,
+	1,
+	'External Entities',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES (931,
+	1,
+	930,
+	0,
+	5);
+INSERT INTO S_EE
+	VALUES (931,
+	'Architecture',
+	'The Architecture external entity is used to model a shutdown bridge operation. This operation is called when the system has finished the test scenario.
+
+When the microwave oven models are translated into code by the model compiler, the call to this bridge operation is mapped to an architecture method used to shut down the system.',
+	'ARCH',
+	0,
+	'',
+	'Architecture',
+	1);
+INSERT INTO S_BRG
+	VALUES (359,
+	931,
+	'shutdown',
+	'',
+	0,
+	7,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO ACT_BRB
+	VALUES (932,
+	359);
+INSERT INTO ACT_ACT
+	VALUES (932,
+	'bridge',
+	0,
+	933,
+	0,
+	0,
+	'Architecture::shutdown',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (933,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	932,
+	0);
+INSERT INTO PE_PE
+	VALUES (934,
+	1,
+	930,
+	0,
+	5);
+INSERT INTO S_EE
+	VALUES (934,
+	'Control Panel',
+	'The Control Panel is used to simulate button presses on the microwave oven.  See the Object Communication Diagram (Asynchronous) for a detailed view of the events.',
+	'CP',
+	0,
+	'',
+	'Control Panel',
+	1);
+INSERT INTO PE_PE
+	VALUES (935,
+	1,
+	930,
+	0,
+	5);
+INSERT INTO S_EE
+	VALUES (935,
+	'Time',
+	'The Time external entity provides date, timestamp, and timer related operations.',
+	'TIM',
+	0,
+	'',
+	'Time',
+	1);
+INSERT INTO S_BRG
+	VALUES (936,
+	935,
+	'create_date',
+	'',
+	0,
+	937,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (938,
+	936,
+	'day',
+	70,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO S_BPARM
+	VALUES (939,
+	936,
+	'hour',
+	70,
+	0,
+	'',
+	938,
+	'');
+INSERT INTO S_BPARM
+	VALUES (940,
+	936,
+	'minute',
+	70,
+	0,
+	'',
+	939,
+	'');
+INSERT INTO S_BPARM
+	VALUES (941,
+	936,
+	'month',
+	70,
+	0,
+	'',
+	940,
+	'');
+INSERT INTO S_BPARM
+	VALUES (942,
+	936,
+	'second',
+	70,
+	0,
+	'',
+	941,
+	'');
+INSERT INTO S_BPARM
+	VALUES (943,
+	936,
+	'year',
+	70,
+	0,
+	'',
+	942,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (944,
+	936);
+INSERT INTO ACT_ACT
+	VALUES (944,
+	'bridge',
+	0,
+	945,
+	0,
+	0,
+	'Time::create_date',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (945,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	944,
+	0);
+INSERT INTO S_BRG
+	VALUES (946,
+	935,
+	'current_clock',
+	'',
+	0,
+	947,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO ACT_BRB
+	VALUES (948,
+	946);
+INSERT INTO ACT_ACT
+	VALUES (948,
+	'bridge',
+	0,
+	949,
+	0,
+	0,
+	'Time::current_clock',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (949,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	948,
+	0);
+INSERT INTO S_BRG
+	VALUES (950,
+	935,
+	'current_date',
+	'',
+	0,
+	937,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO ACT_BRB
+	VALUES (951,
+	950);
+INSERT INTO ACT_ACT
+	VALUES (951,
+	'bridge',
+	0,
+	952,
+	0,
+	0,
+	'Time::current_date',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (952,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	951,
+	0);
+INSERT INTO S_BRG
+	VALUES (953,
+	935,
+	'get_day',
+	'',
+	0,
+	70,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (954,
+	953,
+	'date',
+	937,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (955,
+	953);
+INSERT INTO ACT_ACT
+	VALUES (955,
+	'bridge',
+	0,
+	956,
+	0,
+	0,
+	'Time::get_day',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (956,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	955,
+	0);
+INSERT INTO S_BRG
+	VALUES (957,
+	935,
+	'get_hour',
+	'',
+	0,
+	70,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (958,
+	957,
+	'date',
+	937,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (959,
+	957);
+INSERT INTO ACT_ACT
+	VALUES (959,
+	'bridge',
+	0,
+	960,
+	0,
+	0,
+	'Time::get_hour',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (960,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	959,
+	0);
+INSERT INTO S_BRG
+	VALUES (961,
+	935,
+	'get_minute',
+	'',
+	0,
+	70,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (962,
+	961,
+	'date',
+	937,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (963,
+	961);
+INSERT INTO ACT_ACT
+	VALUES (963,
+	'bridge',
+	0,
+	964,
+	0,
+	0,
+	'Time::get_minute',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (964,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	963,
+	0);
+INSERT INTO S_BRG
+	VALUES (965,
+	935,
+	'get_month',
+	'',
+	0,
+	70,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (966,
+	965,
+	'date',
+	937,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (967,
+	965);
+INSERT INTO ACT_ACT
+	VALUES (967,
+	'bridge',
+	0,
+	968,
+	0,
+	0,
+	'Time::get_month',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (968,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	967,
+	0);
+INSERT INTO S_BRG
+	VALUES (969,
+	935,
+	'get_second',
+	'',
+	0,
+	70,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (970,
+	969,
+	'date',
+	937,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (971,
+	969);
+INSERT INTO ACT_ACT
+	VALUES (971,
+	'bridge',
+	0,
+	972,
+	0,
+	0,
+	'Time::get_second',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (972,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	971,
+	0);
+INSERT INTO S_BRG
+	VALUES (973,
+	935,
+	'get_year',
+	'',
+	0,
+	70,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (974,
+	973,
+	'date',
+	937,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (975,
+	973);
+INSERT INTO ACT_ACT
+	VALUES (975,
+	'bridge',
+	0,
+	976,
+	0,
+	0,
+	'Time::get_year',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (976,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	975,
+	0);
+INSERT INTO S_BRG
+	VALUES (977,
+	935,
+	'timer_add_time',
+	'',
+	0,
+	77,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (978,
+	977,
+	'microseconds',
+	70,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO S_BPARM
+	VALUES (979,
+	977,
+	'timer_inst_ref',
+	177,
+	0,
+	'',
+	978,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (980,
+	977);
+INSERT INTO ACT_ACT
+	VALUES (980,
+	'bridge',
+	0,
+	981,
+	0,
+	0,
+	'Time::timer_add_time',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (981,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	980,
+	0);
+INSERT INTO S_BRG
+	VALUES (546,
+	935,
+	'timer_cancel',
+	'',
+	0,
+	77,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (982,
+	546,
+	'timer_inst_ref',
+	177,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (983,
+	546);
+INSERT INTO ACT_ACT
+	VALUES (983,
+	'bridge',
+	0,
+	984,
+	0,
+	0,
+	'Time::timer_cancel',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (984,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	983,
+	0);
+INSERT INTO S_BRG
+	VALUES (542,
+	935,
+	'timer_remaining_time',
+	'',
+	0,
+	70,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (985,
+	542,
+	'timer_inst_ref',
+	177,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (986,
+	542);
+INSERT INTO ACT_ACT
+	VALUES (986,
+	'bridge',
+	0,
+	987,
+	0,
+	0,
+	'Time::timer_remaining_time',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (987,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	986,
+	0);
+INSERT INTO S_BRG
+	VALUES (988,
+	935,
+	'timer_reset_time',
+	'',
+	0,
+	77,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (989,
+	988,
+	'microseconds',
+	70,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO S_BPARM
+	VALUES (990,
+	988,
+	'timer_inst_ref',
+	177,
+	0,
+	'',
+	989,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (991,
+	988);
+INSERT INTO ACT_ACT
+	VALUES (991,
+	'bridge',
+	0,
+	992,
+	0,
+	0,
+	'Time::timer_reset_time',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (992,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	991,
+	0);
+INSERT INTO S_BRG
+	VALUES (179,
+	935,
+	'timer_start',
+	'',
+	0,
+	177,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (993,
+	179,
+	'event_inst',
+	182,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO S_BPARM
+	VALUES (994,
+	179,
+	'microseconds',
+	70,
+	0,
+	'',
+	993,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (995,
+	179);
+INSERT INTO ACT_ACT
+	VALUES (995,
+	'bridge',
+	0,
+	996,
+	0,
+	0,
+	'Time::timer_start',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (996,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	995,
+	0);
+INSERT INTO S_BRG
+	VALUES (997,
+	935,
+	'timer_start_recurring',
+	'',
+	0,
+	177,
+	'',
+	1,
+	'',
+	0);
+INSERT INTO S_BPARM
+	VALUES (998,
+	997,
+	'event_inst',
+	182,
+	0,
+	'',
+	0,
+	'');
+INSERT INTO S_BPARM
+	VALUES (999,
+	997,
+	'microseconds',
+	70,
+	0,
+	'',
+	998,
+	'');
+INSERT INTO ACT_BRB
+	VALUES (1000,
+	997);
+INSERT INTO ACT_ACT
+	VALUES (1000,
+	'bridge',
+	0,
+	1001,
+	0,
+	0,
+	'Time::timer_start_recurring',
+	0);
+INSERT INTO ACT_BLK
+	VALUES (1001,
+	0,
+	0,
+	0,
+	'',
+	'',
+	'',
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	1000,
+	0);
+INSERT INTO PE_PE
+	VALUES (7,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (7,
+	0,
+	'void',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (7,
+	0);
+INSERT INTO PE_PE
+	VALUES (77,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (77,
+	0,
+	'boolean',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (77,
+	1);
+INSERT INTO PE_PE
+	VALUES (70,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (70,
+	0,
+	'integer',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (70,
+	2);
+INSERT INTO PE_PE
+	VALUES (1002,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (1002,
+	0,
+	'real',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (1002,
+	3);
+INSERT INTO PE_PE
+	VALUES (1003,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (1003,
+	0,
+	'string',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (1003,
+	4);
+INSERT INTO PE_PE
+	VALUES (126,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (126,
+	0,
+	'unique_id',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (126,
+	5);
+INSERT INTO PE_PE
+	VALUES (128,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (128,
+	0,
+	'state<State_Model>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (128,
+	6);
+INSERT INTO PE_PE
+	VALUES (425,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (425,
+	0,
+	'same_as<Base_Attribute>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (425,
+	7);
+INSERT INTO PE_PE
+	VALUES (15,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (15,
+	0,
+	'inst_ref<Object>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (15,
+	8);
+INSERT INTO PE_PE
+	VALUES (1004,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (1004,
+	0,
+	'inst_ref_set<Object>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (1004,
+	9);
+INSERT INTO PE_PE
+	VALUES (182,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (182,
+	0,
+	'inst<Event>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (182,
+	10);
+INSERT INTO PE_PE
+	VALUES (1005,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (1005,
+	0,
+	'inst<Mapping>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (1005,
+	11);
+INSERT INTO PE_PE
+	VALUES (1006,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (1006,
+	0,
+	'inst_ref<Mapping>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (1006,
+	12);
+INSERT INTO PE_PE
+	VALUES (1007,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (1007,
+	0,
+	'component_ref',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES (1007,
+	13);
+INSERT INTO PE_PE
+	VALUES (937,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (937,
+	0,
+	'date',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES (937,
+	1005,
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES (177,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (177,
+	0,
+	'inst_ref<Timer>',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES (177,
+	1006,
+	3,
+	'');
+INSERT INTO PE_PE
+	VALUES (947,
+	1,
+	0,
+	0,
+	3);
+INSERT INTO S_DT
+	VALUES (947,
+	0,
+	'timestamp',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES (947,
+	70,
+	2,
+	'');

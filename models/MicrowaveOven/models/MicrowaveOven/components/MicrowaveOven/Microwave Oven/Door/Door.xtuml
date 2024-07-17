@@ -1,0 +1,20 @@
+// BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Microwave Oven' is
+
+  //! The hinged oven door, opened with an electro-mechanical release button on the control panel, and secured by steady force to the door front. The door is a vital safety component of the oven. The door must be securely closed before the oven tube can be powered on.
+  @key_letters("MO_D");
+  @class_num(5);
+  class Door is
+
+    //! The uniquely-specified door identifier.
+    unique DoorID: integer;
+
+    //! A boolean status attribute reflecting whether the door is currently closed (secure) or open (not secure).
+    is_secure: boolean;
+
+    preferred identifier is (DoorID);
+
+  end class;
+
+end;

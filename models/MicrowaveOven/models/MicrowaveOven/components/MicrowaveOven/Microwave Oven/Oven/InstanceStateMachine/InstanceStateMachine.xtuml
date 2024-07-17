@@ -1,0 +1,143 @@
+// BP 7.1.6 content: InstanceStateMachine syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Microwave Oven'::Oven is
+
+  @state_num(1);
+  @dialect("oal");
+  state 'Awaiting Cooking Request';
+
+  @state_num(2);
+  @dialect("oal");
+  state 'Ensuring Safe to Cook';
+
+  @state_num(3);
+  @dialect("oal");
+  state Cooking;
+
+  @state_num(4);
+  @dialect("oal");
+  state 'Cooking Suspended';
+
+  @state_num(5);
+  @dialect("oal");
+  state 'Signalling Cooking Period Over';
+
+  @state_num(6);
+  @dialect("oal");
+  state 'Assigning Cooking Period';
+
+  @event_num(1);
+  event initialise;
+
+  @event_num(2);
+  event oven_initialised;
+
+  @event_num(3);
+  event start_cooking;
+
+  @event_num(4);
+  event cancel_cooking;
+
+  @event_num(5);
+  event cooking_period_over;
+
+  @event_num(6);
+  event beeping_over;
+
+  @event_num(7);
+  event oven_safe;
+
+  @event_num(8);
+  event cooking_period(period: in integer);
+
+  @event_num(9);
+  event 'Unassigned Parameter Placeholder'(confirmation: in 'inst<Event>');
+
+  state model is
+
+    |                                    | initialise                         | oven_initialised                   | start_cooking                      | cancel_cooking                     | cooking_period_over                | beeping_over                       | oven_safe                          | cooking_period                     | 'Unassigned Parameter Placeholder' |
+    | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+    | 'Awaiting Cooking Request'         | ignore                             | ignore                             | ignore                             | ignore                             | ignore                             | ignore                             | ignore                             | 'Assigning Cooking Period'         | cannot_happen                      |
+    | 'Ensuring Safe to Cook'            | ignore                             | ignore                             | 'Ensuring Safe to Cook'            | 'Awaiting Cooking Request'         | ignore                             | ignore                             | Cooking                            | ignore                             | cannot_happen                      |
+    | Cooking                            | ignore                             | ignore                             | ignore                             | 'Cooking Suspended'                | 'Signalling Cooking Period Over'   | ignore                             | ignore                             | ignore                             | cannot_happen                      |
+    | 'Cooking Suspended'                | ignore                             | ignore                             | 'Ensuring Safe to Cook'            | 'Awaiting Cooking Request'         | ignore                             | ignore                             | ignore                             | ignore                             | cannot_happen                      |
+    | 'Signalling Cooking Period Over'   | ignore                             | ignore                             | ignore                             | 'Awaiting Cooking Request'         | ignore                             | 'Awaiting Cooking Request'         | ignore                             | ignore                             | cannot_happen                      |
+    | 'Assigning Cooking Period'         | ignore                             | ignore                             | 'Ensuring Safe to Cook'            | ignore                             | ignore                             | ignore                             | ignore                             | ignore                             | cannot_happen                      |
+
+  end state model;
+
+  state 'Awaiting Cooking Request' is
+    @noparse
+    assign self.remaining_cooking_time = 0;
+    
+    select one beeper related by self->MO_B[R3];
+    generate MO_B4:'stop_beeping' to beeper;
+    @endnoparse
+  end state;
+
+  state 'Ensuring Safe to Cook' is
+    @noparse
+    if (self.remaining_cooking_time != 0)
+       select one door related by self->MO_D[R4];
+       if (door.is_secure == true)
+          generate MO_O7:'oven_safe'() to self;
+       end if;
+    end if;
+    @endnoparse
+  end state;
+
+  state Cooking is
+    @noparse
+    create event instance cooking_over of MO_O5:'cooking_period_over'() to self;
+    self.oven_timer = TIM::timer_start(microseconds:self.remaining_cooking_time, event_inst:cooking_over);
+    
+    select one light related by self->MO_IL[R2];
+    generate MO_IL1:'switch_on' to light;
+    
+    select one turntable related by self->MO_TRN[R5];
+    generate MO_TRN1:'spin' to turntable;
+    
+    select one tube related by self->MO_MT[R1];
+    generate MO_MT3:'power_on' to tube;
+    @endnoparse
+  end state;
+
+  state 'Cooking Suspended' is
+    @noparse
+    assign self.remaining_cooking_time = TIM::timer_remaining_time(timer_inst_ref:self.oven_timer);
+    cancelled = TIM::timer_cancel(timer_inst_ref:self.oven_timer);
+    
+    select one light related by self->MO_IL[R2];
+    generate MO_IL2:'switch_off' to light;
+    
+    select one turntable related by self->MO_TRN[R5];
+    generate MO_TRN2:'stop' to turntable;
+    
+    select one tube related by self->MO_MT[R1];
+    generate MO_MT4:'power_off' to tube;
+    @endnoparse
+  end state;
+
+  state 'Signalling Cooking Period Over' is
+    @noparse
+    select one beeper related by self->MO_B[R3];
+    generate MO_B1:'start_beeping' to beeper;
+    
+    select one light related by self->MO_IL[R2];
+    generate MO_IL2:'switch_off' to light;
+    
+    select one turntable related by self->MO_TRN[R5];
+    generate MO_TRN2:'stop' to turntable;
+    
+    select one tube related by self->MO_MT[R1];
+    generate MO_MT4:'power_off' to tube;
+    @endnoparse
+  end state;
+
+  state 'Assigning Cooking Period'(period: in integer) is
+    @noparse
+    assign self.remaining_cooking_time = rcvd_evt.period;
+    @endnoparse
+  end state;
+
+end;

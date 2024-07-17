@@ -1,0 +1,40 @@
+// BP 7.1.6 content: InstanceStateMachine syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Microwave Oven'::Turntable is
+
+  @state_num(1);
+  @dialect("oal");
+  state Stationary;
+
+  @state_num(2);
+  @dialect("oal");
+  state Rotating;
+
+  @event_num(1);
+  event spin;
+
+  @event_num(2);
+  event stop;
+
+  state model is
+
+    |            | spin       | stop       |
+    | ---------- | ---------- | ---------- |
+    | Stationary | Rotating   | ignore     |
+    | Rotating   | ignore     | Stationary |
+
+  end state model;
+
+  state Stationary is
+    @noparse
+    // Turntable stationary
+    @endnoparse
+  end state;
+
+  state Rotating is
+    @noparse
+    // Turntable spinning
+    @endnoparse
+  end state;
+
+end;

@@ -1,0 +1,76 @@
+// BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven is
+
+  package 'External Entities' is
+    //! The Architecture external entity is used to model a shutdown bridge operation. This operation is called when the system has finished the test scenario.
+    //! 
+    //! When the microwave oven models are translated into code by the model compiler, the call to this bridge operation is mapped to an architecture method used to shut down the system.
+    @key_letters("ARCH");
+    @realized;
+    external Architecture is
+      @dialect("oal");
+      bridge shutdown();
+
+    end external;
+
+    //! The Control Panel is used to simulate button presses on the microwave oven.  See the Object Communication Diagram (Asynchronous) for a detailed view of the events.
+    @key_letters("CP");
+    @realized;
+    external 'Control Panel' is
+    end external;
+
+    //! The Time external entity provides date, timestamp, and timer related operations.
+    @key_letters("TIM");
+    @realized;
+    external Time is
+      @dialect("oal");
+      bridge create_date(day: in integer, hour: in integer, minute: in integer, month: in integer, second: in integer, year: in integer) return date;
+
+      @dialect("oal");
+      bridge current_clock() return timestamp;
+
+      @dialect("oal");
+      bridge current_date() return date;
+
+      @dialect("oal");
+      bridge get_day(date: in date) return integer;
+
+      @dialect("oal");
+      bridge get_hour(date: in date) return integer;
+
+      @dialect("oal");
+      bridge get_minute(date: in date) return integer;
+
+      @dialect("oal");
+      bridge get_month(date: in date) return integer;
+
+      @dialect("oal");
+      bridge get_second(date: in date) return integer;
+
+      @dialect("oal");
+      bridge get_year(date: in date) return integer;
+
+      @dialect("oal");
+      bridge timer_add_time(microseconds: in integer, timer_inst_ref: in timer) return boolean;
+
+      @dialect("oal");
+      bridge timer_cancel(timer_inst_ref: in timer) return boolean;
+
+      @dialect("oal");
+      bridge timer_remaining_time(timer_inst_ref: in timer) return integer;
+
+      @dialect("oal");
+      bridge timer_reset_time(microseconds: in integer, timer_inst_ref: in timer) return boolean;
+
+      @dialect("oal");
+      bridge timer_start(event_inst: in 'inst<Event>', microseconds: in integer) return timer;
+
+      @dialect("oal");
+      bridge timer_start_recurring(event_inst: in 'inst<Event>', microseconds: in integer) return timer;
+
+    end external;
+
+  end package;
+
+end;

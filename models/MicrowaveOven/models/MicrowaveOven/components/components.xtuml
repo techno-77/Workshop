@@ -1,0 +1,9 @@
+// BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven is
+
+  package components is
+    component MicrowaveOven;
+  end package;
+
+end;

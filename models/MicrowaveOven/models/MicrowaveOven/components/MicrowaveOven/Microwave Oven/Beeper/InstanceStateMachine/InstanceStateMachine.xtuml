@@ -1,0 +1,66 @@
+// BP 7.1.6 content: InstanceStateMachine syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Microwave Oven'::Beeper is
+
+  @state_num(1);
+  @dialect("oal");
+  state 'Awaiting Beeper Request';
+
+  @state_num(2);
+  @dialect("oal");
+  state Beeping;
+
+  @event_num(1);
+  event start_beeping;
+
+  @event_num(2);
+  event beep_delay_over;
+
+  @event_num(3);
+  event beeping_stopped;
+
+  @event_num(4);
+  event stop_beeping;
+
+  state model is
+
+    |                           | start_beeping             | beep_delay_over           | beeping_stopped           | stop_beeping              |
+    | ------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+    | 'Awaiting Beeper Request' | Beeping                   | ignore                    | ignore                    | ignore                    |
+    | Beeping                   | ignore                    | Beeping                   | 'Awaiting Beeper Request' | 'Awaiting Beeper Request' |
+
+  end state model;
+
+  state 'Awaiting Beeper Request' is
+    @noparse
+    assign self.beep_count = 0;
+    
+    cancelled_timer = TIM::timer_cancel(timer_inst_ref:self.beeper_timer);
+    @endnoparse
+  end state;
+
+  state Beeping is
+    @noparse
+    if (self.beep_count == 0) // beeper yet to begin
+    
+       create event instance delay_over of MO_B2:'beep_delay_over' to self;
+       assign self.beeper_delay_over = delay_over;
+       assign self.beeper_timer = TIM::timer_start(microseconds:100000,event_inst:self.beeper_delay_over);
+    
+    elif (self.beep_count == 4) // last beep 
+    
+       generate MO_B3:'beeping_stopped' to self;
+       select one oven related by self->MO_O[R3];
+       generate MO_O6:'beeping_over' to oven;
+    
+    else
+    
+       assign self.beeper_timer = TIM::timer_start(microseconds:100000,event_inst:self.beeper_delay_over);
+    
+    end if;
+    
+    assign self.beep_count = self.beep_count + 1;
+    @endnoparse
+  end state;
+
+end;

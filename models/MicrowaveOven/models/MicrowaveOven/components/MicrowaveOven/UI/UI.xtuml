@@ -1,0 +1,8 @@
+// BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven is
+
+  interface UI is
+  end interface;
+
+end;

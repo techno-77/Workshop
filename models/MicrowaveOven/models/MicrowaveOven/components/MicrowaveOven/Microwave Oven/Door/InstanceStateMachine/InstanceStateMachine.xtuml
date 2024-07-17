@@ -1,0 +1,43 @@
+// BP 7.1.6 content: InstanceStateMachine syschar: 3 persistence-version: 7.1.6
+
+within MicrowaveOven::components::MicrowaveOven::'Microwave Oven'::Door is
+
+  @state_num(1);
+  @dialect("oal");
+  state Open;
+
+  @state_num(2);
+  @dialect("oal");
+  state Closed;
+
+  @event_num(1);
+  event release;
+
+  @event_num(2);
+  event close;
+
+  state model is
+
+    |         | release | close   |
+    | ------- | ------- | ------- |
+    | Open    | ignore  | Closed  |
+    | Closed  | Open    | ignore  |
+
+  end state model;
+
+  state Open is
+    @noparse
+    assign self.is_secure = false;
+    
+    select one oven related by self->MO_O[R4];
+    generate MO_O4:'cancel_cooking' to oven;
+    @endnoparse
+  end state;
+
+  state Closed is
+    @noparse
+    assign self.is_secure = true;
+    @endnoparse
+  end state;
+
+end;

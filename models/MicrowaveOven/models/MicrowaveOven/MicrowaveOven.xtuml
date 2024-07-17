@@ -1,0 +1,9 @@
+// BP 7.1.6 content: SystemModel syschar: 3 persistence-version: 7.1.6
+
+@system_model(use_globals=true);
+package MicrowaveOven is
+  
+  package components;
+  
+end package;
+
